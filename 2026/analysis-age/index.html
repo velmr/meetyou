@@ -959,9 +959,9 @@ html&gt;body{padding:0}&lt;/style&gt;
       width: min(100%, 390px, calc(46.2085dvh - 8px));
       aspect-ratio: 1170 / 2532;
       overflow: hidden;
-      border-radius: 26px;
+      border-radius: 0;
       background: #f4f3f6;
-      box-shadow: 0 12px 36px rgba(48, 38, 45, 0.18);
+      box-shadow: none;
       isolation: isolate;
       container-type: inline-size;
     }
@@ -985,15 +985,14 @@ html&gt;body{padding:0}&lt;/style&gt;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 3.08cqw;
       padding: 0 3.3%;
       border: 0;
-      border-radius: 0 0 13px 13px;
+      border-radius: 0 0 3.33cqw 3.33cqw;
       background: var(--miyou-white);
       color: var(--miyou-text);
       font: inherit;
-      font-size: clamp(13px, 4.1vw, 16px);
-      font-size: clamp(13px, 4.1cqw, 16px);
+      font-size: 4.1cqw;
       font-weight: 400;
       text-align: left;
       cursor: pointer;
@@ -1010,16 +1009,15 @@ html&gt;body{padding:0}&lt;/style&gt;
       z-index: 30;
       left: 50%;
       top: 45%;
-      padding: 10px 16px;
-      border-radius: 8px;
+      padding: 2.56cqw 4.1cqw;
+      border-radius: 2.05cqw;
       background: rgba(24, 24, 24, 0.82);
       color: #ffffff;
-      font-size: clamp(13px, 4.1vw, 16px);
-      font-size: clamp(13px, 4.1cqw, 16px);
+      font-size: 4.1cqw;
       font-weight: 400;
       white-space: nowrap;
       opacity: 0;
-      transform: translate(-50%, 8px);
+      transform: translate(-50%, 2.05cqw);
       transition: opacity 160ms ease, transform 160ms ease;
       pointer-events: none;
     }
@@ -1032,18 +1030,18 @@ html&gt;body{padding:0}&lt;/style&gt;
     #age-prediction-demo .miyou-age-entry:focus-visible,
     #age-prediction-demo .miyou-text-action:focus-visible,
     #age-prediction-demo .miyou-wheel-column button:focus-visible {
-      outline: 3px solid rgba(255, 67, 132, 0.5);
-      outline-offset: -3px;
+      outline: 0.77cqw solid rgba(255, 67, 132, 0.5);
+      outline-offset: -0.77cqw;
     }
 
     #age-prediction-demo .miyou-chevron {
       flex: 0 0 auto;
-      width: 10px;
-      height: 10px;
-      border-top: 2px solid #bebec1;
-      border-right: 2px solid #bebec1;
+      width: 2.56cqw;
+      height: 2.56cqw;
+      border-top: 0.51cqw solid #bebec1;
+      border-right: 0.51cqw solid #bebec1;
       transform: rotate(45deg);
-      margin-right: 2px;
+      margin-right: 0.51cqw;
     }
 
     #age-prediction-demo .miyou-modal-layer {
@@ -1083,7 +1081,7 @@ html&gt;body{padding:0}&lt;/style&gt;
       min-height: 40.5%;
       display: flex;
       flex-direction: column;
-      border-radius: 22px 22px 0 0;
+      border-radius: 5.64cqw 5.64cqw 0 0;
       background: var(--miyou-sheet);
       color: var(--miyou-text);
       transform: translateY(102%);
@@ -1096,29 +1094,27 @@ html&gt;body{padding:0}&lt;/style&gt;
     }
 
     #age-prediction-demo .miyou-sheet-header {
-      min-height: 58px;
+      min-height: 14.87cqw;
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      padding: 0 18px;
+      padding: 0 4.62cqw;
     }
 
     #age-prediction-demo .miyou-sheet-header h2 {
       margin: 0;
-      font-size: clamp(16px, 5vw, 20px);
-      font-size: clamp(16px, 5cqw, 20px);
+      font-size: 5.13cqw;
       font-weight: 500;
     }
 
     #age-prediction-demo .miyou-text-action {
-      min-height: 44px;
+      min-height: 11.28cqw;
       padding: 0;
       border: 0;
       background: transparent;
       color: var(--miyou-text);
       font: inherit;
-      font-size: clamp(14px, 4.5vw, 18px);
-      font-size: clamp(14px, 4.5cqw, 18px);
+      font-size: 4.62cqw;
       cursor: pointer;
     }
 
@@ -1137,9 +1133,9 @@ html&gt;body{padding:0}&lt;/style&gt;
       display: grid;
       grid-template-columns: 1.25fr 1fr 1fr;
       align-items: stretch;
-      margin: 0 12px 16px;
-      padding: 16px 10px;
-      border-radius: 17px;
+      margin: 0 3.08cqw 4.1cqw;
+      padding: 4.1cqw 2.56cqw;
+      border-radius: 4.36cqw;
       background: var(--miyou-white);
       overflow: hidden;
     }
@@ -1147,11 +1143,11 @@ html&gt;body{padding:0}&lt;/style&gt;
     #age-prediction-demo .miyou-selection-band {
       position: absolute;
       z-index: 0;
-      left: 12px;
-      right: 12px;
+      left: 3.08cqw;
+      right: 3.08cqw;
       top: 50%;
       height: 20%;
-      border-radius: 10px;
+      border-radius: 2.56cqw;
       background: var(--miyou-selection);
       transform: translateY(-50%);
     }
@@ -1174,8 +1170,7 @@ html&gt;body{padding:0}&lt;/style&gt;
       background: transparent;
       color: var(--miyou-muted);
       font: inherit;
-      font-size: clamp(13px, 4.6vw, 18px);
-      font-size: clamp(13px, 4.6cqw, 18px);
+      font-size: 4.62cqw;
       font-weight: 400;
       white-space: nowrap;
       cursor: pointer;
@@ -1183,15 +1178,14 @@ html&gt;body{padding:0}&lt;/style&gt;
 
     #age-prediction-demo .miyou-wheel-column button.is-selected {
       color: var(--miyou-text);
-      font-size: clamp(18px, 6.1vw, 24px);
-      font-size: clamp(18px, 6.1cqw, 24px);
+      font-size: 6.15cqw;
       font-weight: 500;
     }
 
     #age-prediction-demo .miyou-home-indicator {
       width: 36%;
-      height: 5px;
-      margin: 0 auto 8px;
+      height: 1.28cqw;
+      margin: 0 auto 2.05cqw;
       border-radius: 999px;
       background: #050505;
     }
