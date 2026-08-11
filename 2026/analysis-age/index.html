@@ -5,18 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
-<title>年龄填写入口 Demo</title>
+<title>年龄填写入口 Demo V1.2.2</title>
 <style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
 </head>
 <body>
-<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="年龄填写入口 Demo" srcdoc="&lt;!doctype html&gt;
+<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="年龄填写入口 Demo V1.2.2" srcdoc="&lt;!doctype html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
 &lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
 &lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
-&lt;title&gt;年龄填写入口 Demo&lt;/title&gt;
+&lt;title&gt;年龄填写入口 Demo V1.2.2&lt;/title&gt;
 &lt;style&gt;:root {
   color-scheme: light dark;
   background-color: var(
@@ -894,7 +894,7 @@ html&gt;body{padding:0}&lt;/style&gt;
 
     &lt;button class=&quot;miyou-age-entry&quot; type=&quot;button&quot; aria-haspopup=&quot;dialog&quot; aria-controls=&quot;miyou-birthday-sheet&quot;&gt;
       &lt;span class=&quot;miyou-entry-label&quot;&gt;补充年龄信息，获得更准确的预测&lt;/span&gt;
-      &lt;span class=&quot;miyou-chevron&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+      &lt;span class=&quot;miyou-entry-action&quot; aria-hidden=&quot;true&quot;&gt;立即填写&lt;/span&gt;
     &lt;/button&gt;
 
     &lt;div class=&quot;miyou-toast&quot; role=&quot;status&quot; aria-live=&quot;polite&quot;&gt;年龄信息已更新&lt;/div&gt;
@@ -992,7 +992,7 @@ html&gt;body{padding:0}&lt;/style&gt;
       background: var(--miyou-white);
       color: var(--miyou-text);
       font: inherit;
-      font-size: 4.1cqw;
+      font-size: 3.85cqw;
       font-weight: 400;
       text-align: left;
       cursor: pointer;
@@ -1034,12 +1034,35 @@ html&gt;body{padding:0}&lt;/style&gt;
       outline-offset: -0.77cqw;
     }
 
-    #age-prediction-demo .miyou-chevron {
+    #age-prediction-demo .miyou-entry-action {
       flex: 0 0 auto;
+      min-width: 20.5cqw;
+      min-height: 7.18cqw;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 2.56cqw;
+      border: 0.38cqw solid var(--miyou-pink);
+      border-radius: 3.59cqw;
+      background: transparent;
+      color: var(--miyou-pink);
+      font-size: 3.33cqw;
+      font-weight: 500;
+      box-sizing: border-box;
+    }
+
+    #age-prediction-demo .miyou-entry-action.is-chevron {
+      min-width: 0;
+      min-height: 0;
       width: 2.56cqw;
       height: 2.56cqw;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
       border-top: 0.51cqw solid #bebec1;
       border-right: 0.51cqw solid #bebec1;
+      background: transparent;
+      color: transparent;
       transform: rotate(45deg);
       margin-right: 0.51cqw;
     }
@@ -1210,6 +1233,7 @@ html&gt;body{padding:0}&lt;/style&gt;
       const confirm = root.querySelector(&#x27;.miyou-confirm&#x27;);
       const scrim = root.querySelector(&#x27;.miyou-scrim&#x27;);
       const entryLabel = root.querySelector(&#x27;.miyou-entry-label&#x27;);
+      const entryAction = root.querySelector(&#x27;.miyou-entry-action&#x27;);
       const toast = root.querySelector(&#x27;.miyou-toast&#x27;);
       let toastTimer;
       let ageCompleted = false;
@@ -1234,6 +1258,8 @@ html&gt;body{padding:0}&lt;/style&gt;
         window.setTimeout(() =&gt; {
           ageCompleted = true;
           entryLabel.textContent = &#x27;可能引起推迟的原因&#x27;;
+          entryAction.textContent = &#x27;&#x27;;
+          entryAction.classList.add(&#x27;is-chevron&#x27;);
           entry.setAttribute(&#x27;aria-label&#x27;, &#x27;可能引起推迟的原因&#x27;);
           entry.removeAttribute(&#x27;aria-haspopup&#x27;);
           entry.removeAttribute(&#x27;aria-controls&#x27;);
