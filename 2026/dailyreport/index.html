@@ -1,1 +1,2994 @@
-1
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>今日密报_自然周_周报V3.7</title>
+<style>html,body{margin:0;min-height:100%;background:#f1efe8}body{box-sizing:border-box;padding:16px}iframe{display:block;width:100%;max-width:736px;height:calc(100vh - 32px);margin:0 auto;border:0}</style>
+</head>
+<body>
+<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="今日密报自然周周报 V3.7" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;title&gt;今日密报 · 自然周周报 V3.7&lt;/title&gt;
+  &lt;style&gt;:root {
+  --page-bg: #f1efe8;
+  --surface: #ffffff;
+  --ink: #2c2c2a;
+  --muted: #5f5e5a;
+  --line: rgba(0, 0, 0, 0.08);
+  --soft-line: rgba(0, 0, 0, 0.06);
+  --today: #378add;
+  --period: #f09595;
+  --period-bg: #fcebeb;
+  --period-text: #a32d2d;
+  --period-dark: #791f1f;
+  --follicular: #c0dd97;
+  --follicular-bg: #eaf3de;
+  --follicular-text: #3b6d11;
+  --follicular-dark: #27500a;
+  --ovulation: #fac775;
+  --ovulation-bg: #faeeda;
+  --ovulation-text: #854f0b;
+  --ovulation-dark: #633806;
+  --luteal: #cecbf6;
+  --luteal-bg: #eeedfe;
+  --luteal-text: #534ab7;
+  --luteal-dark: #3c3489;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--page-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px;
+  font-family: -apple-system, BlinkMacSystemFont, &quot;PingFang SC&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;
+  color: var(--ink);
+}
+
+button {
+  font: inherit;
+}
+
+.page {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 375px);
+  gap: 10px;
+  align-items: start;
+  width: min(477px, 100%);
+}
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tab {
+  flex: 0 0 auto;
+  width: 100%;
+  padding: 10px 8px;
+  border: 0.5px solid rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.35;
+  text-align: left;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+  white-space: normal;
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--today);
+  outline-offset: 2px;
+}
+
+.briefing-top {
+  margin-bottom: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 16px 16px 0 0;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.82) 0%, rgba(247, 245, 239, 0.76) 52%, rgba(238, 234, 224, 0.72) 100%);
+  box-shadow: 0 10px 24px rgba(84, 78, 66, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(18px);
+  color: var(--ink);
+}
+
+.briefing-titlebar {
+  display: grid;
+  grid-template-columns: 42px 1fr 42px;
+  align-items: center;
+  min-height: 46px;
+  padding: 4px 8px 0;
+}
+
+.briefing-top--calendar {
+  border-radius: 0 18px 18px 18px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(247, 245, 238, 0.84) 100%);
+}
+
+.briefing-titlebar--calendar {
+  min-height: 46px;
+  padding: 4px 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.briefing-back {
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.48);
+  color: #8a8277;
+  cursor: pointer;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.briefing-back:focus-visible {
+  outline: 2px solid var(--phase-bar);
+  outline-offset: 2px;
+}
+
+.briefing-title {
+  color: var(--phase-dark);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-align: center;
+}
+
+.date-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 38px;
+  padding: 0 8px;
+}
+
+.date-nav__range {
+  flex: 0 0 auto;
+  color: #9d968d;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.date-nav__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: 30px;
+  height: 38px;
+  border: 0;
+  background: transparent;
+  color: #7e776f;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.date-nav__divider {
+  color: #bbb3a9;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.date-nav__item.is-current {
+  background: color-mix(in srgb, var(--phase-bar), transparent 78%);
+  border-radius: 999px;
+  color: var(--phase-dark);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 0 8px;
+}
+
+.date-nav__item:focus-visible {
+  outline: 2px solid var(--phase-bar);
+  outline-offset: -4px;
+}
+
+.card {
+  margin-bottom: 10px;
+  border: 0.5px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  padding: 14px 16px;
+}
+
+.week-hero {
+  background: var(--phase-bg);
+  border-color: color-mix(in srgb, var(--phase-bar), transparent 75%);
+}
+
+.week-hero--with-chart {
+  padding-bottom: 12px;
+}
+
+.week-hero--with-chart .week-hero__lead {
+  margin-bottom: 14px;
+}
+
+.week-hero__chart {
+  border-top: 0.5px solid color-mix(in srgb, var(--phase-bar), transparent 78%);
+  padding-top: 14px;
+}
+
+.week-hero__chart + .week-hero__chart {
+  margin-top: 14px;
+}
+
+.week-hero__chart .chart-card__head {
+  margin-bottom: 4px;
+}
+
+.week-overview-card {
+  background: var(--surface);
+  border-color: color-mix(in srgb, var(--phase-bar), transparent 75%);
+}
+
+.week-overview-card .advice-card__title {
+  margin-bottom: 10px;
+}
+
+.week-hero__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.week-hero__lead {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.week-hero__lead.is-slide-right {
+  animation: daily-lead-slide-right 360ms cubic-bezier(0.22, 0.9, 0.28, 1) both;
+}
+
+.week-hero__lead.is-slide-left {
+  animation: daily-lead-slide-left 360ms cubic-bezier(0.22, 0.9, 0.28, 1) both;
+}
+
+.week-hero__chart.is-slide-right {
+  animation: daily-lead-slide-right 360ms cubic-bezier(0.22, 0.9, 0.28, 1) both;
+}
+
+.week-hero__chart.is-slide-left {
+  animation: daily-lead-slide-left 360ms cubic-bezier(0.22, 0.9, 0.28, 1) both;
+}
+
+.week-hero__top--stack {
+  display: block;
+}
+
+.week-hero__content {
+  width: 100%;
+  min-width: 0;
+}
+
+.week-hero__title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.today-title-card__text {
+  color: var(--phase-dark);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.period-countdown {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 5px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--phase-bar), transparent 82%);
+  padding: 4px 9px;
+  color: var(--phase-dark);
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.4;
+}
+
+.today-title-card__desc {
+  margin: 4px 0 0;
+  color: var(--phase-text);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.week-hero__title {
+  color: var(--phase-text);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.week-hero__headline {
+  margin-top: 0;
+  color: var(--phase-dark);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.week-hero__summary {
+  color: var(--phase-text);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--phase-bar), transparent 70%);
+  color: var(--phase-dark);
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.day-strip {
+  display: flex;
+  gap: 4px;
+  margin: 8px 0 10px;
+}
+
+.day-strip--top {
+  margin: 0 0 14px;
+}
+
+.header-day-strip {
+  display: flex;
+  gap: 4px;
+  padding: 8px 16px 16px;
+  border: 0.5px solid color-mix(in srgb, var(--phase-bar), transparent 72%);
+  border-top: 0;
+  border-radius: 0 0 18px 18px;
+  background: color-mix(in srgb, var(--phase-bar), #fff 74%);
+}
+
+.header-day-strip .day-tile {
+  min-height: 58px;
+  border-radius: 8px;
+  padding: 6px 2px;
+}
+
+.header-day-strip .day-tile.is-today {
+  border-width: 2px;
+}
+
+.header-day-strip .day-tile.is-today::after {
+  inset: -4px;
+  border-radius: 11px;
+}
+
+.header-day-strip .day-tile.is-switch {
+  border-width: 1.5px;
+}
+
+.header-day-strip .day-tile__name {
+  font-size: 9px;
+}
+
+.header-day-strip .day-tile__date {
+  margin-top: 2px;
+  font-size: 14px;
+  line-height: 1.1;
+}
+
+.header-day-strip .day-tile__meta {
+  margin-top: 2px;
+  font-size: 8px;
+  font-weight: 400;
+}
+
+.day-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  min-width: 0;
+  appearance: none;
+  border: 0.5px solid var(--day-bar);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--day-bar), transparent 75%);
+  min-height: 58px;
+  padding: 6px 2px;
+  text-align: center;
+}
+
+.day-tile.is-selectable {
+  cursor: pointer;
+}
+
+.day-tile.is-selectable:focus-visible {
+  outline: 2px solid var(--today);
+  outline-offset: 2px;
+}
+
+.day-tile.is-selected {
+  border: 0.5px solid var(--day-bar);
+  background: color-mix(in srgb, var(--day-bar), transparent 75%);
+}
+
+.day-tile.is-selected::after {
+  position: absolute;
+  inset: -3px;
+  border: 2px solid var(--today);
+  border-radius: 11px;
+  content: &quot;&quot;;
+  pointer-events: none;
+}
+
+.day-tile.is-today {
+  border: 2px solid var(--today);
+  background: var(--today);
+  animation: today-pop 1360ms cubic-bezier(0.2, 0.9, 0.25, 1.25) both;
+  box-shadow: 0 8px 18px rgba(55, 138, 221, 0.22);
+}
+
+.day-tile.is-today::after {
+  position: absolute;
+  inset: -4px;
+  border: 1px solid rgba(55, 138, 221, 0.38);
+  border-radius: 11px;
+  content: &quot;&quot;;
+  pointer-events: none;
+  animation: today-ring 1520ms ease-out both;
+}
+
+.day-tile.is-today-static {
+  animation: none;
+}
+
+.day-tile.is-today-static::after {
+  animation: none;
+  opacity: 0;
+}
+
+.day-tile.is-switch {
+  border: 1.5px solid var(--day-dark);
+}
+
+.day-tile__name {
+  color: var(--day-dark);
+  font-size: 9px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.day-tile.is-today .day-tile__name {
+  color: #fff;
+  font-weight: 700;
+}
+
+.day-tile__date {
+  margin-top: 2px;
+  color: var(--day-dark);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.day-tile.is-today .day-tile__date {
+  color: #fff;
+  font-weight: 700;
+}
+
+.day-tile__meta {
+  margin-top: 2px;
+  color: var(--day-dark);
+  font-size: 8px;
+  line-height: 1.2;
+}
+
+.day-tile.is-today .day-tile__meta {
+  color: #fff;
+  font-size: 7px;
+}
+
+@keyframes today-pop {
+  0% {
+    opacity: 0;
+    transform: translateY(5px) scale(0.9);
+  }
+  58% {
+    opacity: 1;
+    transform: translateY(-1px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes today-ring {
+  0% {
+    opacity: 0.75;
+    transform: scale(0.94);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.18);
+  }
+}
+
+@keyframes daily-lead-slide-right {
+  0% {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes daily-lead-slide-left {
+  0% {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.transition-card {
+  background: rgba(255, 255, 255, 0.86);
+  border-color: rgba(232, 230, 224, 0.9);
+}
+
+.transition-card__content {
+  display: block;
+}
+
+.transition-card__title {
+  margin-bottom: 4px;
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.transition-card__copy {
+  color: #5f5e5a;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.cycle-wheel {
+  justify-self: end;
+  width: 118px;
+  max-width: 100%;
+}
+
+.cycle-wheel__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.chart-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.chart-card__title {
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.chart-card__badge {
+  border-radius: 999px;
+  background: var(--ovulation-bg);
+  color: var(--ovulation-text);
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.chart-card__badge.is-luteal {
+  background: var(--luteal-bg);
+  color: var(--luteal-text);
+}
+
+.chart-card__badge.is-menstrual {
+  background: #E39997;
+  color: #FFFFFF;
+}
+
+.chart-card__badge.is-flow {
+  background: var(--period-bg);
+  color: var(--period-text);
+}
+
+.advice-card {
+  padding: 16px;
+}
+
+.advice-card__title {
+  margin: 0 0 12px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.advice-section + .advice-section {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 0.5px solid var(--soft-line);
+}
+
+.section-card__head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.section-card__marker {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--phase-bar);
+}
+
+.section-card__range {
+  color: var(--phase-dark);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.seg {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  border-bottom: 0.5px solid var(--soft-line);
+  padding: 9px 0;
+}
+
+.seg:last-child {
+  border-bottom: none;
+}
+
+.seg__dot {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  margin-top: 4px;
+  border-radius: 50%;
+  background: var(--phase-bar);
+}
+
+.seg__copy {
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.next-card {
+  border: 0.5px solid var(--line);
+  padding: 16px;
+}
+
+.next-card__copy {
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.75;
+}
+
+svg {
+  display: block;
+}
+
+.chart-today-mark {
+  animation: chart-today-pop 1200ms cubic-bezier(0.2, 0.9, 0.25, 1.2) both;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.chart-today-line,
+.chart-today-badge,
+.chart-today-label {
+  animation: chart-today-fade 1200ms ease-out both;
+}
+
+.chart-today-badge {
+  filter: drop-shadow(0 4px 8px rgba(55, 138, 221, 0.2));
+}
+
+@keyframes chart-today-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  52% {
+    opacity: 1;
+    transform: scale(1.16);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes chart-today-fade {
+  0% {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+  56% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+@supports not (color: color-mix(in srgb, #000, #fff)) {
+  .week-hero,
+  .week-overview-card {
+    border-color: var(--phase-bar);
+  }
+
+  .tag,
+  .day-tile {
+    background: #f4f0e9;
+  }
+
+  .transition-card {
+    border-color: var(--ovulation);
+  }
+}
+
+@media (max-width: 390px) {
+  .page {
+    grid-template-columns: 78px minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .tab {
+    padding: 9px 7px;
+  }
+
+  .transition-card__content {
+    display: block;
+  }
+
+  .cycle-wheel {
+    width: 104px;
+  }
+}
+
+
+/* V3.7：预计经期、经期推迟与阶段倒计时 */
+.day-tile.is-predicted:not(.is-today) {
+  border-style: dashed;
+  background: color-mix(in srgb, var(--day-bar), transparent 84%);
+}
+
+.day-tile.is-delayed:not(.is-today) {
+  border-style: dashed;
+  background: color-mix(in srgb, var(--day-bar), transparent 86%);
+}
+
+.day-tile.is-predicted .day-tile__meta,
+.day-tile.is-delayed .day-tile__meta {
+  font-weight: 600;
+}
+
+.forecast-note,
+.delay-note {
+  margin-top: 8px;
+  color: #817a72;
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.delay-state {
+  padding: 4px 0 2px;
+}
+
+.delay-state__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.delay-state__label {
+  color: var(--phase-text);
+  font-size: 11px;
+}
+
+.delay-state__count {
+  color: var(--phase-dark);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.delay-timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: 20px;
+  padding-top: 14px;
+}
+
+.delay-timeline::before {
+  position: absolute;
+  top: 18px;
+  right: 8px;
+  left: 8px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--period) 0%, var(--phase-bar) 100%);
+  content: &quot;&quot;;
+}
+
+.delay-timeline__point {
+  position: relative;
+  z-index: 1;
+}
+
+.delay-timeline__point:last-child {
+  text-align: right;
+}
+
+.delay-timeline__dot {
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin-bottom: 7px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: var(--period);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--period), transparent 45%);
+}
+
+.delay-timeline__point:last-child .delay-timeline__dot {
+  margin-left: auto;
+  background: var(--phase-bar);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--phase-bar), transparent 45%);
+}
+
+.delay-timeline__name {
+  color: #8b847c;
+  font-size: 9px;
+}
+
+.delay-timeline__date {
+  margin-top: 2px;
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.uncertainty-card {
+  margin-top: 12px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--phase-bar), transparent 86%);
+  padding: 9px 10px;
+  color: var(--phase-text);
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.delay-brief {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--phase-bar), transparent 88%);
+  padding: 8px 10px;
+}
+
+.delay-brief__date {
+  color: var(--phase-text);
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.delay-brief__count {
+  flex: 0 0 auto;
+  color: var(--phase-dark);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.delay-questions {
+  display: grid;
+  gap: 8px;
+}
+
+.delay-question {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 8px;
+  border: 0.5px solid color-mix(in srgb, var(--phase-bar), transparent 72%);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 9px 10px;
+}
+
+.delay-question__index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--phase-bar);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.delay-question__title {
+  color: var(--phase-dark);
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.delay-question__copy {
+  margin-top: 2px;
+  color: #625d57;
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.delay-tip {
+  border: 0.5px solid color-mix(in srgb, var(--phase-bar), transparent 68%);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--phase-bar), #fff 91%);
+  padding: 12px 13px;
+}
+
+.delay-tip__title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+  color: var(--phase-dark);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.delay-tip__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--phase-bar);
+  color: #fff;
+  font-size: 12px;
+}
+
+.delay-tip__copy {
+  margin: 0;
+  color: #625d57;
+  font-size: 12px;
+  line-height: 1.6;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;main class=&quot;page&quot; aria-label=&quot;今日密报自然周&quot;&gt;
+    &lt;nav class=&quot;tabs&quot; id=&quot;tabs&quot; aria-label=&quot;示例周切换&quot;&gt;&lt;/nav&gt;
+    &lt;section id=&quot;panel&quot; aria-live=&quot;polite&quot;&gt;&lt;/section&gt;
+  &lt;/main&gt;
+  &lt;script&gt;(function () {
+  const phases = {
+    period: {
+      key: &quot;period&quot;,
+      bar: &quot;#F09595&quot;,
+      bg: &quot;#FCEBEB&quot;,
+      text: &quot;#A32D2D&quot;,
+      dark: &quot;#791F1F&quot;,
+      label: &quot;经期&quot;,
+    },
+    follicular: {
+      key: &quot;follicular&quot;,
+      bar: &quot;#C0DD97&quot;,
+      bg: &quot;#EAF3DE&quot;,
+      text: &quot;#3B6D11&quot;,
+      dark: &quot;#27500A&quot;,
+      label: &quot;卵泡期&quot;,
+    },
+    ovulation: {
+      key: &quot;ovulation&quot;,
+      bar: &quot;#FAC775&quot;,
+      bg: &quot;#FAEEDA&quot;,
+      text: &quot;#854F0B&quot;,
+      dark: &quot;#633806&quot;,
+      label: &quot;排卵期&quot;,
+    },
+    luteal: {
+      key: &quot;luteal&quot;,
+      bar: &quot;#CECBF6&quot;,
+      bg: &quot;#EEEDFE&quot;,
+      text: &quot;#534AB7&quot;,
+      dark: &quot;#3C3489&quot;,
+      label: &quot;黄体期&quot;,
+    },
+    predicted: {
+      key: &quot;predicted&quot;,
+      bar: &quot;#E9A6AF&quot;,
+      bg: &quot;#FDF0F2&quot;,
+      text: &quot;#9D4E5C&quot;,
+      dark: &quot;#743340&quot;,
+      label: &quot;预计经期&quot;,
+    },
+    delayed: {
+      key: &quot;delayed&quot;,
+      bar: &quot;#D7A75D&quot;,
+      bg: &quot;#FBF4E8&quot;,
+      text: &quot;#80602C&quot;,
+      dark: &quot;#5F431E&quot;,
+      label: &quot;经期推迟&quot;,
+    },
+  };
+
+  const weeks = [
+
+    {
+      id: &quot;f&quot;,
+      tabLabel: &quot;示例F：预计经期&quot;,
+      title: &quot;8.3-8.9&quot;,
+      topTitle: &quot;预计今天是经期第1天&quot;,
+      topDescription: &quot;根据当前周期记录，月经预计从今天开始。经期开始前后，部分人可能出现下腹坠胀、腰酸、疲惫或情绪波动。&quot;,
+      dayStripPosition: &quot;top&quot;,
+      hideDayStrip: false,
+      showOverviewCard: true,
+      mergeIntroWithCharts: true,
+      showChart: true,
+      subtitle: &quot;黄体期 → 预计经期 → 卵泡期&quot;,
+      dominant: &quot;predicted&quot;,
+      heroPhase: &quot;predicted&quot;,
+      headline: &quot;本周预计从经前过渡到经期，并在周日进入卵泡期&quot;,
+      summary: &quot;周一处于黄体期第7天，预计周二月经开始、周六结束，周日进入卵泡期。尚未发生的阶段均为预测，实际情况会根据新的月经记录重新计算。&quot;,
+      days: [
+        { d: &quot;周一&quot;, ph: &quot;luteal&quot; },
+        { d: &quot;周二&quot;, ph: &quot;predicted&quot;, predicted: true, switch: true, today: true },
+        { d: &quot;周三&quot;, ph: &quot;predicted&quot;, predicted: true },
+        { d: &quot;周四&quot;, ph: &quot;predicted&quot;, predicted: true },
+        { d: &quot;周五&quot;, ph: &quot;predicted&quot;, predicted: true },
+        { d: &quot;周六&quot;, ph: &quot;predicted&quot;, predicted: true },
+        { d: &quot;周日&quot;, ph: &quot;follicular&quot;, switch: true },
+      ],
+      selectableDayIndices: [0, 1, 2, 3, 4, 5, 6],
+      menstrualTodayDay: 28,
+      menstrualTodayProb: 32,
+      menstrualDateOffset: 8,
+      forecastData: null,
+      dayStates: {
+        0: {
+          topTitle: &quot;今天是黄体期第7天&quot;,
+          periodCountdown: { date: &quot;8月4日&quot;, days: 1 },
+          topDescription: &quot;预计经期临近，部分人可能出现腹胀、疲惫、食欲或情绪变化，也有人没有明显感觉。&quot;,
+          heroPhase: &quot;luteal&quot;,
+          menstrualTodayDay: 27,
+          menstrualTodayProb: 30,
+        },
+        1: {},
+        2: {
+          topTitle: &quot;预计今天是经期第2天&quot;,
+          topDescription: &quot;如果月经如期开始，今天通常处于经期前半段。可以根据身体感受适当放慢节奏、注意休息。&quot;,
+          menstrualTodayDay: 29,
+          menstrualTodayProb: 30,
+        },
+        3: {
+          topTitle: &quot;预计今天是经期第3天&quot;,
+          topDescription: &quot;按当前预测，今天仍处于经期前半段，经量可能开始从高位逐渐回落，部分不适也可能有所缓解。&quot;,
+          menstrualTodayDay: 30,
+          menstrualTodayProb: 26,
+        },
+        4: {
+          topTitle: &quot;预计今天是经期第4天&quot;,
+          topDescription: &quot;如果月经如期开始，今天经量可能逐渐减少，身体也可能比前几天轻松一些。&quot;,
+          menstrualTodayDay: 31,
+          menstrualTodayProb: 20,
+        },
+        5: {
+          topTitle: &quot;预计今天是经期结束日&quot;,
+          topDescription: &quot;按当前预测，今天是经期第5天，也是预计结束日。实际经期长度因人而异，应以真实月经记录为准。&quot;,
+          menstrualTodayDay: 32,
+          menstrualTodayProb: 13,
+        },
+        6: {
+          topTitle: &quot;今天是卵泡期第1天&quot;,
+          periodCountdown: { date: &quot;9月1日&quot;, days: 23 },
+          topDescription: &quot;雌激素开始回升，精力和情绪可能逐步恢复，白带通常较少或偏干燥。&quot;,
+          heroPhase: &quot;follicular&quot;,
+          showChart: false,
+          showPregChart: true,
+          pregData: {
+            todayIdx: 6,
+            todayLabel: &quot;周日&quot;,
+            todayProb: 4,
+            phaseAxis: true,
+            todayStageIdx: 1,
+            stagePhaseKeys: [&quot;period&quot;, &quot;follicular&quot;, &quot;ovulation&quot;, &quot;luteal&quot;],
+            stageLabels: [&quot;经期&quot;, &quot;卵泡期&quot;, &quot;排卵期&quot;, &quot;黄体期&quot;],
+            stageProbs: [2, 4, 28, 4],
+            dischargeValues: [0.25, 0.45, 2.85, 0.75],
+            todayBadgeLines: [&quot;白带：偏少或干燥&quot;, &quot;怀孕几率：4%&quot;],
+            labels: [&quot;周一&quot;, &quot;周二&quot;, &quot;周三&quot;, &quot;周四&quot;, &quot;周五&quot;, &quot;周六&quot;, &quot;周日&quot;],
+            probs: [2, 1, 1, 1, 1, 2, 4],
+            phaseSegments: [
+              { ph: &quot;luteal&quot;, start: 0, end: 0 },
+              { ph: &quot;predicted&quot;, start: 1, end: 5 },
+              { ph: &quot;follicular&quot;, start: 6, end: 6 },
+            ],
+          },
+        },
+      },
+      sections: [
+        {
+          range: &quot;周一（黄体期）&quot;,
+          ph: &quot;luteal&quot;,
+          actions: [
+            &quot;预计经期临近，可以提前准备经期用品&quot;,
+            &quot;睡眠、食欲和情绪可能出现变化，也可能没有明显感觉&quot;,
+            &quot;如果感觉疲惫，可以根据身体状态适当调整节奏&quot;,
+          ],
+        },
+        {
+          range: &quot;周二–周六（预计经期）&quot;,
+          ph: &quot;predicted&quot;,
+          actions: [
+            &quot;以下内容基于当前周期预测，实际阶段以新的月经记录为准&quot;,
+            &quot;经期开始前后可以注意休息、保暖并补充水分&quot;,
+            &quot;每个人的经量与不适程度不同，优先关注自己的真实感受&quot;,
+          ],
+        },
+        {
+          range: &quot;周日（卵泡期）&quot;,
+          ph: &quot;follicular&quot;,
+          actions: [
+            &quot;预计经期结束后进入恢复阶段，可以逐步恢复日常活动&quot;,
+            &quot;尚未发生的阶段仍会随新的月经记录重新计算&quot;,
+          ],
+        },
+      ],
+      nextWeek: &quot;按当前预测，下周将继续处于卵泡期；实际阶段会根据新的月经开始记录重新计算。&quot;,
+    },
+    {
+      id: &quot;g&quot;,
+      tabLabel: &quot;示例G：经期推迟&quot;,
+      title: &quot;8.10-8.16&quot;,
+      topTitle: &quot;月经推迟了1天&quot;,
+      topDescription: &quot;经前感受可能仍在延续，出现下腹坠胀、腰酸、乳房发胀或情绪敏感，也可能没有明显感觉。&quot;,
+      delayTip: &quot;月经日期来自历史周期预测，而排卵时间每个周期都可能有变化，晚一两天并不少见。&quot;,
+      dayStripPosition: &quot;top&quot;,
+      hideDayStrip: false,
+      showOverviewCard: true,
+      mergeIntroWithDelay: true,
+      subtitle: &quot;预计经期 → 经期推迟&quot;,
+      dominant: &quot;delayed&quot;,
+      heroPhase: &quot;delayed&quot;,
+      headline: &quot;昨天预计月经开始，今天起进入推迟期&quot;,
+      summary: &quot;周一是预测经期开始日；由于目前仍未记录月经开始，周二起显示为推迟期，并按自然日累计推迟天数。新的月经记录会重新计算周期。&quot;,
+      days: [
+        { d: &quot;周一&quot;, ph: &quot;predicted&quot;, predicted: true, switch: true },
+        { d: &quot;周二&quot;, ph: &quot;delayed&quot;, delayed: true, switch: true, today: true },
+        { d: &quot;周三&quot;, ph: &quot;delayed&quot;, delayed: true },
+        { d: &quot;周四&quot;, ph: &quot;delayed&quot;, delayed: true },
+        { d: &quot;周五&quot;, ph: &quot;delayed&quot;, delayed: true },
+        { d: &quot;周六&quot;, ph: &quot;delayed&quot;, delayed: true },
+        { d: &quot;周日&quot;, ph: &quot;delayed&quot;, delayed: true },
+      ],
+      selectableDayIndices: [0, 1, 2, 3, 4, 5, 6],
+      delayData: { days: 1 },
+      dayStates: {
+        0: {
+          topTitle: &quot;预计今天是经期第1天&quot;,
+          topDescription: &quot;根据当前周期记录，月经预计从今天开始。经期开始前后，部分人可能出现下腹坠胀、腰酸、疲惫或情绪波动。&quot;,
+          heroPhase: &quot;predicted&quot;,
+          mergeIntroWithDelay: false,
+          mergeIntroWithCharts: true,
+          showChart: true,
+          menstrualTodayDay: 28,
+          menstrualTodayProb: 32,
+          menstrualDateOffset: 8,
+          delayData: null,
+        },
+        1: {},
+        2: {
+          topTitle: &quot;月经推迟了2天&quot;,
+          topDescription: &quot;今天可能更容易疲惫、犯困或注意力下降，部分人还会感觉腹胀、食欲增加。&quot;,
+          delayTip: &quot;压力和情绪紧张可能干扰激素节律，让排卵与月经时间随之延后。&quot;,
+          delayData: { days: 2 },
+        },
+        3: {
+          topTitle: &quot;月经推迟了3天&quot;,
+          topDescription: &quot;情绪可能更容易烦躁或低落，皮肤出油、长痘和轻微水肿也可能持续。&quot;,
+          delayTip: &quot;熬夜、睡眠不足或作息突然改变，也可能让这个周期比平时更长。&quot;,
+          delayData: { days: 3 },
+        },
+        4: {
+          topTitle: &quot;月经推迟了4天&quot;,
+          topDescription: &quot;腰腹不适、乳房胀痛或头痛可能时有时无；这些感受不能判断月经何时开始。&quot;,
+          delayTip: &quot;旅行、时差或生活环境变化，会影响作息和身体节律，月经日期也可能随之波动。&quot;,
+          delayData: { days: 4 },
+        },
+        5: {
+          topTitle: &quot;月经推迟了5天&quot;,
+          topDescription: &quot;身体可能仍有经前的沉重感，睡眠、胃口和情绪也可能比平时更容易波动。&quot;,
+          delayTip: &quot;饮食、体重或运动量短期内变化较大时，身体可能暂时调整月经节律。&quot;,
+          delayData: { days: 5 },
+        },
+        6: {
+          topTitle: &quot;月经推迟了6天&quot;,
+          topDescription: &quot;有些人的经前反应会逐渐减轻，也有人仍会疲惫、腹胀或情绪敏感，个体差异较大。&quot;,
+          delayTip: &quot;生病、恢复期或部分药物也可能影响月经时间；若长期未到或伴随明显不适，建议咨询医生。&quot;,
+          delayData: { days: 6 },
+        },
+      },
+      sections: [
+        {
+          range: &quot;周一（预计经期）→ 周二–周日（经期推迟）&quot;,
+          ph: &quot;delayed&quot;,
+          actions: [
+            &quot;月经预测基于历史周期，短暂偏差不一定代表身体异常&quot;,
+            &quot;压力、作息、体重、运动、身体状况或药物等，都可能影响周期时间&quot;,
+            &quot;如果长时间未到、反复推迟，或伴随异常出血、明显腹痛等不适，建议咨询医生&quot;,
+          ],
+        },
+      ],
+      nextWeek: &quot;如果月经开始，周期将从实际开始日期重新计算；如果仍未开始，经期推迟状态会继续延续。&quot;,
+    },
+    {
+      id: &quot;b&quot;,
+      tabLabel: &quot;示例B：跨一次&quot;,
+      title: &quot;7.14-7.20&quot;,
+      topTitle: &quot;今天是卵泡期第6天&quot;,
+      periodCountdown: { date: &quot;7月28日&quot;, days: 12 },
+      topDescription: &quot;雌激素接近峰值，通常是全周期精力、情绪、皮肤状态最好的几天&quot;,
+      dayStripPosition: &quot;top&quot;,
+      hideDayStrip: false,
+      showOverviewCard: true,
+      mergeIntroWithCharts: true,
+      dateNav: [
+        { label: &quot;周二&quot;, date: &quot;7月15日&quot; },
+        { label: &quot;今天&quot;, date: &quot;7月16日&quot;, current: true },
+        { label: &quot;周四&quot;, date: &quot;7月17日&quot; },
+      ],
+      subtitle: &quot;卵泡期尾声 → 排卵期&quot;,
+      dominant: &quot;follicular&quot;,
+      headline: &quot;精力充沛的一周，周末迎来排卵窗口&quot;,
+      summary: &quot;本周前五天处于卵泡期，是整个周期状态最好的阶段。周六起进入排卵期，身体信号会有明显变化。&quot;,
+      days: [
+        { d: &quot;周一&quot;, ph: &quot;follicular&quot; },
+        { d: &quot;周二&quot;, ph: &quot;follicular&quot; },
+        { d: &quot;周三&quot;, ph: &quot;follicular&quot;, today: true },
+        { d: &quot;周四&quot;, ph: &quot;follicular&quot; },
+        { d: &quot;周五&quot;, ph: &quot;follicular&quot; },
+        { d: &quot;周六&quot;, ph: &quot;ovulation&quot;, switch: true },
+        { d: &quot;周日&quot;, ph: &quot;ovulation&quot; },
+      ],
+      selectableDayIndices: [0, 1, 2, 3, 4, 5, 6],
+      dayStates: {
+        0: {
+          topTitle: &quot;今天是卵泡期第4天&quot;,
+          periodCountdown: { date: &quot;7月28日&quot;, days: 14 },
+          topDescription: &quot;白带开始增多，是身体接近排卵的信号；雌激素带来的好状态还在延续。&quot;,
+          pregData: {
+            todayIdx: 0,
+            todayLabel: &quot;周一&quot;,
+            todayProb: 8,
+            todayStageIdx: 1,
+            stageProbs: [2, 8, 28, 4],
+            dischargeValues: [0.35, 0.9, 2.85, 0.75],
+            todayBadgeLines: [&quot;白带：开始增多&quot;, &quot;怀孕几率：8%&quot;],
+          },
+        },
+        1: {
+          topTitle: &quot;今天是卵泡期第5天&quot;,
+          periodCountdown: { date: &quot;7月28日&quot;, days: 13 },
+          topDescription: &quot;性欲和社交欲上升，食欲相对平稳，体重没什么波动。&quot;,
+          pregData: {
+            todayIdx: 1,
+            todayLabel: &quot;周二&quot;,
+            todayProb: 10,
+            todayStageIdx: 1,
+            stageProbs: [2, 10, 28, 4],
+            dischargeValues: [0.35, 1.1, 2.85, 0.75],
+            todayBadgeLines: [&quot;白带：逐渐增多&quot;, &quot;怀孕几率：10%&quot;],
+          },
+        },
+        2: {},
+        3: {
+          topTitle: &quot;今天是卵泡期第7天&quot;,
+          periodCountdown: { date: &quot;7月28日&quot;, days: 11 },
+          topDescription: &quot;皮肤气色最佳，依旧高昂、思维活跃&quot;,
+          pregData: {
+            todayIdx: 3,
+            todayLabel: &quot;周四&quot;,
+            todayProb: 6,
+            todayStageIdx: 1,
+            stageProbs: [2, 6, 28, 4],
+            dischargeValues: [0.35, 1.9, 2.85, 0.75],
+            todayBadgeLines: [&quot;白带：蛋清拉丝&quot;, &quot;怀孕几率：6%&quot;],
+          },
+        },
+        4: {
+          topTitle: &quot;今天是卵泡期第8天&quot;,
+          periodCountdown: { date: &quot;7月28日&quot;, days: 10 },
+          topDescription: &quot;排卵前夜，促黄体生成素（LH）即将冲高，性欲可能达到峰值&quot;,
+          pregData: {
+            todayIdx: 4,
+            todayLabel: &quot;周五&quot;,
+            todayProb: 8,
+            todayStageIdx: 1,
+            stageProbs: [2, 8, 28, 4],
+            dischargeValues: [0.35, 2.15, 2.85, 0.75],
+            todayBadgeLines: [&quot;白带：接近透明&quot;, &quot;怀孕几率：8%&quot;],
+          },
+        },
+        5: {
+          topTitle: &quot;今天是排卵期第1天&quot;,
+          periodCountdown: { date: &quot;7月28日&quot;, days: 9 },
+          topDescription: &quot;LH 峰触发卵子排出，部分人会有一侧小腹轻微坠痛或点滴出血。&quot;,
+          heroPhase: &quot;ovulation&quot;,
+          pregData: {
+            todayIdx: 5,
+            todayLabel: &quot;周六&quot;,
+            todayProb: 28,
+            todayStageIdx: 2,
+            stageProbs: [2, 8, 28, 4],
+            dischargeValues: [0.35, 2.15, 2.85, 0.75],
+            todayBadgeLines: [&quot;白带：蛋清拉丝&quot;, &quot;怀孕几率：28%&quot;],
+          },
+        },
+        6: {
+          topTitle: &quot;今天是排卵期第2天&quot;,
+          periodCountdown: { date: &quot;7月28日&quot;, days: 8 },
+          topDescription: &quot;精力充沛的你，专注力也会提高。&quot;,
+          heroPhase: &quot;ovulation&quot;,
+          pregData: {
+            todayIdx: 6,
+            todayLabel: &quot;周日&quot;,
+            todayProb: 20,
+            todayStageIdx: 2,
+            stageProbs: [2, 8, 20, 4],
+            dischargeValues: [0.35, 2.15, 2.35, 0.75],
+            todayBadgeLines: [&quot;白带：仍偏多&quot;, &quot;怀孕几率：20%&quot;],
+          },
+        },
+      },
+      transition: {
+        day: &quot;周六 7.19&quot;,
+        tip: &quot;白带变稀薄、可拉丝，可能有轻微单侧腹痛，这是排卵信号，属于正常现象。&quot;,
+      },
+      showPregChart: true,
+      pregData: {
+        todayIdx: 2,
+        todayLabel: &quot;周三&quot;,
+        todayProb: 12,
+        phaseAxis: true,
+        todayStageIdx: 1,
+        stagePhaseKeys: [&quot;period&quot;, &quot;follicular&quot;, &quot;ovulation&quot;, &quot;luteal&quot;],
+        stageLabels: [&quot;经期&quot;, &quot;卵泡期&quot;, &quot;排卵期&quot;, &quot;黄体期&quot;],
+        stageProbs: [2, 12, 28, 4],
+        dischargeValues: [0.35, 1.35, 2.85, 0.75],
+        todayBadgeLines: [&quot;白带：变稀，逐渐透明&quot;, &quot;怀孕几率：12%（较高）&quot;],
+        labels: [&quot;周一&quot;, &quot;周二&quot;, &quot;周三&quot;, &quot;周四&quot;, &quot;周五&quot;, &quot;周六&quot;, &quot;周日&quot;],
+        probs: [8, 10, 12, 15, 18, 28, 20],
+      },
+      sections: [
+        {
+          range: &quot;周一–周五（卵泡期）&quot;,
+          ph: &quot;follicular&quot;,
+          actions: [
+            &quot;高强度训练、重要会议、创意工作都适合安排在这几天&quot;,
+            &quot;雌激素上升，皮肤状态好，适合社交和展示&quot;,
+            &quot;可以尝试新事物，学习效率高&quot;,
+          ],
+        },
+        {
+          range: &quot;周六–周日（排卵期）&quot;,
+          ph: &quot;ovulation&quot;,
+          actions: [
+            &quot;注意观察白带是否变稀薄、可拉丝，可能有轻微单侧腹痛，记录排卵信号&quot;,
+            &quot;备孕用户：这是最佳受孕窗口&quot;,
+            &quot;避孕用户：高风险期，注意防护&quot;,
+          ],
+        },
+      ],
+      nextWeek: &quot;排卵后，孕激素开始主导，身体进入黄体期——一个需要更多照顾和休息的阶段。&quot;,
+    },
+    {
+      id: &quot;c&quot;,
+      tabLabel: &quot;示例C：跨两次&quot;,
+      title: &quot;7.7-7.13&quot;,
+      topTitle: &quot;今天是卵泡期第1天&quot;,
+      periodCountdown: { date: &quot;7月28日&quot;, days: 19 },
+      topDescription: &quot;雌激素开始爬升，精力、睡眠和皮肤状态一起好转，体重进入全周期最稳定的阶段。&quot;,
+      dayStripPosition: &quot;top&quot;,
+      hideDayStrip: false,
+      showOverviewCard: true,
+      mergeIntroWithCharts: true,
+      dateNav: [
+        { label: &quot;周一&quot;, date: &quot;7月7日&quot; },
+        { label: &quot;周二&quot;, date: &quot;7月8日&quot; },
+        { label: &quot;今天&quot;, date: &quot;7月9日&quot;, current: true },
+        { label: &quot;周四&quot;, date: &quot;7月10日&quot; },
+        { label: &quot;周五&quot;, date: &quot;7月11日&quot; },
+        { label: &quot;周六&quot;, date: &quot;7月12日&quot; },
+        { label: &quot;周日&quot;, date: &quot;7月13日&quot; },
+      ],
+      subtitle: &quot;经期尾声 → 卵泡期 → 排卵期&quot;,
+      dominant: &quot;follicular&quot;,
+      headline: &quot;从恢复到巅峰，本周能量快速回升&quot;,
+      summary: &quot;周一二仍在经期，周三起进入卵泡期，周六迎来排卵窗口。本周是整个周期能量变化最大的一周。&quot;,
+      days: [
+        { d: &quot;周一&quot;, ph: &quot;period&quot; },
+        { d: &quot;周二&quot;, ph: &quot;period&quot; },
+        { d: &quot;周三&quot;, ph: &quot;follicular&quot;, switch: true, today: true },
+        { d: &quot;周四&quot;, ph: &quot;follicular&quot; },
+        { d: &quot;周五&quot;, ph: &quot;follicular&quot; },
+        { d: &quot;周六&quot;, ph: &quot;ovulation&quot;, switch: true },
+        { d: &quot;周日&quot;, ph: &quot;ovulation&quot; },
+      ],
+      selectableDayIndices: [0, 1, 2, 3, 4, 5, 6],
+      dayStates: {
+        0: {
+          topTitle: &quot;今天是经期第5天&quot;,
+          topDescription: &quot;经量明显减少，身体轻松起来，体重基本回落到日常水平，精力正在恢复。&quot;,
+          heroPhase: &quot;period&quot;,
+          mergeIntroWithFlow: true,
+          mergeIntroWithCharts: false,
+          showPregChart: false,
+          flowData: {
+            todayIdx: 4,
+            todayVolume: 2.5,
+            max: 24,
+            labels: [&quot;第1天&quot;, &quot;第2天&quot;, &quot;第3天&quot;, &quot;第4天&quot;, &quot;第5天&quot;, &quot;第6天&quot;, &quot;第7天&quot;],
+            series: [
+              {
+                label: &quot;偏多型&quot;,
+                values: [10, 22, 18, 12, 7, 4, 2],
+                color: &quot;#F28D94&quot;,
+                opacity: 0.72,
+                width: 1.8,
+                labelIndex: 1,
+              },
+              {
+                label: &quot;典型&quot;,
+                values: [6, 12, 9, 5, 2.5, 1, 0.3],
+                color: &quot;#E39997&quot;,
+                opacity: 1,
+                width: 2.8,
+                fill: true,
+                labelIndex: 1,
+              },
+              {
+                label: &quot;偏少型&quot;,
+                values: [3, 6, 4, 2, 1, 0.4, 0.1],
+                color: &quot;#F3B8B9&quot;,
+                opacity: 0.72,
+                width: 1.6,
+                labelIndex: 1,
+              },
+            ],
+          },
+        },
+        2: {},
+        1: {
+          topTitle: &quot;今天是经期第6天&quot;,
+          topDescription: &quot;经期接近尾声，激素已开始酝酿回升，可以逐渐恢复正常运动和作息。&quot;,
+          heroPhase: &quot;period&quot;,
+          mergeIntroWithFlow: true,
+          mergeIntroWithCharts: false,
+          showPregChart: false,
+          flowData: {
+            todayIdx: 5,
+            todayVolume: 1,
+            max: 24,
+            labels: [&quot;第1天&quot;, &quot;第2天&quot;, &quot;第3天&quot;, &quot;第4天&quot;, &quot;第5天&quot;, &quot;第6天&quot;, &quot;第7天&quot;],
+            series: [
+              {
+                label: &quot;偏多型&quot;,
+                values: [10, 22, 18, 12, 7, 4, 2],
+                color: &quot;#F28D94&quot;,
+                opacity: 0.72,
+                width: 1.8,
+                labelIndex: 1,
+              },
+              {
+                label: &quot;典型&quot;,
+                values: [6, 12, 9, 5, 2.5, 1, 0.3],
+                color: &quot;#E39997&quot;,
+                opacity: 1,
+                width: 2.8,
+                fill: true,
+                labelIndex: 1,
+              },
+              {
+                label: &quot;偏少型&quot;,
+                values: [3, 6, 4, 2, 1, 0.4, 0.1],
+                color: &quot;#F3B8B9&quot;,
+                opacity: 0.72,
+                width: 1.6,
+                labelIndex: 1,
+              },
+            ],
+          },
+        },
+        3: {
+          topTitle: &quot;今天是卵泡期第2天&quot;,
+          periodCountdown: { date: &quot;7月28日&quot;, days: 18 },
+          topDescription: &quot;卵泡在卵巢里加速发育，雌激素持续走高，愉悦度和自信都在上升。&quot;,
+          pregData: {
+            todayIdx: 3,
+            todayLabel: &quot;周四&quot;,
+            todayProb: 6,
+            todayStageIdx: 1,
+            stageProbs: [2, 6, 28, 4],
+            dischargeValues: [0.25, 0.7, 2.85, 0.75],
+            todayBadgeLines: [&quot;白带：开始增多&quot;, &quot;怀孕几率：6%&quot;],
+          },
+        },
+        4: {
+          topTitle: &quot;今天是卵泡期第3天&quot;,
+          periodCountdown: { date: &quot;7月28日&quot;, days: 17 },
+          topDescription: &quot;这是安排运动和高强度工作的好窗口，代谢和体能都处于较好水平。&quot;,
+          pregData: {
+            todayIdx: 4,
+            todayLabel: &quot;周五&quot;,
+            todayProb: 8,
+            todayStageIdx: 1,
+            stageProbs: [2, 8, 28, 4],
+            dischargeValues: [0.25, 0.95, 2.85, 0.75],
+            todayBadgeLines: [&quot;白带：逐渐增多&quot;, &quot;怀孕几率：8%&quot;],
+          },
+        },
+        5: {
+          topTitle: &quot;今天是排卵期第1天&quot;,
+          periodCountdown: { date: &quot;7月28日&quot;, days: 16 },
+          topDescription: &quot;LH 峰触发卵子排出，部分人会有一侧小腹轻微坠痛或点滴出血。&quot;,
+          heroPhase: &quot;ovulation&quot;,
+          pregData: {
+            todayIdx: 5,
+            todayLabel: &quot;周六&quot;,
+            todayProb: 28,
+            todayStageIdx: 2,
+            stageProbs: [2, 8, 28, 4],
+            dischargeValues: [0.25, 0.95, 2.85, 0.75],
+            todayBadgeLines: [&quot;白带：蛋清拉丝&quot;, &quot;怀孕几率：28%&quot;],
+          },
+        },
+        6: {
+          topTitle: &quot;今天是排卵期第2天&quot;,
+          periodCountdown: { date: &quot;7月28日&quot;, days: 15 },
+          topDescription: &quot;精力充沛的你，专注力也会提高。&quot;,
+          heroPhase: &quot;ovulation&quot;,
+          pregData: {
+            todayIdx: 6,
+            todayLabel: &quot;周日&quot;,
+            todayProb: 20,
+            todayStageIdx: 2,
+            stageProbs: [2, 8, 20, 4],
+            dischargeValues: [0.25, 0.95, 2.35, 0.75],
+            todayBadgeLines: [&quot;白带：仍偏多&quot;, &quot;怀孕几率：20%&quot;],
+          },
+        },
+      },
+      transition: {
+        day: &quot;周三 7.9 &amp; 周六 7.12&quot;,
+        tip: &quot;周三经期结束，身体开始恢复；周六排卵信号出现，白带变稀薄可拉丝。&quot;,
+      },
+      showPregChart: true,
+      pregData: {
+        todayIdx: 2,
+        todayLabel: &quot;周三&quot;,
+        todayProb: 4,
+        phaseAxis: true,
+        todayStageIdx: 1,
+        stagePhaseKeys: [&quot;period&quot;, &quot;follicular&quot;, &quot;ovulation&quot;, &quot;luteal&quot;],
+        stageLabels: [&quot;经期&quot;, &quot;卵泡期&quot;, &quot;排卵期&quot;, &quot;黄体期&quot;],
+        stageProbs: [2, 4, 28, 4],
+        dischargeValues: [0.25, 0.45, 2.85, 0.75],
+        todayBadgeLines: [&quot;白带：干燥&quot;, &quot;怀孕几率：4%&quot;],
+        labels: [&quot;周一&quot;, &quot;周二&quot;, &quot;周三&quot;, &quot;周四&quot;, &quot;周五&quot;, &quot;周六&quot;, &quot;周日&quot;],
+        probs: [1, 2, 4, 7, 10, 24, 18],
+        phaseSegments: [
+          { ph: &quot;period&quot;, start: 0, end: 1 },
+          { ph: &quot;follicular&quot;, start: 2, end: 4 },
+          { ph: &quot;ovulation&quot;, start: 5, end: 6 },
+        ],
+      },
+      sections: [
+        {
+          range: &quot;周一–周二（经期）&quot;,
+          ph: &quot;period&quot;,
+          actions: [
+            &quot;继续保暖，避免剧烈运动&quot;,
+            &quot;经量减少是正常现象，注意记录结束日期&quot;,
+          ],
+        },
+        {
+          range: &quot;周三–周五（卵泡期）&quot;,
+          ph: &quot;follicular&quot;,
+          actions: [
+            &quot;能量快速回升，可以逐步恢复正常运动强度&quot;,
+            &quot;这几天状态会明显变好，适合推进重要工作&quot;,
+          ],
+        },
+        {
+          range: &quot;周六–周日（排卵期）&quot;,
+          ph: &quot;ovulation&quot;,
+          actions: [
+            &quot;排卵窗口开启，备孕/避孕用户各自注意&quot;,
+            &quot;可能有轻微腹痛或腰酸，属正常排卵反应&quot;,
+          ],
+        },
+      ],
+      nextWeek: &quot;进入黄体期，情绪可能有些波动，提前做好心理准备。&quot;,
+    },
+    {
+      id: &quot;d&quot;,
+      tabLabel: &quot;示例D：黄体期&quot;,
+      title: &quot;7.21-7.27&quot;,
+      topTitle: &quot;今天是黄体期第3天&quot;,
+      periodCountdown: { date: &quot;7月28日&quot;, days: 5 },
+      topDescription: &quot;孕激素上升，可能开始感觉困倦，食欲也开始悄悄增加。&quot;,
+      dayStripPosition: &quot;top&quot;,
+      hideDayStrip: false,
+      showOverviewCard: true,
+      mergeIntroWithCharts: true,
+      dateNav: [
+        { label: &quot;周一&quot;, date: &quot;7月21日&quot; },
+        { label: &quot;周二&quot;, date: &quot;7月22日&quot; },
+        { label: &quot;今天&quot;, date: &quot;7月23日&quot;, current: true },
+        { label: &quot;周四&quot;, date: &quot;7月24日&quot; },
+        { label: &quot;周五&quot;, date: &quot;7月25日&quot; },
+        { label: &quot;周六&quot;, date: &quot;7月26日&quot; },
+        { label: &quot;周日&quot;, date: &quot;7月27日&quot; },
+      ],
+      subtitle: &quot;黄体期&quot;,
+      dominant: &quot;luteal&quot;,
+      headline: &quot;孕激素高峰，身体在为下次经期做准备&quot;,
+      summary: &quot;本周整周处于黄体期，孕激素持续升高后将在周末开始下降，经期预计下周到来。&quot;,
+      days: [
+        { d: &quot;周一&quot;, ph: &quot;luteal&quot; },
+        { d: &quot;周二&quot;, ph: &quot;luteal&quot; },
+        { d: &quot;周三&quot;, ph: &quot;luteal&quot;, today: true },
+        { d: &quot;周四&quot;, ph: &quot;luteal&quot; },
+        { d: &quot;周五&quot;, ph: &quot;luteal&quot; },
+        { d: &quot;周六&quot;, ph: &quot;luteal&quot; },
+        { d: &quot;周日&quot;, ph: &quot;luteal&quot; },
+      ],
+      selectableDayIndices: [0, 1, 2, 3, 4, 5, 6],
+      dayStates: {
+        0: {
+          topTitle: &quot;今天是黄体期第1天&quot;,
+          periodCountdown: { date: &quot;7月28日&quot;, days: 7 },
+          topDescription: &quot;排卵后孕激素开始上升，白带骤减变稠，情绪从高峰回落到平稳。&quot;,
+          menstrualTodayDay: 21,
+          pregData: {
+            todayIdx: 0,
+            todayLabel: &quot;周一&quot;,
+            todayProb: 8,
+            stageProbs: [2, 10, 28, 8],
+            dischargeValues: [0.35, 1.35, 2.85, 0.95],
+            todayBadgeLines: [&quot;白带：骤减变稠&quot;, &quot;怀孕几率：8%&quot;],
+          },
+        },
+        1: {
+          topTitle: &quot;今天是黄体期第2天&quot;,
+          periodCountdown: { date: &quot;7月28日&quot;, days: 6 },
+          topDescription: &quot;黄体形成，基础体温升高 0.3～0.5℃，坚持测温的话，这是确认排卵的证据。&quot;,
+          menstrualTodayDay: 22,
+          pregData: {
+            todayIdx: 1,
+            todayLabel: &quot;周二&quot;,
+            todayProb: 6,
+            stageProbs: [2, 10, 28, 6],
+            dischargeValues: [0.35, 1.35, 2.85, 0.8],
+            todayBadgeLines: [&quot;白带：少而黏稠&quot;, &quot;怀孕几率：6%&quot;],
+          },
+        },
+        2: {
+          topTitle: &quot;今天是黄体期第3天&quot;,
+          periodCountdown: { date: &quot;7月28日&quot;, days: 5 },
+          topDescription: &quot;孕激素上升，可能开始感觉困倦，食欲也开始悄悄增加。&quot;,
+          menstrualTodayDay: 23,
+          pregData: {
+            todayIdx: 2,
+            todayLabel: &quot;周三&quot;,
+            todayProb: 4,
+            stageProbs: [2, 10, 28, 4],
+            dischargeValues: [0.35, 1.35, 2.85, 0.65],
+            todayBadgeLines: [&quot;白带：少而黏稠&quot;, &quot;怀孕几率：4%&quot;],
+          },
+        },
+        3: {
+          topTitle: &quot;今天是黄体期第4天&quot;,
+          periodCountdown: { date: &quot;7月28日&quot;, days: 4 },
+          topDescription: &quot;身体进入孕激素主导的平稳期，情绪平和，可能略有疲惫感。&quot;,
+          menstrualTodayDay: 24,
+          pregData: {
+            todayIdx: 3,
+            todayLabel: &quot;周四&quot;,
+            todayProb: 3,
+            stageProbs: [2, 10, 28, 3],
+            dischargeValues: [0.35, 1.35, 2.85, 0.6],
+            todayBadgeLines: [&quot;白带：少而黏稠&quot;, &quot;怀孕几率：3%&quot;],
+          },
+        },
+        4: {
+          topTitle: &quot;今天是黄体期第5天&quot;,
+          periodCountdown: { date: &quot;7月28日&quot;, days: 3 },
+          topDescription: &quot;黄体中期状态稳定，但因孕激素的潴水作用，体重可能开始轻微上浮&quot;,
+          menstrualTodayDay: 25,
+          pregData: {
+            todayIdx: 4,
+            todayLabel: &quot;周五&quot;,
+            todayProb: 2,
+            stageProbs: [2, 10, 28, 2],
+            dischargeValues: [0.35, 1.35, 2.85, 0.55],
+            todayBadgeLines: [&quot;白带：少而黏稠&quot;, &quot;怀孕几率：2%&quot;],
+          },
+        },
+        5: {
+          topTitle: &quot;今天是黄体期第6天&quot;,
+          periodCountdown: { date: &quot;7月28日&quot;, days: 2 },
+          topDescription: &quot;食欲增加比较明显，注意别完全放纵；若有受精卵，此时可能正在着床。&quot;,
+          menstrualTodayDay: 26,
+          pregData: {
+            todayIdx: 5,
+            todayLabel: &quot;周六&quot;,
+            todayProb: 1,
+            stageProbs: [2, 10, 28, 1],
+            dischargeValues: [0.35, 1.35, 2.85, 0.5],
+            todayBadgeLines: [&quot;白带：偏少&quot;, &quot;怀孕几率：1%&quot;],
+          },
+        },
+        6: {
+          topTitle: &quot;今天是黄体期第7天&quot;,
+          periodCountdown: { date: &quot;7月28日&quot;, days: 1 },
+          topDescription: &quot;困意和食欲都在，体重可能比平时重 0.5～1kg，主要是水分而非脂肪。&quot;,
+          menstrualTodayDay: 27,
+          pregData: {
+            todayIdx: 6,
+            todayLabel: &quot;周日&quot;,
+            todayProb: 1,
+            stageProbs: [2, 10, 28, 1],
+            dischargeValues: [0.35, 1.35, 2.85, 0.45],
+            todayBadgeLines: [&quot;白带：偏少&quot;, &quot;怀孕几率：1%&quot;],
+          },
+        },
+      },
+      transition: null,
+      showChart: true,
+      showPregChart: true,
+      pregData: {
+        todayIdx: 2,
+        todayLabel: &quot;周三&quot;,
+        todayProb: 4,
+        phaseAxis: true,
+        todayStageIdx: 3,
+        stagePhaseKeys: [&quot;period&quot;, &quot;follicular&quot;, &quot;ovulation&quot;, &quot;luteal&quot;],
+        stageLabels: [&quot;经期&quot;, &quot;卵泡期&quot;, &quot;排卵期&quot;, &quot;黄体期&quot;],
+        stageProbs: [2, 10, 28, 4],
+        dischargeValues: [0.35, 1.35, 2.85, 0.65],
+        todayBadgeLines: [&quot;白带：少而黏稠&quot;, &quot;怀孕几率：4%&quot;],
+        labels: [&quot;周一&quot;, &quot;周二&quot;, &quot;周三&quot;, &quot;周四&quot;, &quot;周五&quot;, &quot;周六&quot;, &quot;周日&quot;],
+        probs: [8, 6, 4, 3, 2, 1, 1],
+        phaseSegments: [
+          { ph: &quot;luteal&quot;, start: 0, end: 6 },
+        ],
+      },
+      sections: [
+        {
+          range: &quot;本周（黄体期）&quot;,
+          ph: &quot;luteal&quot;,
+          actions: [
+            &quot;情绪波动、疲惫、乳房胀痛是正常的经前反应&quot;,
+            &quot;减少咖啡因和高盐食物，有助于缓解水肿&quot;,
+            &quot;轻度有氧运动（散步、瑜伽）比高强度训练更适合&quot;,
+            &quot;黄体期不是安全期，如无备孕计划，也要做好安全措施&quot;,
+            &quot;提前备好卫生用品，经期可能在下周初到来&quot;,
+          ],
+        },
+      ],
+      nextWeek: &quot;经期即将到来，给自己多一点温柔和耐心。&quot;,
+    },
+  ];
+
+  weeks.push({
+    id: &quot;e&quot;,
+    tabLabel: &quot;示例E：经期第3天&quot;,
+    title: &quot;7.28-8.3&quot;,
+    topTitle: &quot;今天是经期第3天&quot;,
+    topDescription: &quot;经量仍在高位，注意补充含铁食物；不适在减轻，情绪也开始从低谷往上走。&quot;,
+    dayStripPosition: &quot;top&quot;,
+    hideDayStrip: false,
+    mergeIntroWithFlow: true,
+    showOverviewCard: true,
+    dateNav: [
+      { label: &quot;周一&quot;, date: &quot;7月28日&quot; },
+      { label: &quot;周二&quot;, date: &quot;7月29日&quot; },
+      { label: &quot;今天&quot;, date: &quot;7月30日&quot;, current: true },
+      { label: &quot;周四&quot;, date: &quot;7月31日&quot; },
+      { label: &quot;周五&quot;, date: &quot;8月1日&quot; },
+    ],
+    subtitle: &quot;月经期&quot;,
+    dominant: &quot;period&quot;,
+    headline: &quot;身体进入排出与修复阶段，把节奏放慢一点&quot;,
+    summary: &quot;本周处于月经期，身体正在完成子宫内膜脱落与恢复。重点是减轻不适、保暖、补充能量，并记录经量和疼痛变化。&quot;,
+    days: [
+      { d: &quot;周一&quot;, ph: &quot;period&quot; },
+      { d: &quot;周二&quot;, ph: &quot;period&quot; },
+      { d: &quot;周三&quot;, ph: &quot;period&quot;, today: true },
+      { d: &quot;周四&quot;, ph: &quot;period&quot; },
+      { d: &quot;周五&quot;, ph: &quot;period&quot; },
+      { d: &quot;周六&quot;, ph: &quot;period&quot; },
+      { d: &quot;周日&quot;, ph: &quot;period&quot; },
+    ],
+    selectableDayIndices: [0, 1, 2, 3, 4],
+    dayStates: {
+      0: {
+        topTitle: &quot;今天是经期第1天&quot;,
+        topDescription: &quot;雌激素和孕激素都处在全周期最低点，子宫内膜脱落出血，痛经和腰酸今天可能最明显，情绪低落时别苛责自己。&quot;,
+        flowData: {
+          todayIdx: 0,
+          todayVolume: 6,
+          max: 24,
+          labels: [&quot;第1天&quot;, &quot;第2天&quot;, &quot;第3天&quot;, &quot;第4天&quot;, &quot;第5天&quot;, &quot;第6天&quot;, &quot;第7天&quot;],
+          series: [
+            {
+              label: &quot;偏多型&quot;,
+              values: [10, 22, 18, 12, 7, 4, 2],
+              color: &quot;#F28D94&quot;,
+              opacity: 0.72,
+              width: 1.8,
+              labelIndex: 1,
+            },
+            {
+              label: &quot;典型&quot;,
+              values: [6, 12, 9, 5, 2.5, 1, 0.3],
+              color: &quot;#E39997&quot;,
+              opacity: 1,
+              width: 2.8,
+              fill: true,
+              labelIndex: 1,
+            },
+            {
+              label: &quot;偏少型&quot;,
+              values: [3, 6, 4, 2, 1, 0.4, 0.1],
+              color: &quot;#F3B8B9&quot;,
+              opacity: 0.72,
+              width: 1.6,
+              labelIndex: 1,
+            },
+          ],
+        },
+      },
+      1: {
+        topTitle: &quot;今天是经期第2天&quot;,
+        topDescription: &quot;经量通常达到高峰；随着月经开始，经前潴留的水分开始排出，体重会比前几天轻一些。&quot;,
+        flowData: {
+          todayIdx: 1,
+          todayVolume: 12,
+          max: 24,
+          labels: [&quot;第1天&quot;, &quot;第2天&quot;, &quot;第3天&quot;, &quot;第4天&quot;, &quot;第5天&quot;, &quot;第6天&quot;, &quot;第7天&quot;],
+          series: [
+            {
+              label: &quot;偏多型&quot;,
+              values: [10, 22, 18, 12, 7, 4, 2],
+              color: &quot;#F28D94&quot;,
+              opacity: 0.72,
+              width: 1.8,
+              labelIndex: 1,
+            },
+            {
+              label: &quot;典型&quot;,
+              values: [6, 12, 9, 5, 2.5, 1, 0.3],
+              color: &quot;#E39997&quot;,
+              opacity: 1,
+              width: 2.8,
+              fill: true,
+              labelIndex: 1,
+            },
+            {
+              label: &quot;偏少型&quot;,
+              values: [3, 6, 4, 2, 1, 0.4, 0.1],
+              color: &quot;#F3B8B9&quot;,
+              opacity: 0.72,
+              width: 1.6,
+              labelIndex: 1,
+            },
+          ],
+        },
+      },
+      2: {},
+      3: {
+        topTitle: &quot;今天是经期第4天&quot;,
+        topDescription: &quot;经量明显减少，身体轻松起来，体重基本回落到日常水平，精力正在恢复。&quot;,
+        flowData: {
+          todayIdx: 3,
+          todayVolume: 5,
+          max: 24,
+          labels: [&quot;第1天&quot;, &quot;第2天&quot;, &quot;第3天&quot;, &quot;第4天&quot;, &quot;第5天&quot;, &quot;第6天&quot;, &quot;第7天&quot;],
+          series: [
+            {
+              label: &quot;偏多型&quot;,
+              values: [10, 22, 18, 12, 7, 4, 2],
+              color: &quot;#F28D94&quot;,
+              opacity: 0.72,
+              width: 1.8,
+              labelIndex: 1,
+            },
+            {
+              label: &quot;典型&quot;,
+              values: [6, 12, 9, 5, 2.5, 1, 0.3],
+              color: &quot;#E39997&quot;,
+              opacity: 1,
+              width: 2.8,
+              fill: true,
+              labelIndex: 1,
+            },
+            {
+              label: &quot;偏少型&quot;,
+              values: [3, 6, 4, 2, 1, 0.4, 0.1],
+              color: &quot;#F3B8B9&quot;,
+              opacity: 0.72,
+              width: 1.6,
+              labelIndex: 1,
+            },
+          ],
+        },
+      },
+      4: {
+        topTitle: &quot;今天是经期第5天&quot;,
+        topDescription: &quot;经期接近尾声，激素已开始酝酿回升，可以逐渐恢复正常运动和作息。&quot;,
+        flowData: {
+          todayIdx: 4,
+          todayVolume: 2.5,
+          max: 24,
+          labels: [&quot;第1天&quot;, &quot;第2天&quot;, &quot;第3天&quot;, &quot;第4天&quot;, &quot;第5天&quot;, &quot;第6天&quot;, &quot;第7天&quot;],
+          series: [
+            {
+              label: &quot;偏多型&quot;,
+              values: [10, 22, 18, 12, 7, 4, 2],
+              color: &quot;#F28D94&quot;,
+              opacity: 0.72,
+              width: 1.8,
+              labelIndex: 1,
+            },
+            {
+              label: &quot;典型&quot;,
+              values: [6, 12, 9, 5, 2.5, 1, 0.3],
+              color: &quot;#E39997&quot;,
+              opacity: 1,
+              width: 2.8,
+              fill: true,
+              labelIndex: 1,
+            },
+            {
+              label: &quot;偏少型&quot;,
+              values: [3, 6, 4, 2, 1, 0.4, 0.1],
+              color: &quot;#F3B8B9&quot;,
+              opacity: 0.72,
+              width: 1.6,
+              labelIndex: 1,
+            },
+          ],
+        },
+      },
+    },
+    transition: {
+      day: &quot;周五 8.1&quot;,
+      tip: &quot;经量明显减少或停止，身体开始进入恢复期。可以逐步恢复日常活动，但仍建议避免剧烈运动。&quot;,
+    },
+    showPregChart: false,
+    flowData: {
+      todayIdx: 2,
+      todayVolume: 9,
+      max: 24,
+      labels: [&quot;第1天&quot;, &quot;第2天&quot;, &quot;第3天&quot;, &quot;第4天&quot;, &quot;第5天&quot;, &quot;第6天&quot;, &quot;第7天&quot;],
+      series: [
+        {
+          label: &quot;偏多型&quot;,
+          values: [10, 22, 18, 12, 7, 4, 2],
+          color: &quot;#F28D94&quot;,
+          opacity: 0.72,
+          width: 1.8,
+          labelIndex: 1,
+        },
+        {
+          label: &quot;典型&quot;,
+          values: [6, 12, 9, 5, 2.5, 1, 0.3],
+          color: &quot;#E39997&quot;,
+          opacity: 1,
+          width: 2.8,
+          fill: true,
+          labelIndex: 1,
+        },
+        {
+          label: &quot;偏少型&quot;,
+          values: [3, 6, 4, 2, 1, 0.4, 0.1],
+          color: &quot;#F3B8B9&quot;,
+          opacity: 0.72,
+          width: 1.6,
+          labelIndex: 1,
+        },
+      ],
+    },
+    sections: [
+      {
+        range: &quot;周一–周四（经期高峰）&quot;,
+        ph: &quot;period&quot;,
+        actions: [
+          &quot;保持腹部和腰部保暖，热敷可有效缓解痉挛&quot;,
+          &quot;饮食以温热为主，避免生冷食物和冰饮&quot;,
+          &quot;减少高强度运动，散步或轻柔拉伸即可&quot;,
+          &quot;铁质流失较多，适当补充红肉、菠菜、红枣&quot;,
+          &quot;情绪可能低落或烦躁，这是激素正常波动，不必过度担心&quot;,
+        ],
+      },
+      {
+        range: &quot;周五–周日（经期尾声 → 卵泡期开启）&quot;,
+        ph: &quot;follicular&quot;,
+        actions: [
+          &quot;经量减少后可逐步恢复正常节奏&quot;,
+          &quot;身体开始分泌雌激素，精力会慢慢回升&quot;,
+          &quot;这两天是重新规划下周计划的好时机&quot;,
+        ],
+      },
+    ],
+    nextWeek: &quot;经期结束后，雌激素会逐步回升，身体进入卵泡期，精力和心情通常会慢慢变亮。&quot;,
+  });
+
+  const tabOrder = [&quot;f&quot;, &quot;g&quot;, &quot;d&quot;, &quot;b&quot;, &quot;c&quot;, &quot;e&quot;];
+  const orderedWeeks = tabOrder.map((id) =&gt; weeks.find((week) =&gt; week.id === id)).filter(Boolean);
+  weeks.splice(0, weeks.length, ...orderedWeeks);
+
+  window.DailyBriefingData = {
+    phases,
+    weeks,
+    activeId: weeks[0].id,
+  };
+})();
+&lt;/script&gt;
+  &lt;script&gt;(function () {
+  const { phases } = window.DailyBriefingData;
+
+  function sanitizeId(value) {
+    return String(value).replace(/[^a-z0-9]/gi, &quot;_&quot;);
+  }
+
+  function drawBarChart(values, colors, labels, maxVal, todayIdx, containerId, phaseDefs) {
+    const W = 343;
+    const H = 110;
+    const padL = 28;
+    const padR = 4;
+    const padT = 8;
+    const padB = 22;
+    const n = values.length;
+    const bw = Math.floor((W - padL - padR) / n);
+    const chartH = H - padT - padB;
+    let bars = &quot;&quot;;
+    let text = &quot;&quot;;
+    let yLines = &quot;&quot;;
+
+    [0, Math.round(maxVal / 2), maxVal].forEach((v) =&gt; {
+      const y = padT + chartH - (v / maxVal) * chartH;
+      yLines += `&lt;line x1=&quot;${padL}&quot; x2=&quot;${W - padR}&quot; y1=&quot;${y}&quot; y2=&quot;${y}&quot; stroke=&quot;#e8e6e0&quot; stroke-width=&quot;0.5&quot;/&gt;`;
+      text += `&lt;text x=&quot;${padL - 3}&quot; y=&quot;${y + 3}&quot; text-anchor=&quot;end&quot; font-size=&quot;8&quot; fill=&quot;#aaa&quot;&gt;${v}%&lt;/text&gt;`;
+    });
+
+    values.forEach((v, i) =&gt; {
+      const bh = Math.max((v / maxVal) * chartH, v &gt; 0 ? 2 : 0);
+      const x = padL + i * bw + 1;
+      const y = padT + chartH - bh;
+      bars += `&lt;rect class=&quot;${i === todayIdx ? &quot;chart-today-mark&quot; : &quot;&quot;}&quot; x=&quot;${x}&quot; y=&quot;${y}&quot; width=&quot;${bw - 2}&quot; height=&quot;${bh}&quot; rx=&quot;2&quot; fill=&quot;${colors[i]}&quot;/&gt;`;
+
+      if (i === todayIdx) {
+        const badgeY = Math.max(padT + 2, y - 18);
+        bars += `&lt;line class=&quot;chart-today-line&quot; x1=&quot;${x + bw / 2 - 1}&quot; x2=&quot;${x + bw / 2 - 1}&quot; y1=&quot;${padT}&quot; y2=&quot;${padT + chartH}&quot; stroke=&quot;#378ADD&quot; stroke-width=&quot;1&quot; stroke-dasharray=&quot;3,2&quot;/&gt;`;
+        bars += `&lt;rect class=&quot;chart-today-badge&quot; x=&quot;${x - 2}&quot; y=&quot;${badgeY}&quot; width=&quot;28&quot; height=&quot;14&quot; rx=&quot;4&quot; fill=&quot;#378ADD&quot;/&gt;`;
+        bars += `&lt;text class=&quot;chart-today-label&quot; x=&quot;${x + 12}&quot; y=&quot;${badgeY + 10}&quot; text-anchor=&quot;middle&quot; font-size=&quot;8&quot; fill=&quot;#fff&quot; font-weight=&quot;600&quot;&gt;${v}%&lt;/text&gt;`;
+      }
+    });
+
+    labels.forEach((label, i) =&gt; {
+      if (!label) return;
+
+      const x = padL + i * bw + bw / 2 - 1;
+      text += `&lt;text x=&quot;${x}&quot; y=&quot;${H - 4}&quot; text-anchor=&quot;middle&quot; font-size=&quot;8&quot; fill=&quot;${i === todayIdx ? &quot;#378ADD&quot; : &quot;#aaa&quot;}&quot;&gt;${label}&lt;/text&gt;`;
+    });
+
+    let phaseBar = &quot;&quot;;
+    let phaseLabels = &quot;&quot;;
+    if (phaseDefs) {
+      const barY = H + 2;
+      const barH = 6;
+      phaseDefs.forEach((p) =&gt; {
+        const x1 = padL + p.start * bw;
+        const x2 = padL + (p.end + 1) * bw - padR;
+        const width = x2 - x1;
+        phaseBar += `&lt;rect x=&quot;${x1}&quot; y=&quot;${barY}&quot; width=&quot;${width}&quot; height=&quot;${barH}&quot; fill=&quot;${p.color}&quot;/&gt;`;
+        phaseLabels += `&lt;text x=&quot;${x1 + width / 2}&quot; y=&quot;${barY + barH + 9}&quot; text-anchor=&quot;middle&quot; font-size=&quot;8&quot; fill=&quot;#888&quot;&gt;${p.label}&lt;/text&gt;`;
+      });
+    }
+
+    const totalH = phaseDefs ? H + 20 : H;
+    const el = document.getElementById(containerId);
+    if (!el) return;
+
+    el.innerHTML = `&lt;svg width=&quot;100%&quot; viewBox=&quot;0 0 ${W} ${totalH}&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; role=&quot;img&quot; aria-label=&quot;预测月经概率图&quot;&gt;${yLines}${bars}${text}${phaseBar}${phaseLabels}&lt;/svg&gt;`;
+  }
+
+  function renderPregChart(data, containerId) {
+    const W = 343;
+    const H = 110;
+    const hasDischarge = Array.isArray(data.dischargeValues) &amp;&amp; data.dischargeValues.length &gt; 0;
+    const padL = 28;
+    const padR = hasDischarge ? 24 : 4;
+    const padT = 8;
+    const padB = 22;
+    const cyclePhaseKeys = [&quot;period&quot;, &quot;follicular&quot;, &quot;ovulation&quot;, &quot;luteal&quot;];
+    const labels = data.phaseAxis
+      ? data.stageLabels || cyclePhaseKeys.map((key) =&gt; phases[key].label)
+      : data.labels;
+    const probs = data.phaseAxis ? data.stageProbs || data.probs : data.probs;
+    const todayIdx = data.phaseAxis ? data.todayStageIdx : data.todayIdx;
+    const n = labels.length;
+    const chartH = H - padT - padB;
+    const maxVal = 35;
+    const xStep = (W - padL - padR) / (n - 1);
+    const stageDurations = data.phaseAxis ? data.stageDurations || [5, 8, 1, 14] : null;
+    const stageTotal = stageDurations ? stageDurations.reduce((sum, value) =&gt; sum + value, 0) : 0;
+    const stageSpan = W - padL - padR;
+    let durationCursor = padL;
+    const stageRanges = stageDurations
+      ? stageDurations.map((duration) =&gt; {
+          const width = (duration / stageTotal) * stageSpan;
+          const range = { x1: durationCursor, x2: durationCursor + width };
+          durationCursor += width;
+          return range;
+        })
+      : null;
+    const satIdx = labels.indexOf(&quot;周六&quot;);
+    const phaseDefs = data.phaseAxis
+      ? labels.map((label, index) =&gt; {
+          const phaseKey = data.stagePhaseKeys?.[index] || cyclePhaseKeys[index] || &quot;follicular&quot;;
+          const phase = phases[phaseKey] || phases.follicular;
+          return { label, color: phase.bar, s: index, e: index, ...stageRanges[index] };
+        })
+      : Array.isArray(data.phaseSegments) &amp;&amp; data.phaseSegments.length
+      ? data.phaseSegments.map((segment) =&gt; {
+          const phase = phases[segment.ph] || phases.follicular;
+          return { label: phase.label, color: phase.bar, s: segment.start, e: segment.end };
+        })
+      : satIdx &gt; 0
+        ? [
+            { label: phases.follicular.label, color: phases.follicular.bar, s: 0, e: satIdx - 1 },
+            { label: phases.ovulation.label, color: phases.ovulation.bar, s: satIdx, e: n - 1 },
+          ]
+        : [{ label: phases.ovulation.label, color: phases.ovulation.bar, s: 0, e: n - 1 }];
+
+    let yLines = &quot;&quot;;
+    let yLabels = &quot;&quot;;
+    let pregnancyDots = &quot;&quot;;
+    let todayMarker = &quot;&quot;;
+    let xLabels = &quot;&quot;;
+
+    [0, Math.round(maxVal / 2), maxVal].forEach((v) =&gt; {
+      const y = padT + chartH - (v / maxVal) * chartH;
+      yLines += `&lt;line x1=&quot;${padL}&quot; x2=&quot;${W - padR}&quot; y1=&quot;${y}&quot; y2=&quot;${y}&quot; stroke=&quot;#e8e6e0&quot; stroke-width=&quot;0.5&quot;/&gt;`;
+      yLabels += `&lt;text x=&quot;${padL - 3}&quot; y=&quot;${y + 3}&quot; text-anchor=&quot;end&quot; font-size=&quot;8&quot; fill=&quot;#aaa&quot;&gt;${v}%&lt;/text&gt;`;
+    });
+
+    const points = probs.map((v, i) =&gt; ({
+      x: stageRanges ? (stageRanges[i].x1 + stageRanges[i].x2) / 2 : padL + i * xStep,
+      y: padT + chartH - (v / maxVal) * chartH,
+    }));
+    const linePoints = stageRanges
+      ? [
+          { x: stageRanges[0].x1, y: points[0].y },
+          ...points,
+          { x: stageRanges[stageRanges.length - 1].x2, y: points[points.length - 1].y },
+        ]
+      : points;
+
+    const linePath = smoothPath(linePoints);
+    const areaPath = `M${linePoints[0].x.toFixed(1)},${(padT + chartH).toFixed(1)} L${linePath.slice(1)} L${linePoints[linePoints.length - 1].x.toFixed(1)},${(padT + chartH).toFixed(1)} Z`;
+    const dischargeColor = &quot;#30B89F&quot;;
+    const dischargeMax = 3;
+    const yDischarge = (value) =&gt; padT + chartH - (value / dischargeMax) * chartH;
+    const dischargeCore = hasDischarge
+      ? data.dischargeValues.map((v, i) =&gt; ({
+          x: points[i]?.x ?? padL + i * xStep,
+          y: yDischarge(v),
+        }))
+      : [];
+    const dischargePoints = hasDischarge
+      ? [
+          { x: stageRanges ? stageRanges[0].x1 : dischargeCore[0].x, y: dischargeCore[0].y },
+          ...dischargeCore,
+          { x: stageRanges ? stageRanges[stageRanges.length - 1].x2 : dischargeCore[dischargeCore.length - 1].x, y: dischargeCore[dischargeCore.length - 1].y },
+        ]
+      : [];
+    const dischargePath = hasDischarge ? smoothPath(dischargePoints) : &quot;&quot;;
+    const dischargeDots = hasDischarge
+      ? dischargeCore.map((point, index) =&gt; `&lt;circle cx=&quot;${point.x.toFixed(1)}&quot; cy=&quot;${point.y.toFixed(1)}&quot; r=&quot;${index === todayIdx ? 4 : 3}&quot; fill=&quot;${dischargeColor}&quot; stroke=&quot;#fff&quot; stroke-width=&quot;1.4&quot;/&gt;`).join(&quot;&quot;)
+      : &quot;&quot;;
+    const dischargeAxis = hasDischarge
+      ? [
+          { label: &quot;多&quot;, value: 3 },
+          { label: &quot;中&quot;, value: 1.5 },
+          { label: &quot;少&quot;, value: 0 },
+        ].map((tick) =&gt; {
+          const y = yDischarge(tick.value);
+          return `&lt;text x=&quot;${W - padR + 6}&quot; y=&quot;${(y + 3).toFixed(1)}&quot; font-size=&quot;8&quot; fill=&quot;#8f8a82&quot;&gt;${tick.label}&lt;/text&gt;`;
+        }).join(&quot;&quot;)
+      : &quot;&quot;;
+    const pregValueLabels = hasDischarge
+      ? points.map((point, index) =&gt; `&lt;text x=&quot;${point.x.toFixed(1)}&quot; y=&quot;${(point.y - 7).toFixed(1)}&quot; text-anchor=&quot;middle&quot; font-size=&quot;8&quot; fill=&quot;#c97808&quot; font-weight=&quot;600&quot;&gt;${probs[index]}%&lt;/text&gt;`).join(&quot;&quot;)
+      : &quot;&quot;;
+    const legendStartX = (W - 112) / 2;
+    const legendY = H + 20;
+    const chartLegend = hasDischarge
+      ? `&lt;g class=&quot;preg-legend-toggle&quot; data-pregnancy-legend style=&quot;cursor:pointer&quot;&gt;&lt;rect x=&quot;${(legendStartX - 6).toFixed(1)}&quot; y=&quot;${legendY - 9}&quot; width=&quot;66&quot; height=&quot;16&quot; rx=&quot;8&quot; fill=&quot;transparent&quot;/&gt;&lt;circle data-pregnancy-legend-dot cx=&quot;${legendStartX.toFixed(1)}&quot; cy=&quot;${legendY}&quot; r=&quot;3&quot; fill=&quot;#F5A623&quot;/&gt;&lt;text data-pregnancy-legend-text x=&quot;${(legendStartX + 9).toFixed(1)}&quot; y=&quot;${legendY + 3}&quot; font-size=&quot;8&quot; fill=&quot;#8f8a82&quot;&gt;怀孕几率&lt;/text&gt;&lt;/g&gt;&lt;circle cx=&quot;${(legendStartX + 74).toFixed(1)}&quot; cy=&quot;${legendY}&quot; r=&quot;3&quot; fill=&quot;${dischargeColor}&quot;/&gt;&lt;text x=&quot;${(legendStartX + 83).toFixed(1)}&quot; y=&quot;${legendY + 3}&quot; font-size=&quot;8&quot; fill=&quot;#8f8a82&quot;&gt;白带量&lt;/text&gt;`
+      : &quot;&quot;;
+
+    points.forEach((p, i) =&gt; {
+      const isToday = i === todayIdx;
+      const phase = phaseDefs.find((item) =&gt; i &gt;= item.s &amp;&amp; i &lt;= item.e) || phaseDefs[0];
+      const col = phase.color;
+      pregnancyDots += `&lt;circle class=&quot;${isToday ? &quot;chart-today-mark&quot; : &quot;&quot;}&quot; cx=&quot;${p.x.toFixed(1)}&quot; cy=&quot;${p.y.toFixed(1)}&quot; r=&quot;${isToday ? 5 : 3}&quot; fill=&quot;${isToday ? &quot;#378ADD&quot; : col}&quot; stroke=&quot;#fff&quot; stroke-width=&quot;1.5&quot;/&gt;`;
+
+      if (isToday) {
+        const badgeLines = data.todayBadgeLines || [`${probs[i]}%`];
+        const badgeW = data.todayBadgeLines ? 112 : 28;
+        const badgeH = data.todayBadgeLines ? 30 : 14;
+        const badgeX = Math.min(Math.max(p.x - badgeW / 2, padL), W - padR - badgeW);
+        const badgeY = Math.max(padT + 2, p.y - badgeH - 6);
+        const textX = badgeX + badgeW / 2;
+        todayMarker += `&lt;line class=&quot;chart-today-line&quot; x1=&quot;${p.x.toFixed(1)}&quot; x2=&quot;${p.x.toFixed(1)}&quot; y1=&quot;${padT}&quot; y2=&quot;${(padT + chartH).toFixed(1)}&quot; stroke=&quot;#378ADD&quot; stroke-width=&quot;1&quot; stroke-dasharray=&quot;3,2&quot;/&gt;`;
+        todayMarker += `&lt;rect class=&quot;chart-today-badge&quot; data-today-badge x=&quot;${badgeX.toFixed(1)}&quot; y=&quot;${badgeY.toFixed(1)}&quot; width=&quot;${badgeW}&quot; height=&quot;${badgeH}&quot; data-full-height=&quot;${badgeH}&quot; data-compact-height=&quot;18&quot; rx=&quot;${data.todayBadgeLines ? 7 : 4}&quot; fill=&quot;#378ADD&quot;/&gt;`;
+        todayMarker += badgeLines.map((line, lineIndex) =&gt; {
+          const fullY = badgeY + 11 + lineIndex * 11;
+          const compactY = badgeY + 13;
+          return `&lt;text class=&quot;chart-today-label&quot; data-today-badge-line=&quot;${lineIndex}&quot; data-full-y=&quot;${fullY.toFixed(1)}&quot; data-compact-y=&quot;${compactY.toFixed(1)}&quot; x=&quot;${textX.toFixed(1)}&quot; y=&quot;${fullY.toFixed(1)}&quot; text-anchor=&quot;middle&quot; font-size=&quot;${data.todayBadgeLines ? 7 : 8}&quot; fill=&quot;#fff&quot; font-weight=&quot;600&quot;&gt;${line}&lt;/text&gt;`;
+        }).join(&quot;&quot;);
+      }
+
+      xLabels += `&lt;text x=&quot;${p.x.toFixed(1)}&quot; y=&quot;${H - 4}&quot; text-anchor=&quot;middle&quot; font-size=&quot;8&quot; fill=&quot;${isToday ? &quot;#378ADD&quot; : &quot;#aaa&quot;}&quot;&gt;${labels[i]}&lt;/text&gt;`;
+    });
+
+    const phaseBarY = H + 2;
+    const phaseBarH = 6;
+    let phaseBar = &quot;&quot;;
+    let phaseLabels = &quot;&quot;;
+
+    phaseDefs.forEach((p, index) =&gt; {
+      const x1 = data.phaseAxis &amp;&amp; points[index]
+        ? p.x1
+        : padL + p.s * xStep;
+      const x2 = data.phaseAxis &amp;&amp; points[index]
+        ? p.x2
+        : padL + p.e * xStep + 4;
+      phaseBar += `&lt;rect x=&quot;${x1.toFixed(1)}&quot; y=&quot;${phaseBarY}&quot; width=&quot;${(x2 - x1).toFixed(1)}&quot; height=&quot;${phaseBarH}&quot; fill=&quot;${p.color}&quot;/&gt;`;
+      if (!data.phaseAxis) {
+        phaseLabels += `&lt;text x=&quot;${((x1 + x2) / 2).toFixed(1)}&quot; y=&quot;${phaseBarY + phaseBarH + 9}&quot; text-anchor=&quot;middle&quot; font-size=&quot;8&quot; fill=&quot;#888&quot;&gt;${p.label}&lt;/text&gt;`;
+      }
+    });
+
+    const gradientId = `pg_${sanitizeId(containerId)}`;
+    const el = document.getElementById(containerId);
+    if (!el) return;
+
+    el.innerHTML = `&lt;svg width=&quot;100%&quot; viewBox=&quot;0 0 ${W} ${H + (hasDischarge ? 32 : 20)}&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; role=&quot;img&quot; aria-label=&quot;怀孕几率图&quot;&gt;
+      &lt;defs&gt;&lt;linearGradient id=&quot;${gradientId}&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;0&quot; y2=&quot;1&quot;&gt;&lt;stop offset=&quot;0%&quot; stop-color=&quot;#F5A623&quot; stop-opacity=&quot;0.15&quot;/&gt;&lt;stop offset=&quot;100%&quot; stop-color=&quot;#F5A623&quot; stop-opacity=&quot;0&quot;/&gt;&lt;/linearGradient&gt;&lt;/defs&gt;
+      ${yLines}${yLabels}
+      &lt;g data-pregnancy-series&gt;
+        &lt;path d=&quot;${areaPath}&quot; fill=&quot;url(#${gradientId})&quot;/&gt;
+        &lt;path d=&quot;${linePath}&quot; fill=&quot;none&quot; stroke=&quot;#F5A623&quot; stroke-width=&quot;2.5&quot; stroke-linejoin=&quot;round&quot; stroke-linecap=&quot;round&quot;/&gt;
+        ${pregnancyDots}${pregValueLabels}
+      &lt;/g&gt;
+      ${hasDischarge ? `&lt;path d=&quot;${dischargePath}&quot; fill=&quot;none&quot; stroke=&quot;${dischargeColor}&quot; stroke-width=&quot;2.5&quot; stroke-linejoin=&quot;round&quot; stroke-linecap=&quot;round&quot;/&gt;` : &quot;&quot;}
+      ${chartLegend}${dischargeDots}${todayMarker}${dischargeAxis}${xLabels}${phaseBar}${phaseLabels}
+    &lt;/svg&gt;`;
+    const legend = el.querySelector(&quot;[data-pregnancy-legend]&quot;);
+    const pregnancySeries = el.querySelector(&quot;[data-pregnancy-series]&quot;);
+    const legendDot = el.querySelector(&quot;[data-pregnancy-legend-dot]&quot;);
+    const legendText = el.querySelector(&quot;[data-pregnancy-legend-text]&quot;);
+    const todayBadge = el.querySelector(&quot;[data-today-badge]&quot;);
+    const todayBadgeLines = Array.from(el.querySelectorAll(&quot;[data-today-badge-line]&quot;));
+    if (legend &amp;&amp; pregnancySeries &amp;&amp; legendDot &amp;&amp; legendText) {
+      let pregnancyVisible = true;
+      legend.addEventListener(&quot;click&quot;, () =&gt; {
+        pregnancyVisible = !pregnancyVisible;
+        pregnancySeries.style.display = pregnancyVisible ? &quot;&quot; : &quot;none&quot;;
+        legendDot.setAttribute(&quot;fill&quot;, pregnancyVisible ? &quot;#F5A623&quot; : &quot;#c7c1b8&quot;);
+        legendText.setAttribute(&quot;fill&quot;, pregnancyVisible ? &quot;#8f8a82&quot; : &quot;#c7c1b8&quot;);
+        if (todayBadge &amp;&amp; todayBadgeLines.length &gt; 1) {
+          todayBadge.setAttribute(&quot;height&quot;, pregnancyVisible ? todayBadge.dataset.fullHeight : todayBadge.dataset.compactHeight);
+          todayBadgeLines.forEach((line, index) =&gt; {
+            line.style.display = pregnancyVisible || index === 0 ? &quot;&quot; : &quot;none&quot;;
+            line.setAttribute(&quot;y&quot;, pregnancyVisible ? line.dataset.fullY : line.dataset.compactY);
+          });
+        }
+      });
+    }
+  }
+
+  function renderMenstrualChart(containerId, todayDay, todayProb, dateOffset = 0) {
+    const startDay = 16;
+    const endDay = 34;
+    const days = Array.from({ length: endDay - startDay + 1 }, (_, index) =&gt; startDay + index);
+    const phaseDefs = [
+      { label: phases.luteal.label, color: phases.luteal.bar, start: 16, end: 27 },
+      { label: &quot;下次经期&quot;, color: phases.period.bar, start: 28, end: 34 },
+    ];
+    const displayPhaseDefs = phaseDefs.map((phase) =&gt; ({
+      ...phase,
+      start: phase.start - startDay,
+      end: phase.end - startDay,
+    }));
+
+    function getPhase(day) {
+      return phaseDefs.find((p) =&gt; day &gt;= p.start &amp;&amp; day &lt;= p.end) || phaseDefs[phaseDefs.length - 1];
+    }
+
+    function formatDateForCycleDay(day) {
+      const date = new Date(2026, 6, day + dateOffset);
+      return `${date.getMonth() + 1}.${date.getDate()}`;
+    }
+
+    const mu = 28;
+    const sigma = 3;
+    const norm = (x) =&gt; Math.exp(-0.5 * ((x - mu) / sigma) ** 2) / (sigma * Math.sqrt(2 * Math.PI));
+    const raw = days.map((day) =&gt; {
+      const phase = getPhase(day);
+      if (phase.label === phases.follicular.label || phase.label === phases.ovulation.label) return 0;
+      return Math.round((norm(day) / norm(mu)) * 32);
+    });
+    const todayIdx = todayDay - startDay;
+    if (Number.isFinite(todayProb) &amp;&amp; todayIdx &gt;= 0 &amp;&amp; todayIdx &lt; raw.length) raw[todayIdx] = todayProb;
+    const colors = days.map((day, index) =&gt; (index === todayIdx ? &quot;#378ADD&quot; : getPhase(day).color));
+    const peakDay = mu;
+    const labels = days.map((day) =&gt; {
+      if (day === todayDay || day === peakDay) return formatDateForCycleDay(day);
+      return &quot;&quot;;
+    });
+
+    drawBarChart(raw, colors, labels, 100, todayIdx, containerId, displayPhaseDefs);
+  }
+
+  function smoothPath(points) {
+    if (points.length &lt; 2) return &quot;&quot;;
+    let path = `M${points[0].x.toFixed(1)},${points[0].y.toFixed(1)}`;
+    for (let i = 0; i &lt; points.length - 1; i += 1) {
+      const p0 = points[Math.max(0, i - 1)];
+      const p1 = points[i];
+      const p2 = points[i + 1];
+      const p3 = points[Math.min(points.length - 1, i + 2)];
+      const c1x = p1.x + (p2.x - p0.x) / 6;
+      const c1y = p1.y + (p2.y - p0.y) / 6;
+      const c2x = p2.x - (p3.x - p1.x) / 6;
+      const c2y = p2.y - (p3.y - p1.y) / 6;
+      path += ` C${c1x.toFixed(1)},${c1y.toFixed(1)} ${c2x.toFixed(1)},${c2y.toFixed(1)} ${p2.x.toFixed(1)},${p2.y.toFixed(1)}`;
+    }
+    return path;
+  }
+
+  function formatMl(value) {
+    return Number.isInteger(value) ? String(value) : value.toFixed(1);
+  }
+
+  function renderFlowChart(data, containerId) {
+    const W = 343;
+    const H = 136;
+    const padL = 30;
+    const padR = 8;
+    const padT = 17;
+    const padB = 24;
+    const maxVal = data.max || 24;
+    const chartH = H - padT - padB;
+    const n = data.labels.length;
+    const xStep = (W - padL - padR) / (n - 1);
+    const baseY = padT + chartH;
+    const xFor = (i) =&gt; padL + i * xStep;
+    const yFor = (v) =&gt; padT + chartH - (v / maxVal) * chartH;
+    const gradientId = `flow_${sanitizeId(containerId)}`;
+    let yLines = &quot;&quot;;
+    let yLabels = &quot;&quot;;
+    let xLabels = &quot;&quot;;
+    let areas = &quot;&quot;;
+    let lines = &quot;&quot;;
+    let dots = &quot;&quot;;
+    let seriesLabels = &quot;&quot;;
+
+    [0, 6, 12, 18, 24].forEach((v) =&gt; {
+      const y = yFor(v);
+      yLines += `&lt;line x1=&quot;${padL}&quot; x2=&quot;${W - padR}&quot; y1=&quot;${y.toFixed(1)}&quot; y2=&quot;${y.toFixed(1)}&quot; stroke=&quot;#e8e6e0&quot; stroke-width=&quot;0.5&quot;/&gt;`;
+      yLabels += `&lt;text x=&quot;${padL - 4}&quot; y=&quot;${(y + 3).toFixed(1)}&quot; text-anchor=&quot;end&quot; font-size=&quot;8&quot; fill=&quot;#aaa&quot;&gt;${v}&lt;/text&gt;`;
+    });
+
+    data.labels.forEach((label, i) =&gt; {
+      xLabels += `&lt;text x=&quot;${xFor(i).toFixed(1)}&quot; y=&quot;${H - 5}&quot; text-anchor=&quot;middle&quot; font-size=&quot;8&quot; fill=&quot;${i === data.todayIdx ? &quot;#378ADD&quot; : &quot;#aaa&quot;}&quot;&gt;${label}&lt;/text&gt;`;
+    });
+
+    data.series.forEach((series) =&gt; {
+      const points = series.values.map((v, i) =&gt; ({ x: xFor(i), y: yFor(v), value: v }));
+      const path = smoothPath(points);
+      if (series.fill) {
+        areas += `&lt;path d=&quot;${path} L${points[points.length - 1].x.toFixed(1)},${baseY.toFixed(1)} L${points[0].x.toFixed(1)},${baseY.toFixed(1)} Z&quot; fill=&quot;url(#${gradientId})&quot;/&gt;`;
+      }
+      lines += `&lt;path d=&quot;${path}&quot; fill=&quot;none&quot; stroke=&quot;${series.color}&quot; stroke-opacity=&quot;${series.opacity ?? 1}&quot; stroke-width=&quot;${series.width || 2}&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;`;
+      const labelPoint = points[series.labelIndex ?? 1];
+      seriesLabels += `&lt;text x=&quot;${(labelPoint.x + 8).toFixed(1)}&quot; y=&quot;${(labelPoint.y + 4).toFixed(1)}&quot; font-size=&quot;10&quot; font-weight=&quot;500&quot; fill=&quot;${series.color}&quot; fill-opacity=&quot;${series.opacity ?? 1}&quot;&gt;${series.label}&lt;/text&gt;`;
+      if (series.fill) {
+        points.forEach((p, i) =&gt; {
+          const isToday = i === data.todayIdx;
+          dots += `&lt;circle class=&quot;${isToday ? &quot;chart-today-mark&quot; : &quot;&quot;}&quot; cx=&quot;${p.x.toFixed(1)}&quot; cy=&quot;${p.y.toFixed(1)}&quot; r=&quot;${isToday ? 4.5 : 3}&quot; fill=&quot;${isToday ? &quot;#378ADD&quot; : series.color}&quot; stroke=&quot;#fff&quot; stroke-width=&quot;1.4&quot;/&gt;`;
+          if (isToday) {
+            const badgeY = Math.max(padT + 1, p.y - 20);
+            dots += `&lt;line class=&quot;chart-today-line&quot; x1=&quot;${p.x.toFixed(1)}&quot; x2=&quot;${p.x.toFixed(1)}&quot; y1=&quot;${padT}&quot; y2=&quot;${baseY.toFixed(1)}&quot; stroke=&quot;#378ADD&quot; stroke-width=&quot;1&quot; stroke-dasharray=&quot;3,2&quot;/&gt;`;
+            dots += `&lt;rect class=&quot;chart-today-badge&quot; x=&quot;${(p.x - 16).toFixed(1)}&quot; y=&quot;${badgeY.toFixed(1)}&quot; width=&quot;32&quot; height=&quot;14&quot; rx=&quot;4&quot; fill=&quot;#378ADD&quot;/&gt;`;
+            dots += `&lt;text class=&quot;chart-today-label&quot; x=&quot;${p.x.toFixed(1)}&quot; y=&quot;${(badgeY + 10).toFixed(1)}&quot; text-anchor=&quot;middle&quot; font-size=&quot;8&quot; fill=&quot;#fff&quot; font-weight=&quot;600&quot;&gt;${formatMl(p.value)}mL&lt;/text&gt;`;
+          }
+        });
+      }
+    });
+
+    const el = document.getElementById(containerId);
+    if (!el) return;
+
+    el.innerHTML = `&lt;svg width=&quot;100%&quot; viewBox=&quot;0 0 ${W} ${H}&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; role=&quot;img&quot; aria-label=&quot;经血量分布图&quot;&gt;
+      &lt;defs&gt;
+        &lt;linearGradient id=&quot;${gradientId}&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;0&quot; y2=&quot;1&quot;&gt;
+          &lt;stop offset=&quot;0%&quot; stop-color=&quot;#E39997&quot; stop-opacity=&quot;0.2&quot;/&gt;
+          &lt;stop offset=&quot;100%&quot; stop-color=&quot;#E39997&quot; stop-opacity=&quot;0.03&quot;/&gt;
+        &lt;/linearGradient&gt;
+      &lt;/defs&gt;
+      &lt;text x=&quot;${padL}&quot; y=&quot;8&quot; font-size=&quot;8&quot; fill=&quot;#888&quot;&gt;mL/天&lt;/text&gt;
+      ${yLines}${yLabels}${areas}${lines}${dots}${seriesLabels}${xLabels}
+    &lt;/svg&gt;`;
+  }
+function renderForecastChart(data, containerId) {
+    const W = 343;
+    const H = 126;
+    const padL = 18;
+    const padR = 8;
+    const padT = 28;
+    const padB = 25;
+    const maxVal = 36;
+    const baseY = H - padB;
+    const xStep = (W - padL - padR) / (data.labels.length - 1);
+    const xFor = (index) =&gt; padL + index * xStep;
+    const yFor = (value) =&gt; padT + (baseY - padT) * (1 - value / maxVal);
+    const points = data.values.map((value, index) =&gt; ({ x: xFor(index), y: yFor(value) }));
+    const curve = smoothPath(points);
+    const gradientId = `forecast_${sanitizeId(containerId)}`;
+    const selected = points[data.selectedIdx] || points[0];
+    const expected = points[data.expectedIdx] || points[0];
+    const badgeWidth = data.badge.length &gt; 6 ? 76 : 62;
+    const badgeX = Math.max(2, Math.min(W - badgeWidth - 2, expected.x - badgeWidth / 2));
+    const badgeY = Math.max(2, expected.y - 25);
+    const labels = data.labels.map((label, index) =&gt; `
+      &lt;text x=&quot;${xFor(index).toFixed(1)}&quot; y=&quot;${H - 7}&quot; text-anchor=&quot;middle&quot; font-size=&quot;8&quot; fill=&quot;${index === data.selectedIdx ? &quot;#378ADD&quot; : &quot;#aaa&quot;}&quot;&gt;${label}&lt;/text&gt;
+    `).join(&quot;&quot;);
+    const el = document.getElementById(containerId);
+    if (!el) return;
+
+    el.innerHTML = `&lt;svg width=&quot;100%&quot; viewBox=&quot;0 0 ${W} ${H}&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; role=&quot;img&quot; aria-label=&quot;经期开始预测图&quot;&gt;
+      &lt;defs&gt;
+        &lt;linearGradient id=&quot;${gradientId}&quot; x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;0&quot; y2=&quot;1&quot;&gt;
+          &lt;stop offset=&quot;0%&quot; stop-color=&quot;#E9A6AF&quot; stop-opacity=&quot;0.28&quot;/&gt;
+          &lt;stop offset=&quot;100%&quot; stop-color=&quot;#E9A6AF&quot; stop-opacity=&quot;0.03&quot;/&gt;
+        &lt;/linearGradient&gt;
+      &lt;/defs&gt;
+      &lt;line x1=&quot;${padL}&quot; x2=&quot;${W - padR}&quot; y1=&quot;${baseY}&quot; y2=&quot;${baseY}&quot; stroke=&quot;#e8e6e0&quot; stroke-width=&quot;0.7&quot;/&gt;
+      &lt;path d=&quot;${curve} L${points[points.length - 1].x.toFixed(1)},${baseY} L${points[0].x.toFixed(1)},${baseY} Z&quot; fill=&quot;url(#${gradientId})&quot;/&gt;
+      &lt;path d=&quot;${curve}&quot; fill=&quot;none&quot; stroke=&quot;#E39997&quot; stroke-width=&quot;2.6&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/&gt;
+      &lt;line x1=&quot;${expected.x.toFixed(1)}&quot; x2=&quot;${expected.x.toFixed(1)}&quot; y1=&quot;${padT}&quot; y2=&quot;${baseY}&quot; stroke=&quot;#E39997&quot; stroke-width=&quot;1&quot; stroke-dasharray=&quot;3,2&quot;/&gt;
+      &lt;line x1=&quot;${selected.x.toFixed(1)}&quot; x2=&quot;${selected.x.toFixed(1)}&quot; y1=&quot;${padT}&quot; y2=&quot;${baseY}&quot; stroke=&quot;#378ADD&quot; stroke-width=&quot;1&quot; stroke-dasharray=&quot;3,2&quot;/&gt;
+      ${points.map((point, index) =&gt; `&lt;circle cx=&quot;${point.x.toFixed(1)}&quot; cy=&quot;${point.y.toFixed(1)}&quot; r=&quot;${index === data.selectedIdx || index === data.expectedIdx ? 4.5 : 2.5}&quot; fill=&quot;${index === data.selectedIdx ? &quot;#378ADD&quot; : &quot;#E39997&quot;}&quot; stroke=&quot;#fff&quot; stroke-width=&quot;1.3&quot;/&gt;`).join(&quot;&quot;)}
+      &lt;rect x=&quot;${badgeX.toFixed(1)}&quot; y=&quot;${badgeY.toFixed(1)}&quot; width=&quot;${badgeWidth}&quot; height=&quot;17&quot; rx=&quot;6&quot; fill=&quot;#E39997&quot;/&gt;
+      &lt;text x=&quot;${(badgeX + badgeWidth / 2).toFixed(1)}&quot; y=&quot;${(badgeY + 11.5).toFixed(1)}&quot; text-anchor=&quot;middle&quot; font-size=&quot;8&quot; fill=&quot;#fff&quot; font-weight=&quot;600&quot;&gt;${data.badge}&lt;/text&gt;
+      ${labels}
+    &lt;/svg&gt;`;
+  }
+  window.BriefingCharts = {
+    renderFlowChart,
+    renderPregChart,
+    renderMenstrualChart,
+    renderForecastChart,
+  };
+})();
+&lt;/script&gt;
+  &lt;script&gt;(function () {
+  const { phases, weeks, activeId } = window.DailyBriefingData;
+  const { renderFlowChart, renderPregChart, renderMenstrualChart, renderForecastChart } = window.BriefingCharts;
+  const tabsEl = document.getElementById(&quot;tabs&quot;);
+  const panelEl = document.getElementById(&quot;panel&quot;);
+  let currentId = activeId;
+  const selectedDayByWeek = {};
+  const selectedDayAnimationByWeek = {};
+  const suppressTodayAnimationByWeek = {};
+
+  function phaseStyle(phase) {
+    return [
+      `--phase-bar:${phase.bar}`,
+      `--phase-bg:${phase.bg}`,
+      `--phase-text:${phase.text}`,
+      `--phase-dark:${phase.dark}`,
+    ].join(&quot;;&quot;);
+  }
+
+  function dayStyle(day) {
+    const phase = phases[day.ph];
+    return `--day-bar:${phase.bar};--day-dark:${phase.dark}`;
+  }
+
+  function getWeekDateNumbers(week) {
+    const match = week.title.match(/(\d{1,2})\.(\d{1,2})\s*[–-]\s*(\d{1,2})\.(\d{1,2})/);
+    if (!match) return [];
+
+    const startMonth = Number(match[1]);
+    const startDay = Number(match[2]);
+    return week.days.map((_, index) =&gt; {
+      const date = new Date(2026, startMonth - 1, startDay + index);
+      return date.getDate();
+    });
+  }
+
+  function getDefaultDayIndex(week) {
+    const todayIndex = week.days.findIndex((day) =&gt; day.today);
+    return todayIndex &gt;= 0 ? todayIndex : 0;
+  }
+
+  function getSelectedDayIndex(week) {
+    return selectedDayByWeek[week.id] ?? getDefaultDayIndex(week);
+  }
+
+  function isSelectableDay(week, index) {
+    return week.selectableDayIndices?.includes(index) || Boolean(week.dayStates?.[index]);
+  }
+
+  function getDisplayWeek(week) {
+    if (!week.selectableDayIndices?.length &amp;&amp; !week.dayStates) return week;
+
+    const selectedIndex = getSelectedDayIndex(week);
+    const todayIndex = getDefaultDayIndex(week);
+    const state = week.dayStates?.[selectedIndex];
+    const stateHasDelayData = Boolean(state) &amp;&amp; Object.prototype.hasOwnProperty.call(state, &quot;delayData&quot;);
+
+    return {
+      ...week,
+      topTitle: state?.topTitle ?? week.topTitle,
+      topDescription: state?.topDescription ?? week.topDescription,
+      heroPhase: state?.heroPhase ?? week.heroPhase,
+      leadAnimation: selectedDayAnimationByWeek[week.id] || state?.leadAnimation || week.leadAnimation,
+      mergeIntroWithFlow: state?.mergeIntroWithFlow ?? week.mergeIntroWithFlow,
+      mergeIntroWithCharts: state?.mergeIntroWithCharts ?? week.mergeIntroWithCharts,
+      mergeIntroWithForecast: state?.mergeIntroWithForecast ?? week.mergeIntroWithForecast,
+      mergeIntroWithDelay: state?.mergeIntroWithDelay ?? week.mergeIntroWithDelay,
+      showPregChart: state?.showPregChart ?? week.showPregChart,
+      showChart: state?.showChart ?? week.showChart,
+      menstrualTodayDay: state?.menstrualTodayDay ?? week.menstrualTodayDay,
+      menstrualTodayProb: state?.menstrualTodayProb ?? week.menstrualTodayProb,
+      periodCountdown: state?.periodCountdown ?? week.periodCountdown,
+      delayTip: state?.delayTip ?? week.delayTip,
+      flowData: state?.flowData ?? week.flowData,
+      menstrualDateOffset: state?.menstrualDateOffset ?? week.menstrualDateOffset,
+      forecastData: state?.forecastData
+        ? { ...week.forecastData, ...state.forecastData }
+        : week.forecastData,
+      delayData: stateHasDelayData
+        ? (state.delayData ? { ...week.delayData, ...state.delayData } : null)
+        : week.delayData,
+      days: week.days.map((day, index) =&gt; ({
+        ...day,
+        today: index === todayIndex,
+        selected: index === selectedIndex &amp;&amp; index !== todayIndex,
+        selectable: isSelectableDay(week, index),
+        suppressTodayAnimation: suppressTodayAnimationByWeek[week.id] &amp;&amp; index === todayIndex,
+      })),
+      pregData: state?.pregData === null
+        ? null
+        : state?.pregData
+        ? { ...week.pregData, ...state.pregData }
+        : week.pregData,
+    };
+  }
+
+  function renderDay(day, dateNumber, options = {}) {
+    const classes = [
+      &quot;day-tile&quot;,
+      day.today ? &quot;is-today&quot; : &quot;&quot;,
+      day.suppressTodayAnimation ? &quot;is-today-static&quot; : &quot;&quot;,
+      day.selected ? &quot;is-selected&quot; : &quot;&quot;,
+      day.switch ? &quot;is-switch&quot; : &quot;&quot;,
+      day.predicted ? &quot;is-predicted&quot; : &quot;&quot;,
+      day.delayed ? &quot;is-delayed&quot; : &quot;&quot;,
+      day.selectable ? &quot;is-selectable&quot; : &quot;&quot;,
+    ].filter(Boolean).join(&quot; &quot;);
+
+    const meta = day.today ? &quot;今日&quot; : &quot;&quot;;
+    const content = `&lt;div class=&quot;day-tile__name&quot;&gt;${day.d}&lt;/div&gt;
+      ${dateNumber ? `&lt;div class=&quot;day-tile__date&quot;&gt;${dateNumber}&lt;/div&gt;` : &quot;&quot;}
+      ${meta ? `&lt;div class=&quot;day-tile__meta&quot;&gt;${meta}&lt;/div&gt;` : &quot;&quot;}`;
+
+    if (day.selectable) {
+      return `&lt;button class=&quot;${classes}&quot; type=&quot;button&quot; style=&quot;${dayStyle(day)}&quot; data-day-select=&quot;${options.weekId}&quot; data-day-index=&quot;${options.dayIndex}&quot; aria-pressed=&quot;${day.selected || day.today ? &quot;true&quot; : &quot;false&quot;}&quot; aria-label=&quot;切换到${day.d}&quot;&gt;
+        ${content}
+      &lt;/button&gt;`;
+    }
+
+    return `&lt;div class=&quot;${classes}&quot; style=&quot;${dayStyle(day)}&quot;&gt;
+      ${content}
+    &lt;/div&gt;`;
+  }
+
+  function renderBriefingHeader(week) {
+    const dominant = phases[week.dominant];
+    if (week.compactHeader) {
+      const dateNumbers = getWeekDateNumbers(week);
+      const dayStrip = `&lt;div class=&quot;header-day-strip&quot;&gt;${week.days.map((day, index) =&gt; renderDay(day, dateNumbers[index], { weekId: week.id, dayIndex: index })).join(&quot;&quot;)}&lt;/div&gt;`;
+
+      return `&lt;header class=&quot;briefing-top briefing-top--calendar&quot; style=&quot;${phaseStyle(dominant)}&quot;&gt;
+        &lt;div class=&quot;briefing-titlebar briefing-titlebar--calendar&quot;&gt;
+          &lt;button class=&quot;briefing-back&quot; type=&quot;button&quot; aria-label=&quot;返回&quot;&gt;‹&lt;/button&gt;
+          &lt;div class=&quot;briefing-title&quot;&gt;本周密报&lt;/div&gt;
+          &lt;span class=&quot;briefing-titlebar__space&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+        &lt;/div&gt;
+        ${dayStrip}
+      &lt;/header&gt;`;
+    }
+
+    const dateNav = [&quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;, &quot;g&quot;].includes(week.id) ? &quot;&quot; : `&lt;nav class=&quot;date-nav&quot; aria-label=&quot;周导航&quot;&gt;
+        &lt;span class=&quot;date-nav__range&quot;&gt;6.30-7.6&lt;/span&gt;
+        &lt;button class=&quot;date-nav__item&quot; type=&quot;button&quot;&gt;上周&lt;/button&gt;
+        &lt;span class=&quot;date-nav__divider&quot; aria-hidden=&quot;true&quot;&gt;·&lt;/span&gt;
+        &lt;button class=&quot;date-nav__item is-current&quot; type=&quot;button&quot; aria-current=&quot;date&quot;&gt;本周&lt;/button&gt;
+        &lt;span class=&quot;date-nav__divider&quot; aria-hidden=&quot;true&quot;&gt;·&lt;/span&gt;
+        &lt;button class=&quot;date-nav__item&quot; type=&quot;button&quot;&gt;下周&lt;/button&gt;
+        &lt;span class=&quot;date-nav__range&quot;&gt;7.28-8.3&lt;/span&gt;
+      &lt;/nav&gt;`;
+
+    return `&lt;header class=&quot;briefing-top&quot; style=&quot;${phaseStyle(dominant)}&quot;&gt;
+      &lt;div class=&quot;briefing-titlebar&quot;&gt;
+        &lt;button class=&quot;briefing-back&quot; type=&quot;button&quot; aria-label=&quot;返回&quot;&gt;‹&lt;/button&gt;
+        &lt;div class=&quot;briefing-title&quot;&gt;本周密报&lt;/div&gt;
+        &lt;span class=&quot;briefing-titlebar__space&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+      &lt;/div&gt;
+      ${dateNav}
+    &lt;/header&gt;`;
+  }
+
+  function renderCycleWheel() {
+    return `&lt;div class=&quot;cycle-wheel&quot; aria-label=&quot;周期阶段示意图&quot; role=&quot;img&quot;&gt;
+      &lt;img class=&quot;cycle-wheel__image&quot; src=&quot;data:image/png;base64,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N28mSfL555/neT42Nnb+/PlnnnlmEyuwccMrEVHCDE5gY+qit61ol10L2pgUtp/jT0to7pqi9Qa1xDs3bXVzY7v16Wh/sP2wLP46FxsidNJae/jw4UajQUQLCwsffvjh6dOnjx07dunSpYWFhdprra//YjXmpb/TsqatdIdOD6rYinrjH8Ql6/y6r3LAgzbGa/c91ZoqfP/aoG62+utuQXubhjd/iKreQ4+0KpZwzu3fv//VV18FMD4+vri4uGvXrg8//HBlZeXUqVOPP/44M1+9elVV0zT13k9NTTUajRrS348fWzeV/RAn0NsCuRqGdg9lXFcUxdWrV0+dOuW9v3r16tLS0tzcXNQ1YOZvfetbS0tLqjo7O/vmm2/u27cvhBBCOHny5J49e7Is63+q9ZHJJtX9hmtoSDspqGUG0Ol0Ll++PDMz8+yzz6ZpKiJnzpz5yU9+cuXKFefcnj17Ik37+fPnjxw58q1vfWthYUFERkdHf/aznzWbzYMHDx44cCAqLtbBSb87GtrP0JC+FmtiYuLEiRPOuSeffNIYs2vXri+++GLv3r1nzpwB8M477zz33HNJkiwtLSVJcvHixatXr46PjydJkiTJ8ePHL1y48Pnnn3/3u99tNpvrs+Q1ukxDoxoa0ldzOeeY+ezZs3v37r127drHH38MYNeuXd1u1zn3k5/8hJmNMdeuXWs2m0eOHLlx48atW7eefvrpd955Z2RkJCL/T58+nSRJpB/4+c9/bq09duzYnj17RkdHa8qoBxM7G66hIWFHd2OXlpbefffdxcXFZ599dmJi4siRI3/+539+/Pjxa9euXb9+/fPPPz9y5Eir1frss8+azeaePXvm5ubSNCWiEMLMzMzKysrMzMy+ffsiyPL69etEdPTo0WvXrp05cyZN03379h06dGh8fDxy3wx329CQvpplorGxsUcffbTZbE5MTABot9tjY2OTk5Nnzpx57LHH2u320tJStJmxsbH333//9OnTr7322uzsbKvVmpycvHz58sLCwnPPPYdKLfjo0aOPP/74448/3u12r169euHChc8+++y1117bRtn64Roa0uZ/eGuPHz/e76AOHDjQbrdXVlYiqj+GZH/4h39YFMV777138ODB/fv3v/HGG3v37k3T9PLly8aY6elpAN1ud3Fx8dFHH43P3Gg0Hnnk/9/e3byqCoRhAJ+0wBGlrykyE5E2tclli3b99y0KWtSmjVlRWYMEBlEqZzHklbhw4Nx74VLPbxUhrXp4dZx5X4dSOp/PKaUve5kBQSJvtvydJL/GNhuG0W63oyjq9/tiiOLtduOc3+933/cLhcJoNBKBGQwGuq4fj0dd10Vxu1wuh8NhsVgYhsEYq1Qqsiyv1+tOpyNJUhzHxSKOfiFI5D2Xv8W47JdXqJqmaZqWjdTe7XaEENM0HccpFou+7yuKEgTBbDYLw3A8Hotq5nlet9s1TXO73a5WK0VRms3m6XTq9Xr/yQAfQJD+7S4vsXiQvVHN7/1RVXU4HGYVjBDieZ5pmrVaLYoiMbeUEPJ4PDjnomO1bdtiEWK5XEqSpOs6no4QJPIhrUvEHz1/Njb7kPUEFRzHYYxRSqvVavZwxTmXZbnRaIhrVFW1bTsIglKplP0OKtKb3+B8cjl62dYp4pTfoCC+zBBCLMuilKbPMRbk2Xf3fD5Pp9PNZnO9XsU94X6/tywrX80AFQl+375DPEqJO0CxwzVN03q9nqapoijlcvlvtYMDnJD9gH7iz9XtJEnCMOScTyYT13Vd1823nkKWUJHg+5O2aZrKsswYY4zFcdxqtbDFDhUJ/qjpoShQ+ROBeCeLIMFP4vTS6hopQpAAgGD5GwBBAkCQABAkAECQABAkAAQJAEECAAQJAEECQJAAECQAQJAAECQABAkAECQABAkAQQJ4J1/nqbo/Ka+QoQAAAABJRU5ErkJggg==&quot; alt=&quot;周期阶段示意图&quot;&gt;
+    &lt;/div&gt;`;
+  }
+function renderForecastContent(week) {
+    if (!week.forecastData) return &quot;&quot;;
+    return `&lt;div class=&quot;chart-card__head&quot;&gt;
+        &lt;span class=&quot;chart-card__title&quot;&gt;经期开始预测&lt;/span&gt;
+        &lt;span class=&quot;chart-card__badge is-menstrual&quot;&gt;预测&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div id=&quot;forecastChart_${week.id}&quot;&gt;&lt;/div&gt;
+      &lt;p class=&quot;forecast-note&quot;&gt;经期开始时间基于历史周期估算，实际日期可能提前或推后；新的月经记录会用于更新后续周期。&lt;/p&gt;`;
+  }
+
+  function renderDelayContent(week) {
+    if (!week.delayData) return &quot;&quot;;
+    return `&lt;div class=&quot;delay-tip&quot;&gt;
+        &lt;div class=&quot;delay-tip__title&quot;&gt;
+          &lt;span class=&quot;delay-tip__icon&quot;&gt;i&lt;/span&gt;
+          &lt;span&gt;推迟期小贴士&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;p class=&quot;delay-tip__copy&quot;&gt;${week.delayTip || &quot;月经日期来自历史周期预测，每个周期出现几天波动并不少见。&quot;}&lt;/p&gt;
+      &lt;/div&gt;`;
+  }
+  function renderPregnancyChartContent(week) {
+    if (!week.showPregChart || !week.pregData) return &quot;&quot;;
+    const chartTitle = week.pregData.dischargeValues ? &quot;怀孕几率与白带变化&quot; : &quot;怀孕几率&quot;;
+
+    return `&lt;div class=&quot;chart-card__head&quot;&gt;
+        &lt;span class=&quot;chart-card__title&quot;&gt;${chartTitle}&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div id=&quot;pregChart_${week.id}&quot;&gt;&lt;/div&gt;`;
+  }
+
+  function renderPregnancyChartCard(week) {
+    if (!week.showPregChart || !week.pregData || week.mergeIntroWithCharts) return &quot;&quot;;
+
+    return `&lt;article class=&quot;card chart-card&quot;&gt;
+      ${renderPregnancyChartContent(week)}
+    &lt;/article&gt;`;
+  }
+
+  function renderMenstrualChartContent(week) {
+    if (!week.showChart) return &quot;&quot;;
+    const todayProb = week.menstrualTodayProb ?? 4;
+
+    return `&lt;div class=&quot;chart-card__head&quot;&gt;
+        &lt;span class=&quot;chart-card__title&quot;&gt;预测月经概率&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div id=&quot;menChart_${week.id}&quot;&gt;&lt;/div&gt;`;
+  }
+
+  function renderMenstrualChartCard(week) {
+    if (!week.showChart || week.mergeIntroWithCharts) return &quot;&quot;;
+
+    return `&lt;article class=&quot;card chart-card&quot;&gt;
+      ${renderMenstrualChartContent(week)}
+    &lt;/article&gt;`;
+  }
+
+  function renderFlowChartContent(week) {
+    if (!week.flowData) return &quot;&quot;;
+
+    return `&lt;div class=&quot;chart-card__head&quot;&gt;
+        &lt;span class=&quot;chart-card__title&quot;&gt;经血量分布&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div id=&quot;flowChart_${week.id}&quot;&gt;&lt;/div&gt;`;
+  }
+
+  function renderFlowChartCard(week) {
+    if (!week.flowData || week.mergeIntroWithFlow) return &quot;&quot;;
+
+    return `&lt;article class=&quot;card chart-card&quot;&gt;
+      ${renderFlowChartContent(week)}
+    &lt;/article&gt;`;
+  }
+
+  function renderSection(section, hideHead = false) {
+    const phase = phases[section.ph];
+    const actions = section.actions.map((action) =&gt; `&lt;div class=&quot;seg&quot;&gt;
+      &lt;div class=&quot;seg__dot&quot;&gt;&lt;/div&gt;
+      &lt;span class=&quot;seg__copy&quot;&gt;${action}&lt;/span&gt;
+    &lt;/div&gt;`).join(&quot;&quot;);
+
+    return `&lt;section class=&quot;advice-section section-card&quot; style=&quot;${phaseStyle(phase)}&quot;&gt;
+      ${hideHead ? &quot;&quot; : `&lt;div class=&quot;section-card__head&quot;&gt;
+        &lt;span class=&quot;section-card__marker&quot;&gt;&lt;/span&gt;
+        &lt;span class=&quot;section-card__range&quot;&gt;${section.range}&lt;/span&gt;
+      &lt;/div&gt;`}
+      ${actions}
+    &lt;/section&gt;`;
+  }
+
+  function renderAdviceCard(week) {
+    if (!week.sections?.length) return &quot;&quot;;
+    const hideSectionHeads = week.sections.length === 1;
+
+    return `&lt;article class=&quot;card advice-card&quot;&gt;
+      &lt;h2 class=&quot;advice-card__title&quot;&gt;本周建议&lt;/h2&gt;
+      ${week.sections.map((section) =&gt; renderSection(section, hideSectionHeads)).join(&quot;&quot;)}
+    &lt;/article&gt;`;
+  }
+
+  function renderNextWeek(week) {
+    return `&lt;article class=&quot;card next-card&quot;&gt;
+      &lt;h2 class=&quot;advice-card__title&quot;&gt;下周预告&lt;/h2&gt;
+      &lt;p class=&quot;next-card__copy&quot;&gt;${week.nextWeek}&lt;/p&gt;
+    &lt;/article&gt;`;
+  }
+
+  function renderWeekOverviewCard(week) {
+    if (!week.showOverviewCard) return &quot;&quot;;
+    const dominant = phases[week.dominant];
+
+    return `&lt;article class=&quot;card week-overview-card&quot; style=&quot;${phaseStyle(dominant)}&quot;&gt;
+      &lt;h2 class=&quot;advice-card__title&quot;&gt;本周概况&lt;/h2&gt;
+      &lt;div class=&quot;week-hero__title-row&quot;&gt;
+        &lt;div class=&quot;week-hero__title&quot;&gt;${week.title}&lt;/div&gt;
+        &lt;span class=&quot;tag&quot;&gt;${week.subtitle}&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;h1 class=&quot;week-hero__headline&quot;&gt;${week.headline}&lt;/h1&gt;
+      &lt;p class=&quot;week-hero__summary&quot;&gt;${week.summary}&lt;/p&gt;
+    &lt;/article&gt;`;
+  }
+
+  function renderWeekHeroIntro(week) {
+    const tag = `&lt;span class=&quot;tag&quot;&gt;${week.subtitle}&lt;/span&gt;`;
+    const dateNumbers = getWeekDateNumbers(week);
+    const shouldShowDayStrip = !week.hideDayStrip;
+    const dayStripClass = `day-strip${week.dayStripPosition === &quot;top&quot; ? &quot; day-strip--top&quot; : &quot;&quot;}`;
+    const dayStrip = shouldShowDayStrip ? `&lt;div class=&quot;${dayStripClass}&quot;&gt;${week.days.map((day, index) =&gt; renderDay(day, dateNumbers[index], { weekId: week.id, dayIndex: index })).join(&quot;&quot;)}&lt;/div&gt;` : &quot;&quot;;
+    const titleBlock = `&lt;div class=&quot;week-hero__content&quot;&gt;
+      &lt;div class=&quot;week-hero__title-row&quot;&gt;
+        &lt;div class=&quot;week-hero__title&quot;&gt;${week.title}&lt;/div&gt;
+        ${tag}
+      &lt;/div&gt;
+      ${week.dayStripPosition === &quot;top&quot; || !shouldShowDayStrip ? &quot;&quot; : dayStrip}
+      &lt;h1 class=&quot;week-hero__headline&quot;&gt;${week.headline}&lt;/h1&gt;
+    &lt;/div&gt;`;
+
+    if (!week.topTitle) {
+      return titleBlock;
+    }
+
+    const leadClass = `week-hero__lead${week.leadAnimation ? ` is-${week.leadAnimation}` : &quot;&quot;}`;
+
+    return `${week.dayStripPosition === &quot;top&quot; &amp;&amp; shouldShowDayStrip ? dayStrip : &quot;&quot;}
+    &lt;div class=&quot;${leadClass}&quot;&gt;
+      &lt;div class=&quot;today-title-card__text&quot;&gt;${week.topTitle}&lt;/div&gt;
+      ${week.periodCountdown ? `&lt;div class=&quot;period-countdown&quot;&gt;距月经开始（${week.periodCountdown.date}）还有${week.periodCountdown.days}天&lt;/div&gt;` : &quot;&quot;}
+      ${week.topDescription ? `&lt;p class=&quot;today-title-card__desc&quot;&gt;${week.topDescription}&lt;/p&gt;` : &quot;&quot;}
+    &lt;/div&gt;
+    ${week.showOverviewCard ? &quot;&quot; : `&lt;div class=&quot;week-hero__top week-hero__top--stack&quot;&gt;
+      ${titleBlock}
+    &lt;/div&gt;`}`;
+  }
+
+  function renderHeroCard(week, dominant) {
+    const chartBlocks = [];
+    if (week.mergeIntroWithFlow) chartBlocks.push(renderFlowChartContent(week));
+    if (week.mergeIntroWithForecast) chartBlocks.push(renderForecastContent(week));
+    if (week.mergeIntroWithDelay) chartBlocks.push(renderDelayContent(week));
+    if (week.mergeIntroWithCharts) {
+      chartBlocks.push(renderMenstrualChartContent(week));
+      chartBlocks.push(renderPregnancyChartContent(week));
+    }
+    const chartClass = `week-hero__chart${week.leadAnimation ? ` is-${week.leadAnimation}` : &quot;&quot;}`;
+    const charts = chartBlocks.filter(Boolean).map((chart) =&gt; `&lt;div class=&quot;${chartClass}&quot;&gt;${chart}&lt;/div&gt;`).join(&quot;&quot;);
+    const hasMergedChart = Boolean(charts);
+
+    return `&lt;article class=&quot;card week-hero${hasMergedChart ? &quot; week-hero--with-chart&quot; : &quot;&quot;}&quot; style=&quot;${phaseStyle(dominant)}&quot;&gt;
+      ${renderWeekHeroIntro(week)}
+      ${week.showOverviewCard ? &quot;&quot; : `&lt;p class=&quot;week-hero__summary&quot;&gt;${week.summary}&lt;/p&gt;`}
+      ${charts}
+    &lt;/article&gt;`;
+  }
+
+  function renderWeek(week) {
+    const dominant = phases[week.dominant];
+    const heroDominant = phases[week.heroPhase || week.dominant];
+    const menstrualChart = renderMenstrualChartCard(week);
+    const pregnancyChart = renderPregnancyChartCard(week);
+    const showMenstrualChartBeforeSections = week.id === &quot;d&quot;;
+    const showPregnancyChartAfterMenstrual = week.id === &quot;d&quot;;
+
+    return `${renderBriefingHeader(week)}
+    ${renderHeroCard(week, heroDominant)}
+    ${showPregnancyChartAfterMenstrual ? &quot;&quot; : pregnancyChart}
+    ${renderFlowChartCard(week)}
+    ${showMenstrualChartBeforeSections ? menstrualChart : &quot;&quot;}
+    ${showPregnancyChartAfterMenstrual ? pregnancyChart : &quot;&quot;}
+    ${renderWeekOverviewCard(week)}
+    ${renderAdviceCard(week)}
+    ${showMenstrualChartBeforeSections ? &quot;&quot; : menstrualChart}
+    ${renderNextWeek(week)}`;
+  }
+
+  function syncTabs() {
+    document.querySelectorAll(&quot;.tab&quot;).forEach((tab) =&gt; {
+      const week = weeks.find((item) =&gt; item.id === tab.dataset.id);
+      const phase = phases[week.dominant];
+      const active = tab.dataset.id === currentId;
+
+      tab.style.background = active ? phase.bar : &quot;transparent&quot;;
+      tab.style.color = active ? phase.dark : &quot;#5F5E5A&quot;;
+      tab.style.borderColor = active ? phase.bar : &quot;rgba(0,0,0,0.12)&quot;;
+      tab.setAttribute(&quot;aria-selected&quot;, String(active));
+    });
+  }
+
+  function switchTab(id) {
+    const week = weeks.find((item) =&gt; item.id === id);
+    if (!week) return;
+
+    currentId = id;
+    selectedDayAnimationByWeek[id] = &quot;&quot;;
+    suppressTodayAnimationByWeek[id] = false;
+    syncTabs();
+    mountWeek(week);
+  }
+
+  function mountWeek(week) {
+    const displayWeek = getDisplayWeek(week);
+    const id = displayWeek.id;
+
+    panelEl.innerHTML = renderWeek(displayWeek);
+    bindDaySelectors(week);
+
+    requestAnimationFrame(() =&gt; {
+      if (displayWeek.flowData) renderFlowChart(displayWeek.flowData, `flowChart_${id}`);
+      if (displayWeek.forecastData) renderForecastChart(displayWeek.forecastData, `forecastChart_${id}`);
+      if (displayWeek.showPregChart &amp;&amp; displayWeek.pregData) renderPregChart(displayWeek.pregData, `pregChart_${id}`);
+      if (displayWeek.showChart) renderMenstrualChart(`menChart_${id}`, displayWeek.menstrualTodayDay ?? 23, displayWeek.menstrualTodayProb, displayWeek.menstrualDateOffset ?? 0);
+    });
+  }
+
+  function bindDaySelectors(week) {
+    panelEl.querySelectorAll(&quot;[data-day-select]&quot;).forEach((button) =&gt; {
+      button.addEventListener(&quot;click&quot;, () =&gt; {
+        const nextIndex = Number(button.dataset.dayIndex);
+        const currentIndex = getSelectedDayIndex(week);
+        selectedDayAnimationByWeek[week.id] = nextIndex &gt; currentIndex
+          ? &quot;slide-left&quot;
+          : nextIndex &lt; currentIndex
+            ? &quot;slide-right&quot;
+            : &quot;&quot;;
+        selectedDayByWeek[week.id] = nextIndex;
+        suppressTodayAnimationByWeek[week.id] = true;
+        mountWeek(week);
+      });
+    });
+  }
+
+  function initTabs() {
+    weeks.forEach((week) =&gt; {
+      const button = document.createElement(&quot;button&quot;);
+      button.className = &quot;tab&quot;;
+      button.type = &quot;button&quot;;
+      button.dataset.id = week.id;
+      button.textContent = week.tabLabel;
+      button.setAttribute(&quot;role&quot;, &quot;tab&quot;);
+      button.addEventListener(&quot;click&quot;, () =&gt; switchTab(week.id));
+      tabsEl.appendChild(button);
+    });
+  }
+
+  initTabs();
+  switchTab(currentId);
+})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"></iframe>
+</body>
+</html>
