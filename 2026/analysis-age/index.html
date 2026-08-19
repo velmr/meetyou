@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>美柚年龄填写引导 Demo V1.29 · 单文件版</title>
+  <title>美柚年龄填写引导 Demo V1.31 · 单文件版</title>
   <style>
     :root {
       --my-brand-red: #ff4d88;
@@ -199,16 +199,20 @@
       display: none;
       position: absolute;
       z-index: 6;
-      left: 19.5%;
-      top: 6.55%;
-      width: 63.5%;
-      height: 5.1%;
+      left: 13%;
+      top: 5.85%;
+      width: 74%;
+      height: 6.15%;
       grid-template-columns: repeat(4, 1fr);
       align-items: stretch;
-      padding: 0 1.03cqw;
-      background: rgba(160, 160, 164, 0.94);
-      backdrop-filter: blur(3px);
-      -webkit-backdrop-filter: blur(3px);
+      gap: 0.77cqw;
+      padding: 0.77cqw;
+      border: 0.26cqw solid rgba(255, 255, 255, 0.9);
+      border-radius: 2.56cqw;
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 1.54cqw 4.1cqw rgba(0, 0, 0, 0.16);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       font-family: "PingFang SC", "PingFang TC", "Microsoft YaHei UI", sans-serif;
     }
     .phone[data-view="new"] .new-user-mode-switch { display: grid; }
@@ -217,25 +221,17 @@
       padding: 0;
       border: 0;
       background: transparent;
-      color: #454545;
+      border-radius: 1.79cqw;
+      color: #555;
       font-size: 3.59cqw;
       line-height: 5.13cqw;
-      font-weight: 400;
+      font-weight: 500;
       cursor: pointer;
     }
     .new-user-mode-switch button[aria-pressed="true"] {
-      color: var(--my-brand-red);
-      font-weight: 500;
-    }
-    .new-user-mode-switch button[aria-pressed="true"]::after {
-      content: "";
-      position: absolute;
-      left: 28%;
-      right: 28%;
-      bottom: 0;
-      height: 0.77cqw;
-      border-radius: 999px;
       background: var(--my-brand-red);
+      color: #fff;
+      font-weight: 500;
     }
     .new-user-copy {
       display: none;
@@ -306,7 +302,13 @@
       cursor: pointer;
     }
 
-    .phone[data-view="record"] .period-toggle-hotspot { display: block; top: 62.7%; }
+    .phone[data-view="record"] .period-toggle-hotspot {
+      display: block;
+      top: 60.6%;
+      left: 68%;
+      width: 29%;
+      height: 7.5%;
+    }
     .phone[data-view="home"] .period-toggle-hotspot { display: block; top: 29.5%; }
 
     .record-detail-layer {
