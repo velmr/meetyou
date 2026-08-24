@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>今日密报 · 自然周周报 V5.8.9</title>
+  <title>今日密报 · 自然周周报 V5.9.0</title>
   <style>:root {
   --page-bg: #f1efe8;
   --surface: #ffffff;
@@ -3733,6 +3733,12 @@ svg line[stroke="#e8e6e0"] {
     });
     const points = probs.map(pointFor);
 
+    const phaseBands = phaseDefs.map((phase) => {
+      const x1 = phase.s === 0 ? padL : points[phase.s].x - xStep / 2;
+      const x2 = phase.e === cycleDays.length - 1 ? W - padR : points[phase.e].x + xStep / 2;
+      return `<rect x="${x1.toFixed(1)}" y="${padT - 4}" width="${(x2 - x1).toFixed(1)}" height="${sharedAxisY - padT + 4}" fill="${phase.color}" fill-opacity="0.045"/>`;
+    }).join("");
+
     const yGrid = [0, 18, 35].map((value) => {
       const y = axisY - (value / maxVal) * plotH;
       return `<line x1="${padL}" x2="${W - padR}" y1="${y.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#eeeeee" stroke-width="0.7"/><text x="${padL - 5}" y="${(y + 4).toFixed(1)}" text-anchor="end" font-size="10" fill="#999999">${value}%</text>`;
@@ -3792,28 +3798,44 @@ svg line[stroke="#e8e6e0"] {
       return phaseDay <= 7 ? "稀糊状" : "干燥";
     };
     const dischargeGrid = dischargeRows.map((row) =>
-      `<line x1="${padL}" x2="${W - padR}" y1="${row.y}" y2="${row.y}" stroke="#eeeeee" stroke-width="0.7"/><text x="${padL - 7}" y="${row.y + 4}" text-anchor="end" font-size="10" fill="#888888">${row.label}</text>`
+      `<text x="${padL - 7}" y="${row.y + 4}" text-anchor="end" font-size="10" fill="#777777">${row.label}</text>`
     ).join("");
     const phaseSeparators = phaseDefs.slice(1).map((phase) => {
       const x = points[phase.s].x - xStep / 2;
       return `<line x1="${x.toFixed(1)}" x2="${x.toFixed(1)}" y1="${padT}" y2="${sharedAxisY}" stroke="#dddddd" stroke-width="0.7" stroke-dasharray="2,3"/>`;
     }).join("");
+    const renderDischargeIcon = (type, x, y, active) => {
+      const fill = "#F4B7CC";
+      const stroke = "#B85C80";
+      const highlight = "#FFF8FB";
+      const activeRing = active
+        ? `<circle cx="0" cy="0" r="7" fill="#ffffff" stroke="#378ADD" stroke-width="1.7"/>`
+        : "";
+      const icons = {
+        "干燥": `<circle cx="0" cy="0" r="4" fill="${highlight}" stroke="${stroke}" stroke-width="1.4"/><path d="M-1.8 0H1.8" stroke="${stroke}" stroke-width="1.3" stroke-linecap="round"/>`,
+        "黏稠": `<rect x="-5" y="-3" width="10" height="6" rx="3" fill="${fill}" stroke="${stroke}" stroke-width="1.2"/><path d="M-2.6 -1.2H1.5" stroke="${highlight}" stroke-width="1.2" stroke-linecap="round"/>`,
+        "水状": `<path d="M0 -5C3 -2.2 4 0.1 4 2C4 4.3 2.2 5.5 0 5.5C-2.2 5.5 -4 4.3 -4 2C-4 0.1 -3 -2.2 0 -5Z" fill="${fill}" stroke="${stroke}" stroke-width="1.2"/><path d="M-1.4 0C-0.8 -1.3 0.2 -2 1.1 -2.1" stroke="${highlight}" stroke-width="1.2" stroke-linecap="round"/>`,
+        "蛋清状": `<path d="M-5 -1.4C-3.2 -4.4 2 -4.3 5 -1.2C3.8 2.8 -2.5 3.7 -5 -1.4Z" fill="${fill}" stroke="${stroke}" stroke-width="1.2"/><path d="M-1.5 -2.3C-0.1 -3 1.7 -2.5 2.6 -1.6" stroke="${highlight}" stroke-width="1.2" stroke-linecap="round"/>`,
+        "稀糊状": `<path d="M-5 1C-5 -2 -2.2 -4 0.6 -3.1C3 -4.1 5 -1.4 4.3 1.4C3.5 4.2 -0.6 5 -2.8 3.2C-4.2 3.2 -5 2.2 -5 1Z" fill="${fill}" stroke="${stroke}" stroke-width="1.2"/><path d="M-2 -1.2C-0.8 -2 0.8 -1.8 1.7 -1" stroke="${highlight}" stroke-width="1.2" stroke-linecap="round"/>`,
+      };
+      return `<g transform="translate(${x.toFixed(1)} ${y})">${activeRing}${icons[type]}</g>`;
+    };
     const dischargeScatter = cycleDays.map((cycleDay, index) => {
       const phase = phaseDefs.find((item) => index >= item.s && index <= item.e) || phaseDefs[0];
       const dischargeType = getDischargeType(index, phase);
       if (!dischargeType) return "";
       const row = dischargeRowByType[dischargeType];
       const active = index === todayIdx;
-      return `<circle cx="${points[index].x.toFixed(1)}" cy="${row.y}" r="${active ? 4.8 : 2.7}" fill="${phase.color}" fill-opacity="${active ? 1 : 0.82}" stroke="${active ? "#378ADD" : "#ffffff"}" stroke-width="${active ? 2 : 1}" aria-label="第${cycleDay}天，${phase.label}第${index - phase.s + 1}天，白带${dischargeType}"/>`;
+      return `<g aria-label="第${cycleDay}天，${phase.label}第${index - phase.s + 1}天，白带${dischargeType}">${renderDischargeIcon(dischargeType, points[index].x, row.y, active)}</g>`;
     }).join("");
 
     const el = document.getElementById(containerId);
     if (!el) return;
     el.innerHTML = `<svg width="100%" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="整周期怀孕几率与白带预测组合图">
       <g aria-label="数据系列：怀孕几率"><line x1="${padL}" x2="${padL + 12}" y1="14" y2="14" stroke="#666666" stroke-width="2" stroke-linecap="round"/><circle cx="${padL + 6}" cy="14" r="2.5" fill="#ffffff" stroke="#666666" stroke-width="1.4"/><text x="${padL + 18}" y="18" font-size="11" fill="#666666" font-weight="500">怀孕几率</text></g>
-      ${yGrid}<g data-pregnancy-series>${curve}${dots}</g>
-      <g aria-label="数据系列：白带预测"><circle cx="${padL + 5}" cy="144" r="3.5" fill="#ffffff" stroke="#666666" stroke-width="1.5"/><text x="${padL + 14}" y="148" font-size="11" fill="#666666" font-weight="500">白带预测</text></g>
-      ${dischargeGrid}${phaseSeparators}${dischargeScatter}${todayMarker}
+      ${phaseBands}${yGrid}<g data-pregnancy-series>${curve}${dots}</g>
+      <g aria-label="数据系列：白带预测"><path d="M${padL} 144C${padL + 2} 140 ${padL + 8} 140 ${padL + 10} 144C${padL + 8} 148 ${padL + 2} 148 ${padL} 144Z" fill="#F4B7CC" stroke="#B85C80" stroke-width="1.2"/><text x="${padL + 16}" y="148" font-size="11" fill="#666666" font-weight="500">白带预测</text></g>
+      ${phaseSeparators}${todayMarker}${dischargeGrid}${dischargeScatter}
       <line x1="${padL}" x2="${W - padR}" y1="${sharedAxisY}" y2="${sharedAxisY}" stroke="#cccccc" stroke-width="0.8"/>
       ${xLabels}${phaseLegend}
     </svg>`;
