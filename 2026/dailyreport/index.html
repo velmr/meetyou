@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>今日密报 · 自然周周报 V5.8.2</title>
+  <title>今日密报 · 自然周周报 V5.8.7</title>
   <style>:root {
   --page-bg: #f1efe8;
   --surface: #ffffff;
@@ -961,6 +961,10 @@ svg {
   --my-text-tertiary: #999999;
   --my-line: rgba(0, 0, 0, 0.08);
   --my-link: #4f7cae;
+  --my-radius-xs: 4px;
+  --my-radius-sm: 8px;
+  --my-radius-md: 12px;
+  --my-radius-pill: 999px;
   --page-bg: var(--my-bg);
   --surface: var(--my-surface);
   --ink: var(--my-text-primary);
@@ -2265,6 +2269,241 @@ svg line[stroke="#e8e6e0"] {
   }
 }
 
+/* V5.8.3：降低周模块视觉噪音，重建留白与阅读层级 */
+.page {
+  --my-bg: #f4f4f7;
+  --my-line: rgba(50, 50, 50, 0.08);
+  --my-text-primary: #323232;
+  --my-text-secondary: #666666;
+  --my-text-tertiary: #999999;
+  background: var(--my-bg);
+}
+
+#panel,
+.weekly-zone {
+  background: var(--my-bg);
+}
+
+.weekly-zone {
+  padding: 16px 0 6px;
+}
+
+.weekly-zone .card {
+  margin: 0 12px 12px;
+  border: 0.5px solid rgba(50, 50, 50, 0.07);
+  border-radius: var(--my-radius-md);
+  background: var(--my-surface) !important;
+  box-shadow: 0 2px 10px rgba(50, 50, 50, 0.055);
+}
+
+.week-overview-card,
+.advice-card,
+.next-card {
+  padding: 16px;
+}
+
+.module-title {
+  gap: 6px;
+  margin-bottom: 0;
+  color: var(--my-text-primary);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+.module-title__icon {
+  width: 18px;
+  height: 18px;
+  flex-basis: 18px;
+  border-radius: 0;
+  background: transparent !important;
+}
+
+.module-title__icon svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 1.5;
+}
+
+.module-title-row {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.week-overview-card__tag {
+  width: fit-content;
+  max-width: 100%;
+  min-height: 22px;
+  border: 0;
+  border-radius: var(--my-radius-pill);
+  padding: 3px 10px;
+  background: color-mix(in srgb, var(--phase-bar) 14%, #ffffff);
+  color: var(--phase-dark);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  text-align: left;
+}
+
+.week-overview-card .week-hero__headline {
+  margin: 0 0 12px;
+  color: var(--my-text-primary);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.week-overview-card .week-hero__summary {
+  margin: 0;
+  color: var(--my-text-secondary);
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.advice-card > .module-title {
+  margin-bottom: 18px;
+}
+
+.advice-section + .advice-section {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 0.5px solid rgba(50, 50, 50, 0.08);
+}
+
+.section-card__head {
+  width: fit-content;
+  margin-bottom: 8px;
+  border: 0;
+  border-radius: var(--my-radius-sm);
+  padding: 5px 9px;
+  background: color-mix(in srgb, var(--phase-bar) 13%, #ffffff);
+}
+
+.section-card__marker {
+  display: none;
+}
+
+.section-card__range {
+  color: var(--phase-dark);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.seg {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 6px;
+  padding: 10px 0 12px;
+}
+
+.seg + .seg {
+  border-top: 0.5px solid rgba(50, 50, 50, 0.07);
+}
+
+.advice-type {
+  width: fit-content;
+  min-height: 22px;
+  justify-self: start;
+  border: 0;
+  border-radius: var(--my-radius-xs);
+  padding: 3px 7px;
+  background: color-mix(in srgb, var(--phase-bar) 12%, #ffffff);
+  color: var(--phase-dark);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.seg__copy {
+  padding: 0;
+  color: var(--my-text-secondary);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.next-card > .module-title {
+  margin-bottom: 12px;
+}
+
+.next-card__copy {
+  margin: 0;
+  color: var(--my-text-secondary);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+/* V5.8.4：统一圆角标签、白色顶栏与阶段标题命名 */
+.demo-status-bar {
+  background: var(--my-surface);
+  color: #111111;
+}
+
+.ios-cellular i {
+  background: #111111;
+}
+
+.ios-wifi::before,
+.ios-wifi::after,
+.ios-wifi i {
+  border-color: #111111 transparent transparent #111111;
+}
+
+.ios-wifi i {
+  border: 0;
+  background: #111111;
+}
+
+.ios-battery {
+  border-color: #111111;
+  color: #111111;
+}
+
+.ios-battery::before,
+.ios-battery::after {
+  background: #111111;
+}
+
+.briefing-top,
+.briefing-top--calendar {
+  border-bottom: 0.5px solid var(--my-line);
+  background: var(--my-surface) !important;
+  box-shadow: none;
+}
+
+.briefing-title,
+.briefing-back {
+  color: var(--my-text-primary);
+}
+
+.briefing-title {
+  font-weight: 500;
+}
+
+.briefing-back:focus-visible {
+  outline-color: var(--my-brand-red);
+}
+
+.tag,
+.period-countdown,
+.chart-card__badge {
+  border-radius: var(--my-radius-pill);
+}
+
+.section-card__head,
+.advice-type {
+  border-radius: var(--my-radius-sm);
+}
+
+.chart-today-badge {
+  rx: 7px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -2410,7 +2649,9 @@ svg line[stroke="#e8e6e0"] {
             ],
           },
         },
-        1: {},
+        1: {
+          predictedStartLutealDay: 8,
+        },
         2: {
           topTitle: "预计今天是经期第2天",
           topDescription: "如果月经如期开始，今天通常处于经期前半段。可以根据身体感受适当放慢节奏、注意休息。",
@@ -2522,6 +2763,7 @@ svg line[stroke="#e8e6e0"] {
       dayStates: {
         0: {
           topTitle: "预计今天是经期第1天",
+          predictedStartLutealDay: 8,
           topDescription: "根据当前周期记录，月经预计从今天开始。经期开始前后，部分人可能出现下腹坠胀、腰酸、疲惫或情绪波动。",
           heroPhase: "predicted",
           mergeIntroWithDelay: false,
@@ -2771,6 +3013,7 @@ svg line[stroke="#e8e6e0"] {
       dayStates: {
         0: {
           topTitle: "今天是经期第5天",
+          periodEndCountdown: { date: "7月8日", days: 1 },
           topDescription: "经量明显减少，身体轻松起来，体重基本回落到日常水平，精力正在恢复。",
           heroPhase: "period",
           mergeIntroWithFlow: true,
@@ -2813,6 +3056,7 @@ svg line[stroke="#e8e6e0"] {
         2: {},
         1: {
           topTitle: "今天是经期第6天",
+          periodEndCountdown: { date: "7月8日", days: 0 },
           topDescription: "经期接近尾声，激素已开始酝酿回升，可以逐渐恢复正常运动和作息。",
           heroPhase: "period",
           mergeIntroWithFlow: true,
@@ -3132,6 +3376,7 @@ svg line[stroke="#e8e6e0"] {
     tabLabel: "示例E：经期第3天",
     title: "7.28-8.3",
     topTitle: "今天是经期第3天",
+    periodEndCountdown: { date: "8月1日", days: 2 },
     topDescription: "经量仍在高位，注意补充含铁食物；不适在减轻，情绪也开始从低谷往上走。",
     dayStripPosition: "top",
     hideDayStrip: false,
@@ -3161,6 +3406,7 @@ svg line[stroke="#e8e6e0"] {
     dayStates: {
       0: {
         topTitle: "今天是经期第1天",
+        periodEndCountdown: { date: "8月1日", days: 4 },
         topDescription: "雌激素和孕激素都处在全周期最低点，子宫内膜脱落出血，痛经和腰酸今天可能最明显，情绪低落时别苛责自己。",
         flowData: {
           todayIdx: 0,
@@ -3198,6 +3444,7 @@ svg line[stroke="#e8e6e0"] {
       },
       1: {
         topTitle: "今天是经期第2天",
+        periodEndCountdown: { date: "8月1日", days: 3 },
         topDescription: "经量通常达到高峰；随着月经开始，经前潴留的水分开始排出，体重会比前几天轻一些。",
         flowData: {
           todayIdx: 1,
@@ -3236,6 +3483,7 @@ svg line[stroke="#e8e6e0"] {
       2: {},
       3: {
         topTitle: "今天是经期第4天",
+        periodEndCountdown: { date: "8月1日", days: 1 },
         topDescription: "经量明显减少，身体轻松起来，体重基本回落到日常水平，精力正在恢复。",
         flowData: {
           todayIdx: 3,
@@ -3273,6 +3521,7 @@ svg line[stroke="#e8e6e0"] {
       },
       4: {
         topTitle: "今天是经期第5天",
+        periodEndCountdown: { date: "8月1日", days: 0 },
         topDescription: "经期接近尾声，激素已开始酝酿回升，可以逐渐恢复正常运动和作息。",
         flowData: {
           todayIdx: 4,
@@ -3447,7 +3696,7 @@ svg line[stroke="#e8e6e0"] {
 
   function renderPregChart(data, containerId) {
     const W = 343;
-    const H = 276;
+    const H = 302;
     const padL = 52;
     const padR = 10;
     const padT = 24;
@@ -3463,10 +3712,10 @@ svg line[stroke="#e8e6e0"] {
       return `${date.getMonth() + 1}/${date.getDate()}`;
     };
     const phaseDefs = [
-      { label: phases.period.label, color: phases.period.bar, s: 0, e: 4, discharge: "不预测", dischargeLevel: 0 },
-      { label: phases.follicular.label, color: phases.follicular.bar, s: 5, e: 12, discharge: "稀糊状", dischargeLevel: 2 },
-      { label: phases.ovulation.label, color: phases.ovulation.bar, s: 13, e: 13, discharge: "蛋清状", dischargeLevel: 3 },
-      { label: phases.luteal.label, color: phases.luteal.bar, s: 14, e: 27, discharge: "黏稠", dischargeLevel: 1 },
+      { label: phases.period.label, color: phases.period.bar, s: 0, e: 4 },
+      { label: phases.follicular.label, color: phases.follicular.bar, s: 5, e: 8 },
+      { label: phases.ovulation.label, color: phases.ovulation.bar, s: 9, e: 18 },
+      { label: phases.luteal.label, color: phases.luteal.bar, s: 19, e: 27 },
     ];
     const phaseIndex = Math.min(Math.max(data.todayStageIdx ?? 1, 0), phaseDefs.length - 1);
     const todayPhase = phaseDefs[phaseIndex];
@@ -3514,7 +3763,7 @@ svg line[stroke="#e8e6e0"] {
       return `<text x="${points[index].x.toFixed(1)}" y="${(axisY + 18).toFixed(1)}" text-anchor="middle" font-size="11" fill="${active ? "#378ADD" : "#999999"}" font-weight="${active ? 600 : 400}">${active ? "今天" : formatCycleDate(cycleDay)}</text>`;
     }).join("");
 
-    const legendY = 267;
+    const legendY = 294;
     const legendSlot = 76;
     const legendStart = (W - legendSlot * phaseDefs.length) / 2;
     const phaseLegend = phaseDefs.map((phase, index) => {
@@ -3523,23 +3772,38 @@ svg line[stroke="#e8e6e0"] {
     }).join("");
 
     const dischargeRows = [
-      { label: "不预测", y: 235 },
-      { label: "黏稠", y: 218 },
-      { label: "稀糊状", y: 201 },
-      { label: "蛋清状", y: 184 },
+      { label: "蛋清状", y: 187 },
+      { label: "水状", y: 205 },
+      { label: "稀糊状", y: 223 },
+      { label: "黏稠", y: 241 },
+      { label: "干燥", y: 259 },
     ];
+    const dischargeRowByType = Object.fromEntries(dischargeRows.map((row) => [row.label, row]));
+    const getDischargeType = (index, phase) => {
+      const phaseDay = index - phase.s + 1;
+      if (phase.label === phases.period.label) return null;
+      if (phase.label === phases.follicular.label) return phaseDay <= 3 ? "干燥" : "黏稠";
+      if (phase.label === phases.ovulation.label) {
+        if (phaseDay <= 3) return "水状";
+        if (phaseDay <= 6) return "蛋清状";
+        return "水状";
+      }
+      return phaseDay <= 7 ? "稀糊状" : "干燥";
+    };
     const dischargeGrid = dischargeRows.map((row) =>
       `<line x1="${padL}" x2="${W - padR}" y1="${row.y}" y2="${row.y}" stroke="#eeeeee" stroke-width="0.7"/><text x="${padL - 7}" y="${row.y + 4}" text-anchor="end" font-size="10" fill="#888888">${row.label}</text>`
     ).join("");
     const phaseSeparators = phaseDefs.slice(1).map((phase) => {
       const x = points[phase.s].x - xStep / 2;
-      return `<line x1="${x.toFixed(1)}" x2="${x.toFixed(1)}" y1="176" y2="241" stroke="#dddddd" stroke-width="0.7" stroke-dasharray="2,3"/>`;
+      return `<line x1="${x.toFixed(1)}" x2="${x.toFixed(1)}" y1="178" y2="265" stroke="#dddddd" stroke-width="0.7" stroke-dasharray="2,3"/>`;
     }).join("");
     const dischargeScatter = cycleDays.map((cycleDay, index) => {
       const phase = phaseDefs.find((item) => index >= item.s && index <= item.e) || phaseDefs[0];
-      const row = dischargeRows[phase.dischargeLevel];
+      const dischargeType = getDischargeType(index, phase);
+      if (!dischargeType) return "";
+      const row = dischargeRowByType[dischargeType];
       const active = index === todayIdx;
-      return `<circle cx="${points[index].x.toFixed(1)}" cy="${row.y}" r="${active ? 4.8 : 2.7}" fill="${phase.color}" fill-opacity="${active ? 1 : 0.82}" stroke="${active ? "#378ADD" : "#ffffff"}" stroke-width="${active ? 2 : 1}" aria-label="第${cycleDay}天，${phase.label}，白带${phase.discharge}"/>`;
+      return `<circle cx="${points[index].x.toFixed(1)}" cy="${row.y}" r="${active ? 4.8 : 2.7}" fill="${phase.color}" fill-opacity="${active ? 1 : 0.82}" stroke="${active ? "#378ADD" : "#ffffff"}" stroke-width="${active ? 2 : 1}" aria-label="第${cycleDay}天，${phase.label}第${index - phase.s + 1}天，白带${dischargeType}"/>`;
     }).join("");
 
     const el = document.getElementById(containerId);
@@ -3547,7 +3811,7 @@ svg line[stroke="#e8e6e0"] {
     el.innerHTML = `<svg width="100%" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="整周期怀孕几率与白带分类散点图">
       ${yGrid}<g data-pregnancy-series>${curve}${dots}</g>${todayMarker}${xLabels}
       <line x1="${padL}" x2="${W - padR}" y1="152" y2="152" stroke="#dddddd" stroke-width="0.8"/>
-      <text x="${padL}" y="168" font-size="11" fill="#666666" font-weight="500">白带分类散点</text>
+      <text x="${padL}" y="168" font-size="11" fill="#666666" font-weight="500">白带类型预测</text>
       ${dischargeGrid}${phaseSeparators}${dischargeScatter}${phaseLegend}
     </svg>`;
   }
@@ -3806,7 +4070,9 @@ function renderForecastChart(data, containerId) {
       showChart: state?.showChart ?? week.showChart,
       menstrualTodayDay: state?.menstrualTodayDay ?? week.menstrualTodayDay,
       menstrualTodayProb: state?.menstrualTodayProb ?? week.menstrualTodayProb,
+      predictedStartLutealDay: state?.predictedStartLutealDay ?? null,
       periodCountdown: state?.periodCountdown ?? week.periodCountdown,
+      periodEndCountdown: state?.periodEndCountdown ?? week.periodEndCountdown,
       delayTip: state?.delayTip ?? week.delayTip,
       flowData: state?.flowData ?? week.flowData,
       menstrualDateOffset: state?.menstrualDateOffset ?? week.menstrualDateOffset,
@@ -4047,6 +4313,18 @@ function renderForecastContent(week) {
     </article>`;
   }
 
+  function formatStageTitle(title) {
+    if (!title) return "";
+
+    return title
+      .replace(/^今天是经期第(\d+)天$/, "月经期 第$1天")
+      .replace(/^今天是卵泡期第(\d+)天$/, "卵泡期 第$1天")
+      .replace(/^今天是排卵期第(\d+)天$/, "排卵期 第$1天")
+      .replace(/^今天是黄体期第(\d+)天$/, "黄体期 第$1天")
+      .replace(/^预计今天是经期第(\d+)天$/, "预测经期 第$1天")
+      .replace(/^预计今天是经期结束日$/, "预测经期 第5天");
+  }
+
   function renderWeekHeroIntro(week) {
     const tag = `<span class="tag">${week.subtitle}</span>`;
     const weekDates = getWeekDates(week);
@@ -4067,11 +4345,28 @@ function renderForecastContent(week) {
     }
 
     const leadClass = `week-hero__lead${week.leadAnimation ? ` is-${week.leadAnimation}` : ""}`;
+    const predictedStartToday = Number.isFinite(week.predictedStartLutealDay);
+    const predictedEndToday = /^预计今天是经期结束日$/.test(week.topTitle);
+    const actualPeriodDayMatch = week.topTitle.match(/^今天是经期第(\d+)天$/);
+    const actualPeriodDay = Boolean(actualPeriodDayMatch);
+    const actualPeriodDayNumber = actualPeriodDayMatch ? Number(actualPeriodDayMatch[1]) : null;
+    const displayTopTitle = predictedStartToday
+      ? `黄体期 第${week.predictedStartLutealDay}天`
+      : formatStageTitle(week.topTitle);
+    const countdownText = predictedStartToday
+      ? "预测今天月经开始"
+      : predictedEndToday
+        ? "预测今天月经结束"
+        : actualPeriodDay && actualPeriodDayNumber >= 2 && week.periodEndCountdown?.days > 0
+          ? `距离月经结束（${week.periodEndCountdown.date}）还有${week.periodEndCountdown.days}天`
+          : !actualPeriodDay && week.periodCountdown
+            ? `距月经开始（${week.periodCountdown.date}）还有${week.periodCountdown.days}天`
+            : "";
 
     return `${week.dayStripPosition === "top" && shouldShowDayStrip ? dayStrip : ""}
     <div class="${leadClass}">
-      <div class="today-title-card__text">${week.topTitle}</div>
-      ${week.periodCountdown ? `<div class="period-countdown">距月经开始（${week.periodCountdown.date}）还有${week.periodCountdown.days}天</div>` : ""}
+      <div class="today-title-card__text">${displayTopTitle}</div>
+      ${countdownText ? `<div class="period-countdown">${countdownText}</div>` : ""}
       ${week.topDescription ? `<p class="today-title-card__desc">${week.topDescription}</p>` : ""}
     </div>
     ${week.showOverviewCard ? "" : `<div class="week-hero__top week-hero__top--stack">
