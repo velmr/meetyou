@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>今日密报 · 自然周周报 V5.9.0</title>
+  <title>今日密报 · 自然周周报 V5.9.1</title>
   <style>:root {
   --page-bg: #f1efe8;
   --surface: #ffffff;
@@ -559,6 +559,47 @@ button {
   color: var(--ink);
   font-size: 13px;
   font-weight: 500;
+}
+
+.preg-visibility-toggle {
+  min-width: 44px;
+  min-height: 44px;
+  border: 0;
+  border-radius: var(--my-radius-sm, 8px);
+  background: transparent;
+  color: var(--my-text-secondary, #666666);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 0 2px 0 8px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 160ms cubic-bezier(0.2, 0, 0, 1), background-color 160ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.preg-visibility-toggle svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+}
+
+.preg-visibility-toggle:hover,
+.preg-visibility-toggle:active {
+  background: var(--my-brand-soft, rgba(255, 77, 136, 0.08));
+  color: var(--my-brand-red, #ff4d88);
+}
+
+.preg-visibility-toggle:focus-visible {
+  outline: 2px solid var(--my-brand-red, #ff4d88);
+  outline-offset: 1px;
+}
+
+[id^="pregChart_"] svg {
+  display: block;
 }
 
 .chart-card__badge {
@@ -3694,15 +3735,19 @@ svg line[stroke="#e8e6e0"] {
     </svg>`;
   }
 
-  function renderPregChart(data, containerId) {
+  function renderPregChart(data, containerId, options = {}) {
+    const showPregnancy = options.showPregnancy !== false;
     const W = 343;
-    const H = 320;
+    const H = showPregnancy ? 320 : 200;
     const padL = 52;
     const padR = 10;
-    const padT = 28;
-    const plotH = 88;
+    const padT = showPregnancy ? 28 : 12;
+    const plotH = showPregnancy ? 88 : 0;
     const axisY = padT + plotH;
-    const sharedAxisY = 254;
+    const dischargeTitleY = showPregnancy ? 144 : 18;
+    const dischargeRowStart = showPregnancy ? 164 : 38;
+    const sharedAxisY = showPregnancy ? 254 : 128;
+    const phaseBandTop = showPregnancy ? padT - 4 : 8;
     const maxVal = 35;
     const cycleDays = Array.from({ length: 28 }, (_, index) => index + 1);
     const probs = [2, 2, 2, 2, 3, 4, 5, 6, 8, 11, 15, 20, 26, 32, 25, 19, 14, 10, 7, 5, 4, 3, 3, 2, 2, 1, 1, 1];
@@ -3736,7 +3781,7 @@ svg line[stroke="#e8e6e0"] {
     const phaseBands = phaseDefs.map((phase) => {
       const x1 = phase.s === 0 ? padL : points[phase.s].x - xStep / 2;
       const x2 = phase.e === cycleDays.length - 1 ? W - padR : points[phase.e].x + xStep / 2;
-      return `<rect x="${x1.toFixed(1)}" y="${padT - 4}" width="${(x2 - x1).toFixed(1)}" height="${sharedAxisY - padT + 4}" fill="${phase.color}" fill-opacity="0.045"/>`;
+      return `<rect x="${x1.toFixed(1)}" y="${phaseBandTop}" width="${(x2 - x1).toFixed(1)}" height="${sharedAxisY - phaseBandTop}" fill="${phase.color}" fill-opacity="0.045"/>`;
     }).join("");
 
     const yGrid = [0, 18, 35].map((value) => {
@@ -3761,7 +3806,8 @@ svg line[stroke="#e8e6e0"] {
     const badgeW = 48;
     const badgeX = Math.min(Math.max(current.x - badgeW / 2, padL), W - padR - badgeW);
     const badgeY = Math.max(2, current.y - 28);
-    const todayMarker = `<line x1="${current.x.toFixed(1)}" x2="${current.x.toFixed(1)}" y1="${padT}" y2="${sharedAxisY}" stroke="#378ADD" stroke-width="1" stroke-dasharray="3,3"/><rect x="${badgeX.toFixed(1)}" y="${badgeY.toFixed(1)}" width="${badgeW}" height="20" rx="7" fill="#378ADD"/><text x="${(badgeX + badgeW / 2).toFixed(1)}" y="${(badgeY + 14).toFixed(1)}" text-anchor="middle" font-size="10" fill="#ffffff" font-weight="600">${probs[todayIdx]}%</text>`;
+    const todayGuide = `<line x1="${current.x.toFixed(1)}" x2="${current.x.toFixed(1)}" y1="${phaseBandTop}" y2="${sharedAxisY}" stroke="#378ADD" stroke-width="1" stroke-dasharray="3,3"/>`;
+    const probabilityBadge = `<rect x="${badgeX.toFixed(1)}" y="${badgeY.toFixed(1)}" width="${badgeW}" height="20" rx="7" fill="#378ADD"/><text x="${(badgeX + badgeW / 2).toFixed(1)}" y="${(badgeY + 14).toFixed(1)}" text-anchor="middle" font-size="10" fill="#ffffff" font-weight="600">${probs[todayIdx]}%</text>`;
 
     const keyDays = new Set([1, 7, 14, 21, 28, todayIdx + 1]);
     const xLabels = cycleDays.map((cycleDay, index) => {
@@ -3770,7 +3816,7 @@ svg line[stroke="#e8e6e0"] {
       return `<text x="${points[index].x.toFixed(1)}" y="${(sharedAxisY + 18).toFixed(1)}" text-anchor="middle" font-size="11" fill="${active ? "#378ADD" : "#999999"}" font-weight="${active ? 600 : 400}">${active ? "今天" : formatCycleDate(cycleDay)}</text>`;
     }).join("");
 
-    const legendY = 314;
+    const legendY = showPregnancy ? 314 : 194;
     const legendSlot = 76;
     const legendStart = (W - legendSlot * phaseDefs.length) / 2;
     const phaseLegend = phaseDefs.map((phase, index) => {
@@ -3779,11 +3825,11 @@ svg line[stroke="#e8e6e0"] {
     }).join("");
 
     const dischargeRows = [
-      { label: "蛋清状", y: 164 },
-      { label: "水状", y: 182 },
-      { label: "稀糊状", y: 200 },
-      { label: "黏稠", y: 218 },
-      { label: "干燥", y: 236 },
+      { label: "蛋清状", y: dischargeRowStart },
+      { label: "水状", y: dischargeRowStart + 18 },
+      { label: "稀糊状", y: dischargeRowStart + 36 },
+      { label: "黏稠", y: dischargeRowStart + 54 },
+      { label: "干燥", y: dischargeRowStart + 72 },
     ];
     const dischargeRowByType = Object.fromEntries(dischargeRows.map((row) => [row.label, row]));
     const getDischargeType = (index, phase) => {
@@ -3802,7 +3848,7 @@ svg line[stroke="#e8e6e0"] {
     ).join("");
     const phaseSeparators = phaseDefs.slice(1).map((phase) => {
       const x = points[phase.s].x - xStep / 2;
-      return `<line x1="${x.toFixed(1)}" x2="${x.toFixed(1)}" y1="${padT}" y2="${sharedAxisY}" stroke="#dddddd" stroke-width="0.7" stroke-dasharray="2,3"/>`;
+      return `<line x1="${x.toFixed(1)}" x2="${x.toFixed(1)}" y1="${phaseBandTop}" y2="${sharedAxisY}" stroke="#dddddd" stroke-width="0.7" stroke-dasharray="2,3"/>`;
     }).join("");
     const renderDischargeIcon = (type, x, y, active) => {
       const fill = "#F4B7CC";
@@ -3831,11 +3877,11 @@ svg line[stroke="#e8e6e0"] {
 
     const el = document.getElementById(containerId);
     if (!el) return;
-    el.innerHTML = `<svg width="100%" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="整周期怀孕几率与白带预测组合图">
-      <g aria-label="数据系列：怀孕几率"><line x1="${padL}" x2="${padL + 12}" y1="14" y2="14" stroke="#666666" stroke-width="2" stroke-linecap="round"/><circle cx="${padL + 6}" cy="14" r="2.5" fill="#ffffff" stroke="#666666" stroke-width="1.4"/><text x="${padL + 18}" y="18" font-size="11" fill="#666666" font-weight="500">怀孕几率</text></g>
-      ${phaseBands}${yGrid}<g data-pregnancy-series>${curve}${dots}</g>
-      <g aria-label="数据系列：白带预测"><path d="M${padL} 144C${padL + 2} 140 ${padL + 8} 140 ${padL + 10} 144C${padL + 8} 148 ${padL + 2} 148 ${padL} 144Z" fill="#F4B7CC" stroke="#B85C80" stroke-width="1.2"/><text x="${padL + 16}" y="148" font-size="11" fill="#666666" font-weight="500">白带预测</text></g>
-      ${phaseSeparators}${todayMarker}${dischargeGrid}${dischargeScatter}
+    el.innerHTML = `<svg width="100%" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${showPregnancy ? "整周期怀孕几率与白带预测组合图" : "白带预测图，怀孕几率已隐藏"}">
+      ${phaseBands}
+      ${showPregnancy ? `<g aria-label="数据系列：怀孕几率"><line x1="${padL}" x2="${padL + 12}" y1="14" y2="14" stroke="#666666" stroke-width="2" stroke-linecap="round"/><circle cx="${padL + 6}" cy="14" r="2.5" fill="#ffffff" stroke="#666666" stroke-width="1.4"/><text x="${padL + 18}" y="18" font-size="11" fill="#666666" font-weight="500">怀孕几率</text></g>${yGrid}<g data-pregnancy-series>${curve}${dots}</g>${probabilityBadge}` : ""}
+      <g aria-label="数据系列：白带预测"><path d="M${padL} ${dischargeTitleY}C${padL + 2} ${dischargeTitleY - 4} ${padL + 8} ${dischargeTitleY - 4} ${padL + 10} ${dischargeTitleY}C${padL + 8} ${dischargeTitleY + 4} ${padL + 2} ${dischargeTitleY + 4} ${padL} ${dischargeTitleY}Z" fill="#F4B7CC" stroke="#B85C80" stroke-width="1.2"/><text x="${padL + 16}" y="${dischargeTitleY + 4}" font-size="11" fill="#666666" font-weight="500">白带预测</text></g>
+      ${phaseSeparators}${todayGuide}${dischargeGrid}${dischargeScatter}
       <line x1="${padL}" x2="${W - padR}" y1="${sharedAxisY}" y2="${sharedAxisY}" stroke="#cccccc" stroke-width="0.8"/>
       ${xLabels}${phaseLegend}
     </svg>`;
@@ -4015,6 +4061,13 @@ function renderForecastChart(data, containerId) {
   const selectedDayByWeek = {};
   const selectedDayAnimationByWeek = {};
   const suppressTodayAnimationByWeek = {};
+  const pregnancyVisibilityKey = "meiyou-briefing-pregnancy-visibility";
+  let pregnancyProbabilityVisible = true;
+  try {
+    pregnancyProbabilityVisible = window.localStorage.getItem(pregnancyVisibilityKey) !== "hidden";
+  } catch (error) {
+    pregnancyProbabilityVisible = true;
+  }
 
   function phaseStyle(phase) {
     return [
@@ -4199,12 +4252,23 @@ function renderForecastContent(week) {
         <p class="delay-tip__copy">${week.delayTip || "月经日期来自历史周期预测，每个周期出现几天波动并不少见。"}</p>
       </div>`;
   }
+
+  function renderPregnancyVisibilityToggle(week) {
+    const label = pregnancyProbabilityVisible ? "隐藏怀孕几率" : "显示怀孕几率";
+    const icon = pregnancyProbabilityVisible
+      ? `<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M2.5 10C4.2 6.9 6.7 5.3 10 5.3C13.3 5.3 15.8 6.9 17.5 10C16.7 11.5 15.7 12.6 14.5 13.4M11.9 14.5C11.3 14.6 10.7 14.7 10 14.7C6.7 14.7 4.2 13.1 2.5 10C3.1 8.9 3.8 8 4.6 7.3M7.8 7C8.4 6.5 9.1 6.2 10 6.2C12.1 6.2 13.8 7.9 13.8 10C13.8 10.8 13.5 11.6 13.1 12.2M7 12.9C6.5 12.2 6.2 11.2 6.2 10C6.2 9.5 6.3 9.1 6.5 8.7M3.2 3.2L16.8 16.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+      : `<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M2.5 10C4.2 6.9 6.7 5.3 10 5.3C13.3 5.3 15.8 6.9 17.5 10C15.8 13.1 13.3 14.7 10 14.7C6.7 14.7 4.2 13.1 2.5 10Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="10" cy="10" r="2.6" stroke="currentColor" stroke-width="1.5"/></svg>`;
+
+    return `<button class="preg-visibility-toggle" type="button" data-preg-visibility-toggle aria-label="${label}" aria-expanded="${pregnancyProbabilityVisible}" aria-controls="pregChart_${week.id}">${icon}<span>${label}</span></button>`;
+  }
+
   function renderPregnancyChartContent(week) {
     if (!week.showPregChart || !week.pregData) return "";
-    const chartTitle = "怀孕几率与白带预测";
+    const chartTitle = pregnancyProbabilityVisible ? "怀孕几率与白带预测" : "白带预测";
 
     return `<div class="chart-card__head">
-        <span class="chart-card__title">${chartTitle}</span>
+        <span class="chart-card__title" data-preg-chart-title aria-live="polite">${chartTitle}</span>
+        ${renderPregnancyVisibilityToggle(week)}
       </div>
       <div id="pregChart_${week.id}"></div>`;
   }
@@ -4475,17 +4539,50 @@ function renderForecastContent(week) {
     mountWeek(week);
   }
 
+  function bindPregnancyVisibilityToggle(displayWeek) {
+    const button = panelEl.querySelector("[data-preg-visibility-toggle]");
+    if (!button || !displayWeek.showPregChart || !displayWeek.pregData) return;
+
+    button.addEventListener("click", () => {
+      pregnancyProbabilityVisible = !pregnancyProbabilityVisible;
+      try {
+        window.localStorage.setItem(
+          pregnancyVisibilityKey,
+          pregnancyProbabilityVisible ? "visible" : "hidden",
+        );
+      } catch (error) {
+        // The demo still works when local storage is unavailable.
+      }
+
+      const head = button.closest(".chart-card__head");
+      if (head) {
+        const chartTitle = pregnancyProbabilityVisible ? "怀孕几率与白带预测" : "白带预测";
+        head.innerHTML = `<span class="chart-card__title" data-preg-chart-title aria-live="polite">${chartTitle}</span>${renderPregnancyVisibilityToggle(displayWeek)}`;
+      }
+
+      renderPregChart(displayWeek.pregData, `pregChart_${displayWeek.id}`, {
+        showPregnancy: pregnancyProbabilityVisible,
+      });
+      bindPregnancyVisibilityToggle(displayWeek);
+    });
+  }
+
   function mountWeek(week) {
     const displayWeek = getDisplayWeek(week);
     const id = displayWeek.id;
 
     panelEl.innerHTML = renderWeek(displayWeek);
     bindDaySelectors(week);
+    bindPregnancyVisibilityToggle(displayWeek);
 
     requestAnimationFrame(() => {
       if (displayWeek.flowData) renderFlowChart(displayWeek.flowData, `flowChart_${id}`);
       if (displayWeek.forecastData) renderForecastChart(displayWeek.forecastData, `forecastChart_${id}`);
-      if (displayWeek.showPregChart && displayWeek.pregData) renderPregChart(displayWeek.pregData, `pregChart_${id}`);
+      if (displayWeek.showPregChart && displayWeek.pregData) renderPregChart(
+        displayWeek.pregData,
+        `pregChart_${id}`,
+        { showPregnancy: pregnancyProbabilityVisible },
+      );
       if (shouldShowMenstrualChart(displayWeek)) renderMenstrualChart(
         `menChart_${id}`,
         displayWeek.menstrualTodayDay ?? 23,
