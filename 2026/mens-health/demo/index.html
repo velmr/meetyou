@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f9dff5">
+  <title>经期健康报告 · V2</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ff4d88'/%3E%3Cpath d='M8 17h5l3-7 3 13 3-6h3' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --my-brand-red:#ff4d88; --my-brand-soft:#fbd0e8;
+      --my-bg:#ecd7f4; --my-surface:#fcf8fe; --my-text-primary:#323232;
+      --my-text-secondary:#777; --my-text-tertiary:#999; --my-line:rgba(0,0,0,.08);
+      --my-success:#20ce64; --my-down:#00c8a7; --my-warning:#ff892c;
+      --my-danger:#ff4d55; --my-link:#4f7cae; --my-chart:#ff83c7;
+      --my-chart-soft:#ffe3f5; --my-pink-mark:#f992c6; --my-muted-panel:#f3eff5;
+      --my-header:#fae1f6; --my-purple:#512775; --my-radius-sm:8px;
+      --my-radius-md:12px; --my-space-2:8px; --my-space-3:12px;
+      --my-space-4:16px; --my-space-6:24px;
+      --my-factor-bg:#f7f7f9; --my-factor-strong-bg:#ffe6ea; --my-factor-strong:#bd3047;
+      --my-factor-medium-bg:#fff0e4; --my-factor-medium:#a45214;
+      --my-factor-mild-bg:#dcf6ef; --my-factor-mild:#13856e;
+      font-family:"PingFang SC","Microsoft YaHei","SF Pro Text","Helvetica Neue",Arial,sans-serif;
+      font-synthesis:none; color:var(--my-text-primary); letter-spacing:0;
+      font-variant-numeric:tabular-nums;
+    }
+    * {box-sizing:border-box}
+    body {margin:0;background:#f3eef6}
+    button {font:inherit;color:inherit;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+    button:focus-visible,a:focus-visible {outline:2px solid var(--my-brand-red);outline-offset:3px}
+    button:active {filter:brightness(.96)}
+    button:disabled {opacity:.5;cursor:default}
+    @media (hover:hover) {button:hover {filter:brightness(.98)}}
+    .my-app {max-width:375px;margin:auto;min-height:100vh;background:linear-gradient(180deg,#fae1f6 0,#f9f0ff 210px,#ecd7f4 620px);padding-bottom:20px}
+    .statusbar {height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 20px 0 35px;font:600 14px/1 Arial,sans-serif;color:#151515}
+    .status-icons {display:flex;align-items:center;gap:5px}
+    .status-icons svg {display:block}
+    .my-nav {height:44px;display:flex;align-items:center;justify-content:space-between;position:relative;padding:0 8px}
+    .icon-button {min-width:44px;min-height:44px;padding:0;background:transparent;display:grid;place-items:center}
+    .nav-title {position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;white-space:nowrap}
+    .report-title {font-size:19px;font-weight:600;font-style:italic;color:var(--my-purple);text-shadow:1px 1px white,-1px -1px white,1px -1px white,-1px 1px white}
+    .vip {font-size:12px;font-style:italic;font-weight:600;color:var(--my-brand-red);padding:2px 7px;border-radius:999px;background:#ffd6ef}
+    .all-periods {font-size:8px;line-height:12px;gap:0;align-content:center}
+    .period-tabs {height:36px;display:flex;align-items:stretch;background:#efd2ed;border-radius:18px 18px 0 0}
+    .period-tab {width:33.333%;background:transparent;font-size:17px;font-weight:500;position:relative;padding:0 0 5px}
+    .period-tab.active {background:#faf3ff;border-radius:18px 18px 0 0}
+    .period-tab.active:after {content:"";position:absolute;bottom:2px;left:calc(50% - 10px);width:20px;height:3px;border-radius:8px;background:var(--my-brand-red)}
+    .secondary-tabs {min-height:44px;padding:7px 12px 8px;display:flex;justify-content:center;gap:8px;background:#faf3ff;border-radius:12px 12px 0 0;margin-top:-1px;position:relative}
+    .secondary-tab {background:transparent;padding:0;min-height:32px;position:relative}
+    .secondary-tab:before {content:"";position:absolute;inset:-6px 0}
+    .secondary-tab span {display:block;padding:6px 12px;background:#ede7ef;color:#777;font-size:14px;line-height:18px;border-radius:999px}
+    .secondary-tab.active span {background:var(--my-brand-soft);color:var(--my-brand-red)}
+    main {padding:0 12px}
+    .my-card {background:rgba(255,253,255,.86);border-radius:var(--my-radius-md);margin-bottom:8px;padding:12px 14px 16px}
+    .my-card h2 {font-size:17px;line-height:24px;margin:0;font-weight:600;display:flex;align-items:center;gap:8px;position:relative}
+    .my-card h2:before {content:"";display:block;flex:none;width:5px;height:12px;background:var(--my-pink-mark);border-radius:4px;margin-left:-2px}
+    .card-heading {display:flex;align-items:center;justify-content:space-between;gap:4px}
+    .info {background:transparent;color:var(--my-text-tertiary);padding:0;position:relative;display:inline-flex;vertical-align:middle}
+    .info:after {content:"";position:absolute;width:44px;height:44px;left:50%;top:50%;transform:translate(-50%,-50%)}
+    .summary-card {padding-bottom:12px;background:rgba(255,253,255,.93)}
+    .summary-main {display:grid;grid-template-columns:1fr 1.05fr;gap:16px;align-items:center;padding:12px 4px 8px;min-height:152px}
+    .score-dial {height:132px;width:132px;max-width:100%;position:relative;display:flex;align-items:center;flex-direction:column;justify-content:center;border-radius:50%;background:white}
+    .score-ring {position:absolute;inset:0;width:100%;height:100%}
+    .score-caption {font-size:12px;color:var(--my-text-tertiary);position:relative;margin-top:-10px}
+    .score-number {font-size:46px;font-weight:500;line-height:1.35;color:var(--my-brand-red);position:relative}
+    .score-change {position:absolute;bottom:-1px;border:1px solid var(--my-line);border-radius:999px;padding:4px 8px;background:white;white-space:nowrap;font-size:12px;line-height:16px}
+    .score-change em {font-style:normal;color:var(--my-down)}
+    .summary-grade {font-size:21px;line-height:28px;font-weight:600;display:inline-block;margin:0 0 12px;box-shadow:inset 0 -5px #fddcef}
+    .summary-items {display:flex;flex-direction:column;gap:8px}
+    .summary-row {display:flex;align-items:center;gap:5px;font-size:14px;line-height:19px;white-space:nowrap}
+    .tag {font-size:11px;line-height:16px;border-radius:4px;padding:0 4px;color:var(--my-warning);background:#ffeadf}
+    .tag.danger {color:var(--my-danger);background:#ffe0e5}
+    .summary-copy {margin:6px 0 0;background:var(--my-muted-panel);padding:10px 12px;border-radius:var(--my-radius-md);font-size:15px;line-height:27px;color:var(--my-text-secondary)}
+    .accent {color:var(--my-brand-red)}
+    .completeness {font-size:12px;color:var(--my-text-tertiary);white-space:nowrap}
+    .radar {display:block;width:100%;height:auto;margin-top:8px;overflow:visible}
+    svg text {font-family:inherit}
+    .radar .axis-label {fill:var(--my-text-primary);font-size:11px;font-weight:500}
+    .radar .caption {fill:var(--my-text-tertiary);font-size:11px}
+    .radar .value {fill:var(--my-brand-red);font-size:16px}
+    .radar .down {fill:var(--my-down);font-size:14px;font-weight:600}
+    .focus-card {padding-bottom:16px}
+    .focus-content {padding:0 10px}
+    .focus-item {margin-top:22px;scroll-margin-top:16px}
+    .focus-item:first-child {margin-top:14px}
+    .focus-item + .focus-item {margin-top:32px}
+    .focus-heading {display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+    .focus-item h3 {margin:0;font-size:16px;line-height:25px;font-weight:500;color:var(--my-text-primary);flex-shrink:0;display:flex;align-items:center;gap:8px}
+    .state-icon {width:17px;height:17px;display:inline-flex;align-items:center;justify-content:center;flex:none;border-radius:50%;background:var(--my-danger);color:white;font:600 13px/1 Arial}
+    .state-icon.warning {background:var(--my-warning)}
+    .metric-tags {display:flex;align-items:center;justify-content:flex-end;gap:6px;margin-left:auto;flex-wrap:wrap}
+    .metric-tag {font-size:11px;line-height:18px;padding:1px 6px;border-radius:4px;white-space:nowrap}
+    .metric-tag.trend {background:#eee8f2;color:#665b70}
+    .focus-item p,.advice-item p,.reason-copy {font-size:15px;line-height:27px;color:var(--my-text-secondary);margin:20px 0 0;overflow-wrap:anywhere}
+    .focus-chart {width:100%;height:auto;display:block;margin-top:20px}
+    .focus-chart text {font-size:11px;fill:var(--my-text-tertiary)}
+    .focus-chart .current {fill:var(--my-text-primary)}
+    .focus-chart .green {fill:var(--my-success)}
+    .focus-chart .orange {fill:var(--my-warning)}
+    .focus-chart .red {fill:var(--my-brand-red)}
+    .bars {margin-top:20px;display:flex;flex-direction:column;gap:12px}
+    .bar-row {display:grid;grid-template-columns:36px 1fr 28px;align-items:center;gap:5px;font-size:11px;color:var(--my-text-tertiary)}
+    .bar-label {white-space:nowrap}
+    .bar-row:first-child .bar-label {color:var(--my-text-primary)}
+    .bar {height:19px;background:linear-gradient(90deg,#ffe5f5,#ff83c7);border-radius:0 3px 3px 0;position:relative}
+    .bar-value {position:absolute;right:4px;top:0;line-height:19px;color:#fff;font-size:11px}
+    .bar-status {font-size:10px;color:var(--my-success)}
+    .bar-row:first-child .bar-status {color:var(--my-brand-red)}
+    .bar-row:last-child .bar-status {color:var(--my-success)}
+    .reason-card .reason-copy {padding:0 10px;margin-top:16px}
+    .reason-card .reason-copy + .reason-copy {margin-top:12px}
+    .factors-panel {margin:16px 10px 0;background:var(--my-factor-bg);border-radius:var(--my-radius-sm);padding:12px}
+    .factor-item + .factor-item {margin-top:24px}
+    .factor-heading {display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .factor-heading h3 {font-size:16px;line-height:25px;font-weight:500;margin:0}
+    .factor-tag {font-size:11px;line-height:18px;padding:0 4px;border-radius:4px;white-space:nowrap}
+    .factor-tag.strong {background:var(--my-factor-strong-bg);color:var(--my-factor-strong)}
+    .factor-tag.medium {background:var(--my-factor-medium-bg);color:var(--my-factor-medium)}
+    .factor-tag.mild {background:var(--my-factor-mild-bg);color:var(--my-factor-mild)}
+    .factor-item p {font-size:15px;line-height:27px;color:var(--my-text-secondary);margin:10px 0 0;overflow-wrap:anywhere}
+    .advice-content {padding:0 10px}
+    .advice-item {margin-top:22px}
+    .advice-item h3 {display:flex;align-items:flex-start;gap:7px;margin:0;font-size:16px;line-height:25px;font-weight:500}
+    .sparkle {color:var(--my-pink-mark);font-size:17px;flex:none}
+    .advice-item p {margin-top:10px}
+    .advice-item + .advice-item {margin-top:26px}
+    footer {padding:0 12px;color:#afa1b7;font-size:10px;line-height:18px}
+    .home-indicator {height:5px;width:130px;border-radius:6px;background:#191919;margin:22px auto 0}
+    dialog {width:calc(100% - 40px);max-width:335px;border:0;border-radius:12px;padding:24px;color:var(--my-text-primary);box-shadow:0 8px 24px #0002}
+    dialog::backdrop {background:#0005}
+    dialog h2 {font-size:21px;line-height:28px;margin:0 0 12px;font-weight:500}
+    dialog p {font-size:15px;line-height:25px;color:var(--my-text-secondary);margin:0 0 20px}
+    .dialog-button {width:100%;min-height:44px;background:var(--my-brand-red);color:white;border-radius:8px;font-size:15px}
+    @media(max-width:374px) {.summary-main{gap:10px;padding-left:0;padding-right:0}.summary-row{font-size:13px}.summary-grade{font-size:20px}.completeness{font-size:11px}.focus-content,.advice-content{padding:0 8px}}
+    @media(prefers-reduced-motion:no-preference) {html{scroll-behavior:smooth}button{transition:filter 150ms}}
+    @media print {body{background:white}.my-app{max-width:100%}.statusbar,.my-nav,.period-tabs,.secondary-tabs,.home-indicator{display:none}.my-card{break-inside:avoid}}
+  </style>
+</head>
+<body>
+<div class="my-app">
+  <header>
+    <div class="statusbar" aria-hidden="true"><span>9:41</span><div class="status-icons">
+      <svg width="18" height="14" viewBox="0 0 18 14"><g fill="currentColor"><rect x="0" y="9" width="3" height="5" rx="1"/><rect x="5" y="6" width="3" height="8" rx="1"/><rect x="10" y="3" width="3" height="11" rx="1"/><rect x="15" width="3" height="14" rx="1"/></g></svg>
+      <svg width="17" height="14" viewBox="0 0 20 16"><path d="M2 5Q10-1 18 5M5 9Q10 5 15 9" stroke="currentColor" stroke-width="2.7" fill="none"/><path d="m7.5 12 2.5 3 2.5-3Q10 10 7.5 12" fill="currentColor"/></svg>
+      <svg width="25" height="14" viewBox="0 0 28 15"><rect x="1" y="2" width="23" height="11" rx="3" stroke="#999" fill="none"/><rect x="3" y="4" width="19" height="7" rx="1.3" fill="currentColor"/><path d="M26 5v5" stroke="#aaa" stroke-width="2"/></svg>
+    </div></div>
+    <nav class="my-nav" aria-label="页面导航">
+      <button class="icon-button" id="back" aria-label="返回"><svg width="22" height="24" viewBox="0 0 24 24" fill="none"><path d="m15 5-7 7 7 7" stroke="#666" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="nav-title"><span class="report-title">经期健康报告</span><span class="vip">VIP</span></div>
+      <button class="icon-button all-periods" data-message="全部周期" aria-label="查看全部周期"><svg width="24" height="25" viewBox="0 0 24 26" fill="none"><path d="M6 2h7l5 5v15H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 2v5h6M8 12h6M8 16h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span>全部周期</span></button>
+    </nav>
+    <div class="period-tabs" aria-label="周期范围">
+      <button class="period-tab" data-message="上次周期">上次周期</button>
+      <button class="period-tab active" aria-current="page" id="current-period">本次周期</button>
+      <button class="period-tab" data-message="近半年">近半年</button>
+    </div>
+    <div class="secondary-tabs" aria-label="报告分类">
+      <button class="secondary-tab active" aria-current="page" id="overview"><span>综合解读</span></button>
+      <button class="secondary-tab" data-scroll="regularity"><span>经期规律</span></button>
+      <button class="secondary-tab" data-message="经前综合症"><span>经前综合症</span></button>
+    </div>
+  </header>
+  <main>
+    <section class="my-card summary-card" aria-labelledby="health-title">
+      <h2 id="health-title">经期健康度 <button class="info" id="score-info" aria-label="经期健康度说明"><svg width="16" height="16" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7.5" stroke="currentColor" fill="none" stroke-width="1.3"/><path d="M9 8v5" stroke="currentColor" stroke-width="1.5"/><circle cx="9" cy="5" r=".9" fill="currentColor"/></svg></button></h2>
+      <div class="summary-main">
+        <div class="score-dial">
+          <svg class="score-ring" viewBox="0 0 140 140" aria-hidden="true"><path d="M24 111a61 61 0 1 1 92 0" fill="none" stroke="#ffa5d1" stroke-width="3" stroke-dasharray="1 3"/><circle cx="129" cy="48" r="2" fill="white" stroke="#ff4d88" stroke-width="1.4"/></svg>
+          <span class="score-caption">预测得分</span><span class="score-number">75</span>
+          <span class="score-change">比上次 <em>⬇5分</em></span>
+        </div>
+        <div><div class="summary-grade">轻微异常</div><div class="summary-items">
+          <div class="summary-row">周期过长 <span class="tag danger">异常</span></div>
+          <div class="summary-row">流量偏少 <span class="tag">中度偏离</span></div>
+          <div class="summary-row">压力过大 <span class="tag">影响中等</span></div>
+        </div></div>
+      </div>
+      <p class="summary-copy">本次周期天数从之前的28天、30天延长到<span class="accent">36天，周期波动，月经流量偏少</span>。这种变化可能受到你近期<span class="accent">压力过大、睡眠不足</span>的影响。</p>
+    </section>
+    <section class="my-card metrics-card" aria-labelledby="metrics-title">
+      <div class="card-heading"><h2 id="metrics-title">周期指标得分</h2><span class="completeness">数据完整度：100%</span></div>
+      <svg class="radar" viewBox="0 0 325 220" role="img" aria-label="周期天数80分，周期规律性60分，流量60分，经期症状80分，非经期症状100分，痛经80分，经期天数80分">
+        <defs><linearGradient id="radar-fill" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ff7fc5" stop-opacity=".7"/><stop offset="1" stop-color="#ffa7d8" stop-opacity=".24"/></linearGradient></defs>
+        <g fill="none" stroke="#ffc0e5" stroke-width=".55">
+          <path d="M162.5 47 215.7 72.6 228.8 130.1 192 176.3 133 176.3 96.2 130.1 109.3 72.6Z"/>
+          <path d="M162.5 63.9 202.4 83.1 212.2 126.2 184.6 160.8 140.4 160.8 112.8 126.2 122.6 83.1Z" opacity=".55"/>
+          <path d="M162.5 80.8 189.1 93.6 195.7 122.3 177.3 145.4 147.7 145.4 129.3 122.3 135.9 93.6Z" opacity=".55"/>
+          <path d="M162.5 97.7 175.8 104.1 179.1 118.4 169.9 129.9 155.1 129.9 145.9 118.4 149.2 104.1Z" opacity=".55"/>
+        </g>
+        <path d="M162.5 60.6 205.1 81 215.5 127 192 176.3 138.9 163.9 122.7 123.9 130.6 89.4Z" fill="url(#radar-fill)"/>
+        <g fill="#ff6eaf" stroke="white" stroke-width=".8"><circle cx="162.5" cy="60.6" r="1.8"/><circle cx="205.1" cy="81" r="1.8"/><circle cx="215.5" cy="127" r="1.8"/><circle cx="192" cy="176.3" r="1.8"/><circle cx="138.9" cy="163.9" r="1.8"/><circle cx="122.7" cy="123.9" r="1.8"/><circle cx="130.6" cy="89.4" r="1.8"/></g>
+        <g text-anchor="middle"><text class="axis-label" x="162.5" y="17">周期天数</text><text x="158" y="37"><tspan class="caption">得分 </tspan><tspan class="value">80</tspan><tspan class="down"> ⬇</tspan></text>
+        <text class="axis-label" x="271" y="67">经期天数</text><text x="269" y="88"><tspan class="caption">得分 </tspan><tspan class="value">80</tspan></text>
+        <text class="axis-label" x="271" y="124">痛经</text><text x="269" y="145"><tspan class="caption">得分 </tspan><tspan class="value">80</tspan></text>
+        <text class="axis-label" x="126" y="199">经期症状</text><text x="123" y="219"><tspan class="caption">得分 </tspan><tspan class="value">80</tspan></text>
+        <text class="axis-label" x="201" y="199">非经期症状</text><text x="198" y="219"><tspan class="caption">得分 </tspan><tspan class="value">100</tspan></text>
+        <text class="axis-label" x="55" y="128">流量</text><text x="53" y="149"><tspan class="caption">得分 </tspan><tspan class="value">60</tspan><tspan class="down"> ⬇</tspan></text>
+        <text class="axis-label" x="56" y="68">周期规律性</text><text x="53" y="89"><tspan class="caption">得分 </tspan><tspan class="value">60</tspan><tspan class="down"> ⬇</tspan></text></g>
+      </svg>
+    </section>
+    <section class="my-card focus-card" aria-labelledby="focus-title">
+      <h2 id="focus-title">重点关注</h2>
+      <div class="focus-content">
+        <article class="focus-item" id="cycle-days">
+          <div class="focus-heading"><h3><span class="state-icon" aria-label="异常">!</span><span class="metric-name">周期天数</span></h3><div class="metric-tags"><span class="metric-tag trend" aria-label="三周期趋势：单次变化">单次变化</span></div></div>
+          <div class="bars" role="img" aria-label="本次周期41天，上次28天，上上次30天">
+      <div class="bar-row"><span class="bar-label">本次</span><div class="bar" style="width:100%"><span class="bar-value">41</span></div><span class="bar-status">过长</span></div>
+      <div class="bar-row"><span class="bar-label">上次</span><div class="bar" style="width:68.29%"><span class="bar-value">28</span></div><span class="bar-status">正常</span></div>
+      <div class="bar-row"><span class="bar-label">上上次</span><div class="bar" style="width:73.17%"><span class="bar-value">30</span></div><span class="bar-status">正常</span></div>
+    </div>
+          <p>本次周期持续了41天，比上次延长了13天，已经超过了正常范围。回顾最近3次的情况，周期天数从30天到41天，需要关注了。</p>
+        </article>
+        <article class="focus-item" id="regularity">
+          <div class="focus-heading"><h3><span class="state-icon" aria-label="异常">!</span><span class="metric-name">周期规律性</span></h3><div class="metric-tags"><span class="metric-tag trend" aria-label="三周期趋势：单次变化">单次变化</span></div></div>
+          
+          <p>近两次周期规律性有一些波动，前两个周期规律性良好，但本次与上次差值达到了13天，变化比较明显，建议持续观察后续走势。</p>
+        </article>
+        <article class="focus-item" id="period-days">
+          <div class="focus-heading"><h3><span class="state-icon warning" aria-label="轻度偏离">!</span><span class="metric-name">经期天数</span></h3><div class="metric-tags"><span class="metric-tag trend" aria-label="三周期趋势：经期稳定">经期稳定</span></div></div>
+          <svg class="focus-chart" viewBox="0 0 300 139" role="img" aria-label="上上次、上次、本次经期均为7天，轻度偏离">
+      <defs><linearGradient id="days-fill" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffe1f4"/><stop offset="1" stop-color="#fff8fd" stop-opacity="0"/></linearGradient></defs>
+      <path d="M50 28h200v62H50Z" fill="url(#days-fill)"/><path d="M50 28h200" stroke="#ff83c7" stroke-width="2.5"/>
+      <g stroke="white" stroke-width="1.5" fill="#ffb9de"><circle cx="50" cy="28" r="2.5"/><circle cx="150" cy="28" r="2.5"/><circle cx="250" cy="28" r="4" fill="#ff4d88"/></g>
+      <g text-anchor="middle"><text x="50" y="17">7</text><text x="150" y="17">7</text><text x="250" y="17" class="current">7</text><text x="50" y="106" class="orange">轻度偏离</text><text x="150" y="106" class="orange">轻度偏离</text><text x="250" y="106" class="orange">轻度偏离</text><text x="50" y="126">上上次</text><text x="150" y="126">上次</text><text x="250" y="126" class="current">本次</text></g>
+    </svg>
+          <p>这次经期持续了7天，虽然处在正常范围的临界值，不过前两次经期天数也都是7天，看最近3次的趋势还是比较稳定的，不用担心。</p>
+        </article>
+        <article class="focus-item" id="pain">
+          <div class="focus-heading"><h3><span class="state-icon" aria-label="异常">!</span><span class="metric-name">痛经</span></h3><div class="metric-tags"><span class="metric-tag trend" aria-label="三周期趋势：单次变化">单次变化</span></div></div>
+          <svg class="focus-chart" viewBox="0 0 300 139" role="img" aria-label="上上次和上次均为轻微痛、轻度偏离，本次痛经加重、异常；示意程度变化，不代表具体痛感分值">
+      <defs><linearGradient id="pain-fill" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffe1f4"/><stop offset="1" stop-color="#fff8fd" stop-opacity="0"/></linearGradient></defs>
+      <path d="M50 54H150L250 30V88H50Z" fill="url(#pain-fill)"/><path d="M50 54H150L250 30" stroke="#ff83c7" stroke-width="2.5" fill="none"/>
+      <g stroke="white" stroke-width="1.5" fill="#ffb9de"><circle cx="50" cy="54" r="2.5"/><circle cx="150" cy="54" r="2.5"/><circle cx="250" cy="30" r="4" fill="#ff4d88"/></g>
+      <g text-anchor="middle"><text x="50" y="39">轻微痛</text><text x="150" y="39">轻微痛</text><text x="250" y="16" class="current">痛经加重</text><text x="50" y="106" class="orange">轻度偏离</text><text x="150" y="106" class="orange">轻度偏离</text><text x="250" y="106" class="red">异常</text><text x="50" y="126">上上次</text><text x="150" y="126">上次</text><text x="250" y="126" class="current">本次</text></g>
+    </svg>
+          <p>这次痛经有所加重，属于异常情况，回顾前两次，都是轻微痛的程度，但一次加重不能说明问题，可以持续观察和记录，看后续痛经程度是否发生变化。</p>
+        </article>
+      </div>
+    </section>
+    <section class="my-card reason-card" aria-labelledby="reason-title">
+      <h2 id="reason-title">原因分析</h2>
+      <p class="reason-copy">综合近3次周期趋势来看，本周期的情况要格外关注，周期天数出现了明显异常，很可能是和围绝经期卵巢功能自然衰退、排卵稀发有关，但仍不能完全排除疾病影响。</p>
+      <p class="reason-copy">比如子宫内膜病变、甲状腺功能异常、无排卵性异常子宫出血等（需提前排除怀孕可能），但明确具体的原因还是需要咨询医生。</p>
+      <p class="reason-copy">你记录过以下影响因素，也可能加重当前的异常：</p>
+      <div class="factors-panel">
+        <article class="factor-item"><div class="factor-heading"><h3>紧急避孕药</h3><span class="factor-tag strong">影响强烈</span></div><p>本周期你记录了1次使用紧急避孕药，外源性激素集中涌入，身体自己的节奏很难不受影响。不过，紧急避孕药对月经的干扰也是因人而异的，多留意一下自己的月经情况就好。</p></article>
+        <article class="factor-item"><div class="factor-heading"><h3>压力过大</h3><span class="factor-tag medium">影响中等</span></div><p>本周期你记录了9次压力过大的状态。压力对月经的影响往往不是立竿见影的，而是在持续积累后悄悄改变了激素的调控节奏，需要多留意。</p></article>
+        <article class="factor-item"><div class="factor-heading"><h3>感冒</h3><span class="factor-tag mild">影响轻微</span></div><p>本周期你记录了1次感冒，生病期间免疫系统全力运转，激素调节有时就会在这个过程里受到波及。偶尔乱一次不用太放心上，康复之后大多能自己恢复。</p></article>
+      </div>
+    </section>
+    <section class="my-card advice-card" aria-labelledby="advice-title">
+      <h2 id="advice-title">行动建议</h2>
+      <div class="advice-content">
+        <article class="advice-item"><h3><span class="sparkle" aria-hidden="true">✦</span><span>尽快去妇科门诊，查激素和B超</span></h3><p>周期天数和规律性都出现紊乱，建议尽早挂妇科或内分泌科门诊就医，把最近几次月经的大概日期和间隔天数详细告诉医生。这种情况可能需要做性激素六项（最好在月经第2-4天做，或根据医生安排）、甲状腺功能、妇科B超等检查。考虑到你的年龄段，医生可能还会安排你查一下AMH。</p></article>
+        <article class="advice-item"><h3><span class="sparkle" aria-hidden="true">✦</span><span>吃富含维C的食物促进药物代谢</span></h3><p>避孕药可能会消耗身体里的维生素储备，但单次消耗有限，不必太担心，也不需要特意买维生素C片来吃。最近几天不妨每天吃1-2份富含维C的水果（如橙子、草莓、猕猴桃等），或适当多吃点新鲜的深绿色蔬菜如西兰花，用饮食补充一下即可。</p></article>
+        <article class="advice-item"><h3><span class="sparkle" aria-hidden="true">✦</span><span>每天做5分钟深呼吸，帮身体减压</span></h3><p>不需要任何道具，你可以在感到压力时或者睡前，尝试这样做：先用鼻子慢慢地深吸气，最后用力吸一小口“补满”，然后用嘴巴缓慢、长长地把气全部呼出，重复5分钟。这个呼吸方式可以快速启动副交感神经，给情绪踩下刹车，长期坚持能有效降低焦虑水平。</p></article>
+        <article class="advice-item"><h3><span class="sparkle" aria-hidden="true">✦</span><span>感冒恢复期间，要适当补锌</span></h3><p>感冒期间免疫系统会消耗身体里的锌，锌不足可能会让恢复变慢，最近可以采取食补的方式增加锌的摄入：牡蛎、扇贝、牛肉、南瓜籽都富含锌，一周安排2次，每次一小份即可（比如8-10个扇贝、一巴掌大小的牛肉或者一小把原味南瓜籽），帮身体把锌补上，呼吸道黏膜会恢复得更快。</p></article>
+        <article class="advice-item"><h3><span class="sparkle" aria-hidden="true">✦</span><span>咨询医生能否用药缓解痛经</span></h3><p>感觉非常痛时，可能按摩和热敷都不好使，建议咨询医生或药剂师，能否使用止痛药，一般来说首选布洛芬等非甾体抗炎药。</p></article>
+      </div>
+    </section>
+  </main>
+  <footer>本报告基于你提供的数据生成，作为健康参考使用，不构成医疗诊断。身体的每一个信号都值得认真对待。如有疑虑，请咨询医生。</footer>
+  <div class="home-indicator" aria-hidden="true"></div>
+</div>
+<dialog id="notice" aria-labelledby="notice-title"><h2 id="notice-title"></h2><p id="notice-copy"></p><form method="dialog"><button class="dialog-button">我知道了</button></form></dialog>
+<script>
+  const notice=document.getElementById('notice');
+  function showNotice(title,copy){document.getElementById('notice-title').textContent=title;document.getElementById('notice-copy').textContent=copy;notice.showModal();}
+  document.querySelectorAll('[data-message]').forEach(button=>button.addEventListener('click',()=>showNotice(button.dataset.message,'当前仅提供本次周期的示例报告。')));
+  document.querySelectorAll('[data-scroll]').forEach(button=>button.addEventListener('click',()=>document.getElementById(button.dataset.scroll).scrollIntoView({block:'start'})));
+  document.getElementById('score-info').addEventListener('click',()=>showNotice('经期健康度','当前展示为示例数据，不代表你的实际健康状况。'));
+  function toOverview(){document.getElementById('health-title').scrollIntoView({block:'start'});}
+  document.getElementById('overview').addEventListener('click',toOverview);
+  document.getElementById('current-period').addEventListener('click',toOverview);
+  document.getElementById('back').addEventListener('click',()=>{if(history.length>1){history.back();}else{showNotice('返回','当前已是首个页面，可关闭此页面返回。');}});
+  notice.addEventListener('click',event=>{const rect=notice.getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)notice.close();});
+</script>
+</body>
+</html>
